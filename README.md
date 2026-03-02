@@ -1,2 +1,2 @@
-# focusforge.github.io
+# officialfocusforgeapp.github.io
 Website for FocusForge app
