@@ -1,504 +1,128 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title>FocusForge Privacy Policy</title>
-  <meta name="description" content="FocusForge Privacy Policy (Effective date: March 3, 2026)" />
+<style>
+  :root{
+    --bg: #0f0b08;
+    --text: rgba(255,245,230,0.92);
+    --muted: rgba(255,230,200,0.70);
+    --faint: rgba(255,230,200,0.55);
+    --border: rgba(255,140,60,0.25);
+    --card: rgba(25,15,10,0.65);
+    --shadow: 0 25px 80px rgba(0,0,0,0.65);
+    --accent: #ff6a00;
+    --accent2:#ffb347;
+    --link: #ff9d3f;
+    --radius: 18px;
+    --maxw: 980px;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  }
 
-  <style>
-    :root{
-      --bg: #0b1020;
-      --card: rgba(255,255,255,0.06);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.72);
-      --faint: rgba(255,255,255,0.55);
-      --border: rgba(255,255,255,0.14);
-      --shadow: 0 18px 60px rgba(0,0,0,0.45);
-      --accent: #7c3aed; /* violet */
-      --accent2:#22c55e; /* green */
-      --link: #93c5fd;
-      --radius: 18px;
-      --maxw: 980px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    }
+  *{box-sizing:border-box}
+  html,body{height:100%}
 
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#f6f7fb;
-        --card: rgba(0,0,0,0.03);
-        --text: rgba(10,12,18,0.92);
-        --muted: rgba(10,12,18,0.70);
-        --faint: rgba(10,12,18,0.55);
-        --border: rgba(10,12,18,0.12);
-        --shadow: 0 18px 60px rgba(16,24,40,0.14);
-        --link:#1d4ed8;
-      }
-    }
+  body{
+    margin:0;
+    font-family: var(--sans);
+    color: var(--text);
+    line-height:1.6;
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: var(--sans);
-      color: var(--text);
-      background:
-        radial-gradient(1200px 800px at 15% 10%, rgba(124,58,237,0.28), transparent 55%),
-        radial-gradient(900px 700px at 90% 20%, rgba(34,197,94,0.18), transparent 55%),
-        radial-gradient(1000px 800px at 40% 100%, rgba(59,130,246,0.16), transparent 60%),
-        var(--bg);
-      line-height: 1.55;
-    }
+    /* 🔥 Smooth Infinite Forge Background */
+    background:
+      radial-gradient(1200px 800px at 20% 10%, rgba(255,110,0,0.35), transparent 60%),
+      radial-gradient(1000px 700px at 85% 20%, rgba(255,170,60,0.25), transparent 60%),
+      radial-gradient(1200px 900px at 50% 100%, rgba(255,80,0,0.18), transparent 70%),
+      linear-gradient(180deg, #1a0f0a 0%, #0f0b08 40%, #120a06 70%, #0b0806 100%);
+    
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
-    a{color:var(--link); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .skip{
-      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
-    }
-    .skip:focus{
-      left:16px; top:16px; width:auto; height:auto;
-      padding:10px 12px; border-radius:12px;
-      background: var(--card); border:1px solid var(--border);
-      box-shadow: var(--shadow);
-      z-index:9999;
-    }
+  a{color:var(--link); text-decoration:none}
+  a:hover{text-decoration:underline}
 
-    header{
-      padding: 42px 16px 18px;
-    }
-    .wrap{
-      max-width: var(--maxw);
-      margin: 0 auto;
-    }
+  header{
+    padding: 50px 16px 24px;
+  }
 
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-      margin-bottom: 22px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 220px;
-    }
-    .logo{
-      width:40px; height:40px; border-radius: 14px;
-      background: linear-gradient(135deg, rgba(124,58,237,1), rgba(34,197,94,1));
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-    .brand h1{
-      font-size: 16px;
-      margin:0;
-      letter-spacing: 0.2px;
-    }
-    .brand p{
-      margin:2px 0 0;
-      font-size: 12px;
-      color: var(--muted);
-    }
+  .wrap{
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
 
-    .pill{
-      display:flex; align-items:center; gap:10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border:1px solid var(--border);
-      background: var(--card);
-      box-shadow: 0 10px 36px rgba(0,0,0,0.12);
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .pill b{color: var(--text); font-weight: 650}
-    .dot{
-      width:8px; height:8px; border-radius: 999px;
-      background: var(--accent2);
-      box-shadow: 0 0 0 4px rgba(34,197,94,0.18);
-    }
+  .logo{
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    background: linear-gradient(135deg, #ff6a00, #ffb347);
+    box-shadow:
+      0 0 30px rgba(255,120,0,0.6),
+      inset 0 0 20px rgba(255,255,255,0.15);
+  }
 
-    .hero{
-      padding: 20px 0 8px;
-    }
-    .hero h2{
-      margin:0;
-      font-size: clamp(28px, 3.8vw, 42px);
-      letter-spacing: -0.4px;
-      line-height: 1.1;
-    }
-    .hero .sub{
-      margin-top: 10px;
-      color: var(--muted);
-      max-width: 70ch;
-      font-size: 15px;
-    }
+  .pill{
+    padding: 10px 14px;
+    border-radius: 999px;
+    border:1px solid var(--border);
+    background: rgba(40,20,10,0.6);
+    backdrop-filter: blur(6px);
+    box-shadow: var(--shadow);
+    font-size:13px;
+  }
 
-    main{padding: 0 16px 64px}
+  .card{
+    padding: 26px;
+    border-radius: var(--radius);
+    border:1px solid var(--border);
+    background: var(--card);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow);
+  }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 280px 1fr;
-      gap: 18px;
-      align-items: start;
-    }
-    @media (max-width: 980px){
-      .grid{grid-template-columns: 1fr}
-    }
+  nav.toc{
+    position: sticky;
+    top: 20px;
+    padding: 18px;
+    border-radius: var(--radius);
+    border:1px solid var(--border);
+    background: rgba(30,15,8,0.75);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+  }
 
-    nav.toc{
-      position: sticky;
-      top: 16px;
-      padding: 16px;
-      border:1px solid var(--border);
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    nav.toc h3{
-      margin: 0 0 10px;
-      font-size: 13px;
-      color: var(--muted);
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-    }
-    nav.toc a{
-      display:block;
-      padding: 9px 10px;
-      margin: 4px 0;
-      border-radius: 12px;
-      color: var(--text);
-      border: 1px solid transparent;
-    }
-    nav.toc a:hover{
-      background: rgba(124,58,237,0.10);
-      border-color: rgba(124,58,237,0.18);
-      text-decoration:none;
-    }
-    nav.toc .small{
-      margin-top: 12px;
-      font-size: 12px;
-      color: var(--faint);
-    }
+  nav.toc a{
+    display:block;
+    padding: 8px 10px;
+    border-radius: 12px;
+    margin: 4px 0;
+    color: var(--text);
+  }
 
-    .card{
-      padding: 22px;
-      border:1px solid var(--border);
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
+  nav.toc a:hover{
+    background: rgba(255,110,0,0.18);
+    text-decoration:none;
+  }
 
-    .summary{
-      border-left: 4px solid var(--accent);
-      padding-left: 14px;
-      margin: 0 0 18px;
-    }
-    .summary h3{
-      margin: 0 0 8px;
-      font-size: 14px;
-      letter-spacing: 0.35px;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .summary ul{
-      margin: 0;
-      padding-left: 18px;
-    }
-    .summary li{
-      margin: 7px 0;
-      color: var(--text);
-    }
+  .summary{
+    border-left: 4px solid var(--accent);
+    padding-left: 14px;
+  }
 
-    section{
-      padding-top: 8px;
-      margin-top: 18px;
-      border-top: 1px solid var(--border);
-    }
-    section:first-of-type{border-top:none; margin-top: 0; padding-top: 0}
-    h3.section-title{
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: -0.2px;
-    }
-    p{margin: 10px 0; color: var(--text)}
-    .muted{color: var(--muted)}
-    .list{
-      margin: 10px 0 0;
-      padding-left: 18px;
-    }
-    .list li{
-      margin: 7px 0;
-      color: var(--text);
-    }
+  section{
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,140,60,0.18);
+  }
 
-    .badge-row{
-      display:flex; flex-wrap: wrap; gap: 10px;
-      margin: 14px 0 0;
-    }
-    .badge{
-      font-size: 12px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
-      color: var(--muted);
-    }
-    @media (prefers-color-scheme: light){
-      .badge{background: rgba(0,0,0,0.03)}
-    }
+  .badge{
+    font-size:12px;
+    padding:8px 12px;
+    border-radius:999px;
+    border:1px solid rgba(255,140,60,0.3);
+    background: rgba(255,110,0,0.12);
+  }
 
-    .callout{
-      margin-top: 16px;
-      padding: 14px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(34,197,94,0.25);
-      background: rgba(34,197,94,0.10);
-    }
-    .callout b{color: var(--text)}
-    .mono{
-      font-family: var(--mono);
-      font-size: 12.5px;
-    }
-
-    footer{
-      padding: 22px 16px 36px;
-      color: var(--faint);
-    }
-    footer .wrap{
-      display:flex; flex-wrap:wrap;
-      align-items:center; justify-content:space-between;
-      gap: 12px;
-    }
-    .footer-links{
-      display:flex; gap: 14px; flex-wrap:wrap;
-    }
-
-    /* Nice anchor offset for sticky nav */
-    [id]{scroll-margin-top: 20px}
-  </style>
-</head>
-
-<body>
-  <a class="skip" href="#content">Skip to content</a>
-
-  <header>
-    <div class="wrap">
-      <div class="topbar">
-        <div class="brand" aria-label="FocusForge">
-          <div class="logo" aria-hidden="true"></div>
-          <div>
-            <h1>FocusForge</h1>
-            <p>Privacy Policy</p>
-          </div>
-        </div>
-
-        <div class="pill" aria-label="Effective date">
-          <span class="dot" aria-hidden="true"></span>
-          <span><b>Effective date:</b> March 3, 2026</span>
-        </div>
-      </div>
-
-      <div class="hero">
-        <h2>Privacy Policy</h2>
-        <p class="sub">
-          This Privacy Policy explains how FocusForge ("we", "our", "us") collects, uses, stores, and shares
-          information when you use the FocusForge Android app.
-        </p>
-      </div>
-    </div>
-  </header>
-
-  <main id="content">
-    <div class="wrap grid">
-      <nav class="toc" aria-label="Table of contents">
-        <h3>On this page</h3>
-        <a href="#summary">Summary</a>
-        <a href="#collect">1. Information We Collect</a>
-        <a href="#use">2. How We Use Information</a>
-        <a href="#storage">3. Where Data Is Stored</a>
-        <a href="#sharing">4. Sharing of Information</a>
-        <a href="#retention">5. Data Retention</a>
-        <a href="#controls">6. Your Choices and Controls</a>
-        <a href="#children">7. Children and Family Controls</a>
-        <a href="#security">8. Security</a>
-        <a href="#transfers">9. International Transfers</a>
-        <a href="#changes">10. Changes to This Policy</a>
-        <a href="#contact">11. Contact</a>
-
-        <div class="small">
-          Last updated: <span class="mono">2026-03-03</span>
-        </div>
-      </nav>
-
-      <article class="card" aria-label="Privacy Policy content">
-        <div id="summary" class="summary">
-          <h3>Summary</h3>
-          <ul>
-            <li>We use Android Accessibility only to detect foreground app package names so blocking can work for apps you choose.</li>
-            <li>We do not read typed text, messages, media content, or screen contents.</li>
-            <li>Usage Access (app-time stats) is optional and used only for your insights/projection features.</li>
-            <li>You can disable features or uninstall at any time in Android settings.</li>
-          </ul>
-
-          <div class="badge-row" aria-label="Key points">
-            <span class="badge">No keystroke capture</span>
-            <span class="badge">No screen scraping</span>
-            <span class="badge">On-device by default</span>
-            <span class="badge">Optional Usage Access</span>
-          </div>
-        </div>
-
-        <section id="collect" aria-label="Information We Collect">
-          <h3 class="section-title">1. Information We Collect</h3>
-
-          <h4>1.1 Account and profile data</h4>
-          <ul class="list">
-            <li>Username, internal user ID, account role (Self/Parent/Child).</li>
-            <li>Profile settings such as avatar, profile line, flair, and in-app preferences.</li>
-          </ul>
-
-          <h4>1.2 Blocking and app configuration data</h4>
-          <ul class="list">
-            <li>Rules you set for app blocking, schedules, severity, and selected app groups.</li>
-            <li>Events generated by app features (for example blocked app attempts, focus session actions, achievements).</li>
-          </ul>
-
-          <h4>1.3 AccessibilityService data</h4>
-          <ul class="list">
-            <li>Foreground app package name currently opened on your device (for rule matching/blocking).</li>
-            <li>No typed content, no message contents, and no general screen scraping.</li>
-          </ul>
-
-          <h4>1.4 Optional Usage Access data</h4>
-          <ul class="list">
-            <li>Per-app foreground duration statistics provided by Android Usage Stats APIs.</li>
-            <li>Used for insights such as top used apps and usage projections.</li>
-          </ul>
-
-          <h4>1.5 Optional social/family/accountability data</h4>
-          <ul class="list">
-            <li>Friends list, accountability partner selection, linked parent/child relationships, and related settings.</li>
-            <li>Notification/event metadata needed for accountability alerts.</li>
-          </ul>
-
-          <h4>1.6 Ads and monetization data (when enabled)</h4>
-          <ul class="list">
-            <li>If rewarded ads are enabled, ad providers may process device identifiers and ad interaction data under their own policies.</li>
-            <li>FocusForge only requests ad events needed to run and measure the ad-gate flow.</li>
-          </ul>
-
-          <div class="callout" role="note" aria-label="Accessibility data clarification">
-            <b>Accessibility clarification:</b> FocusForge uses Accessibility only to detect the <span class="mono">package name</span>
-            of the foreground app so the rules you configure can be enforced. It does not read what you type or view.
-          </div>
-        </section>
-
-        <section id="use" aria-label="How We Use Information">
-          <h3 class="section-title">2. How We Use Information</h3>
-          <ul class="list">
-            <li>Provide blocking, focus sessions, progression, and accountability features.</li>
-            <li>Generate app insights and projections when optional Usage Access is enabled.</li>
-            <li>Support family-control and partner-accountability workflows.</li>
-            <li>Detect misuse, enforce policy, and protect service security.</li>
-            <li>Operate beta testing, diagnostics, and product improvements.</li>
-          </ul>
-        </section>
-
-        <section id="storage" aria-label="Where Data Is Stored">
-          <h3 class="section-title">3. Where Data Is Stored</h3>
-          <p>
-            Primary app data is stored on-device (DataStore/Room) unless remote backend features are enabled.
-          </p>
-          <p>
-            If backend mode is enabled, relevant account/social/family data may be stored in Firebase services configured for FocusForge.
-          </p>
-        </section>
-
-        <section id="sharing" aria-label="Sharing of Information">
-          <h3 class="section-title">4. Sharing of Information</h3>
-          <p class="muted">
-            We do not sell personal data. We share data only as required to operate app functionality:
-          </p>
-          <ul class="list">
-            <li>Google Firebase (authentication, cloud database, optional backend sync).</li>
-            <li>Google/AdMob (if ads are enabled for rewarded ad functionality).</li>
-            <li>Legal/regulatory disclosure where required by law.</li>
-          </ul>
-        </section>
-
-        <section id="retention" aria-label="Data Retention">
-          <h3 class="section-title">5. Data Retention</h3>
-          <ul class="list">
-            <li>On-device data remains until you delete it, clear app storage, or uninstall the app.</li>
-            <li>Cloud-backed data is retained while your account and related features are active, subject to legal/business retention obligations.</li>
-          </ul>
-        </section>
-
-        <section id="controls" aria-label="Your Choices and Controls">
-          <h3 class="section-title">6. Your Choices and Controls</h3>
-          <ul class="list">
-            <li>You can disable Accessibility or Usage Access in Android settings.</li>
-            <li>You can modify or remove most app configuration data from within the app.</li>
-            <li>You can request account/data deletion by contacting support.</li>
-          </ul>
-        </section>
-
-        <section id="children" aria-label="Children and Family Controls">
-          <h3 class="section-title">7. Children and Family Controls</h3>
-          <p>
-            FocusForge includes parent/child account modes and family-control features. Parents/guardians are responsible
-            for lawful use of family features and obtaining required consent for child accounts.
-          </p>
-        </section>
-
-        <section id="security" aria-label="Security">
-          <h3 class="section-title">8. Security</h3>
-          <p>
-            We use reasonable administrative and technical controls to protect data. No method of transmission or storage is
-            100% secure, so absolute security cannot be guaranteed.
-          </p>
-        </section>
-
-        <section id="transfers" aria-label="International Transfers">
-          <h3 class="section-title">9. International Transfers</h3>
-          <p>
-            If cloud services are used, data may be processed in regions where those providers operate infrastructure.
-          </p>
-        </section>
-
-        <section id="changes" aria-label="Changes to This Policy">
-          <h3 class="section-title">10. Changes to This Policy</h3>
-          <p>
-            We may update this policy from time to time. Updates will be reflected by revising the effective date on this page.
-          </p>
-        </section>
-
-        <section id="contact" aria-label="Contact">
-          <h3 class="section-title">11. Contact</h3>
-          <p>
-            For privacy questions or data requests, contact:
-            <a href="mailto:officialfocusforgeapp@gmail.com">officialfocusforgeapp@gmail.com</a>
-          </p>
-        </section>
-      </article>
-    </div>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div>© <span id="year"></span> FocusForge. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="#content">Back to top</a>
-        <a href="mailto:officialfocusforgeapp@gmail.com">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Cosmetic only: keep the footer year current.
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  footer{
+    padding: 40px 16px;
+    color: var(--faint);
+  }
+</style>
