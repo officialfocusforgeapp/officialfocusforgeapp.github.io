@@ -145,8 +145,8 @@
       position: sticky; top: 100px; padding: 22px; border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04)); border:1px solid rgba(255,255,255,0.10);
     }
     .toc h3 { margin-bottom: 14px; }
-    .toc a { display:block; padding:9px 0; transition: color .2s ease; color: var(--muted); }
-    .toc a:hover, .toc a.active { color: var(--text); }
+    .toc a { display:block; padding:10px 12px; margin:4px 0; border-radius:14px; transition: color .2s ease, background .2s ease, border-color .2s ease; color: var(--muted); border:1px solid transparent; }
+    .toc a:hover, .toc a.active, .toc a[aria-current="true"] { color: var(--text); background: rgba(255,255,255,0.06); border-color: rgba(255,190,115,0.22); }
     .doc-shell h1 { max-width: 100%; font-size: clamp(2.3rem, 4vw, 4rem); }
     .doc-section { padding-top: 22px; margin-top: 22px; border-top: 1px solid rgba(255,255,255,0.08); scroll-margin-top: 110px; }
     .doc-section:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
@@ -231,7 +231,7 @@
         <div class="hero-actions">
           <a class="btn btn-primary" href="#get-started">Get started</a>
           <a class="btn btn-secondary" href="#legal">View policies</a>
-          <a class="btn btn-soft btn-disabled" href="#" aria-disabled="true">Google Play · Coming soon</a>
+          <a class="btn btn-soft" href="support.html">Contact support</a>
         </div>
         <div class="hero-points">
           <div class="mini-stat"><strong>App blocking</strong><span>Stop selected distractions the moment they interrupt your workflow.</span></div>
@@ -308,14 +308,14 @@
     <div class="wrap panel cta">
       <div class="section-head">
         <div>
-          <h2>Ready for launch</h2>
-          <p>This site is now structured like a proper app landing and legal hub. You can drop it into GitHub Pages without more redesign work.</p>
+          <h2>Get started</h2>
+          <p>Everything you need to understand the app, manage your account, and review policy details is available here.</p>
         </div>
       </div>
       <div class="grid-3">
-        <div class="card"><div class="icon">✅</div><h3>Consistent theme</h3><p>All pages now share the same layout system, premium styling, footer, navigation, and document shell.</p></div>
-        <div class="card"><div class="icon">🔗</div><h3>Working links</h3><p>Internal links have been aligned, and a redirecting <strong>index.html</strong> is included so your root domain still works.</p></div>
-        <div class="card"><div class="icon">🧭</div><h3>Support flow</h3><p>A dedicated support page and a matching 404 page make the site feel more complete and trustworthy.</p></div>
+        <div class="card"><div class="icon">📘</div><h3>Review the basics</h3><p>Learn how FocusForge approaches blocking, progression, permissions, and account controls before you begin.</p></div>
+        <div class="card"><div class="icon">🛠️</div><h3>Set up support access</h3><p>Use the support page for help with billing questions, privacy requests, technical issues, and account-related concerns.</p></div>
+        <div class="card"><div class="icon">🧾</div><h3>Check the policies</h3><p>Privacy, usage terms, refunds, copyright notices, and account deletion details are linked in one place.</p></div>
       </div>
     </div>
   </section>
@@ -325,7 +325,7 @@
       <div class="section-head">
         <div>
           <h2>Common questions</h2>
-          <p>These answers help the site feel more finished even before the Play Store listing is live.</p>
+          <p>Quick answers to the questions users are most likely to ask.</p>
         </div>
       </div>
       <div class="faq">
@@ -342,7 +342,7 @@
       <div class="section-head">
         <div>
           <h2>Policies and support</h2>
-          <p>Everything is linked here in one place so your site feels complete, consistent, and compliant.</p>
+          <p>Review the pages for privacy, terms, billing, deletion, support, and copyright requests.</p>
         </div>
       </div>
       <div class="legal-grid">
@@ -351,7 +351,7 @@
         <a class="legal-link" href="delete-account.html"><span>Deletion</span><h3>Account Deletion</h3><p>How users can request deletion of cloud-backed account data and what may remain on-device.</p></a>
         <a class="legal-link" href="refunds.html"><span>Billing</span><h3>Refund Policy</h3><p>How subscription and digital purchase questions are handled, including platform-specific billing limits.</p></a>
         <a class="legal-link" href="dmca.html"><span>Copyright</span><h3>DMCA Policy</h3><p>How copyright complaints and counter-notices can be submitted if needed.</p></a>
-        <a class="legal-link" href="support.html"><span>Support</span><h3>Support Center</h3><p>One page for contact details, page links, and the best path for support, privacy, billing, and legal requests.</p></a>
+        <a class="legal-link" href="support.html"><span>Support</span><h3>Support Center</h3><p>Contact details and the best path for support, privacy, billing, and legal requests.</p></a>
       </div>
     </div>
   </section>
@@ -386,14 +386,59 @@
           a.setAttribute('aria-current', 'page');
         }
       });
+
       var y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();
-      document.querySelectorAll('.toc a[href^="#"]').forEach(function (a) {
+
+      var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+      if (!tocLinks.length) return;
+
+      var sections = tocLinks
+        .map(function (a) {
+          var id = a.getAttribute('href');
+          return id ? document.querySelector(id) : null;
+        })
+        .filter(Boolean);
+
+      function setActive(id) {
+        tocLinks.forEach(function (link) {
+          var isActive = link.getAttribute('href') === '#' + id;
+          link.classList.toggle('active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      }
+
+      tocLinks.forEach(function (a) {
         a.addEventListener('click', function () {
-          document.querySelectorAll('.toc a').forEach(function (n) { n.classList.remove('active'); });
-          a.classList.add('active');
+          var target = a.getAttribute('href');
+          if (target) setActive(target.replace('#', ''));
         });
       });
+
+      if ('IntersectionObserver' in window && sections.length) {
+        var observer = new IntersectionObserver(function (entries) {
+          var visible = entries
+            .filter(function (entry) { return entry.isIntersecting; })
+            .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; });
+          if (visible.length) {
+            setActive(visible[0].target.id);
+          }
+        }, {
+          rootMargin: '-18% 0px -58% 0px',
+          threshold: [0.15, 0.35, 0.6]
+        });
+
+        sections.forEach(function (section) { observer.observe(section); });
+      }
+
+      var initial = location.hash && document.querySelector(location.hash)
+        ? location.hash.slice(1)
+        : (sections[0] ? sections[0].id : null);
+      if (initial) setActive(initial);
     })();
   </script>
 
