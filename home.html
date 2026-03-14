@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FocusForge</title>
-  <meta name="description" content="FocusForge helps users block distractions, build discipline, and turn focus into progress." />
-  <meta name="theme-color" content="#0b0d12" />
+  <title>FocusForge — Premium Android Focus, Blocking, and Accountability</title>
+  <meta name="description" content="FocusForge is a premium Android focus app for configurable app blocking, Lock In sessions, streak-backed progress, and accountability layers." />
+  <meta name="theme-color" content="#0c0b0a" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://officialfocusforgeapp.github.io/home.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="FocusForge" />
-  <meta property="og:title" content="FocusForge" />
-  <meta property="og:description" content="FocusForge helps users block distractions, build discipline, and turn focus into progress." />
+  <meta property="og:title" content="FocusForge — Premium Android Focus, Blocking, and Accountability" />
+  <meta property="og:description" content="Configurable app blocking, Lock In sessions, progression systems, accountability layers, and clear permission controls." />
   <meta property="og:url" content="https://officialfocusforgeapp.github.io/home.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="FocusForge" />
-  <meta name="twitter:description" content="FocusForge helps users block distractions, build discipline, and turn focus into progress." />
+  <meta name="twitter:title" content="FocusForge — Premium Android Focus, Blocking, and Accountability" />
+  <meta name="twitter:description" content="Configurable app blocking, Lock In sessions, progression systems, accountability layers, and clear permission controls." />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -23,190 +23,603 @@
     "name": "FocusForge",
     "applicationCategory": "ProductivityApplication",
     "operatingSystem": "Android",
-    "description": "FocusForge helps users block distractions, build discipline, and turn focus into progress.",
+    "description": "FocusForge is a premium Android focus app for configurable app blocking, Lock In sessions, streak-backed progress, and accountability layers.",
     "url": "https://officialfocusforgeapp.github.io/home.html"
   }
   </script>
   <style>
-
     :root {
-      --bg: #0b0d12;
-      --panel: rgba(255,255,255,0.06);
-      --panel-strong: rgba(255,255,255,0.09);
-      --border: rgba(255,255,255,0.12);
-      --text: #f5f7fb;
-      --muted: #b8c0d0;
-      --accent: #ff8a2b;
-      --accent-2: #ffbe73;
-      --danger: #ff9e7a;
-      --success: #9be7b4;
-      --shadow: 0 18px 60px rgba(0,0,0,0.38);
-      --radius: 24px;
-      --max: 1180px;
+      --bg: #0c0b0a;
+      --bg-2: #14110e;
+      --panel: rgba(28, 24, 20, 0.88);
+      --panel-2: rgba(36, 30, 24, 0.84);
+      --border: rgba(212, 173, 116, 0.17);
+      --border-strong: rgba(231, 191, 132, 0.28);
+      --text: #f4efe6;
+      --muted: #bcb2a4;
+      --soft: #d9cdbf;
+      --accent: #c68e49;
+      --accent-2: #edc98b;
+      --accent-3: #8a6540;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      --radius: 28px;
+      --max: 1240px;
+      --headline: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      --body: "Segoe UI", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
     }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
+      font-family: var(--body);
       background:
-        radial-gradient(circle at top, rgba(255,138,43,0.20), transparent 34%),
-        radial-gradient(circle at 85% 18%, rgba(255,190,115,0.10), transparent 18%),
-        linear-gradient(180deg, #10141d 0%, #0b0d12 55%, #090b10 100%);
+        radial-gradient(circle at top, rgba(198, 142, 73, 0.20), transparent 28%),
+        radial-gradient(circle at 80% 18%, rgba(237, 201, 139, 0.10), transparent 18%),
+        linear-gradient(180deg, #18120d 0%, #100d0b 34%, #0b0a09 100%);
       min-height: 100vh;
+      line-height: 1.6;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.015), rgba(255,255,255,0.015)),
+        repeating-linear-gradient(135deg, transparent 0 24px, rgba(255,255,255,0.012) 24px 25px, transparent 25px 48px);
+      opacity: .5;
+      mix-blend-mode: screen;
     }
     a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
     .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
     .topbar {
-      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
-      background: rgba(11,13,18,0.62); border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: rgba(12, 11, 10, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .nav {
-      display:flex; align-items:center; justify-content:space-between; gap:18px; min-height:76px;
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
     }
-    .brand { display:flex; align-items:center; gap:14px; font-weight:800; letter-spacing:.02em; }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
     .brand-mark {
-      width:46px; height:46px; border-radius:15px; display:grid; place-items:center; font-size:1.2rem;
-      background: linear-gradient(135deg, rgba(255,138,43,0.32), rgba(255,190,115,0.16));
-      border: 1px solid rgba(255,190,115,0.24);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 30px rgba(255,138,43,0.12);
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      color: #2a1d10;
+      background: linear-gradient(145deg, var(--accent-2), var(--accent));
+      box-shadow: 0 12px 28px rgba(198, 142, 73, 0.22), inset 0 1px 0 rgba(255,255,255,0.28);
     }
-    .nav-links { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-    .nav-links a { color: var(--muted); padding:10px 14px; border-radius:999px; transition:.2s ease; }
-    .nav-links a:hover, .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--text); background: rgba(255,255,255,0.06); }
-    .btn {
-      display:inline-flex; align-items:center; justify-content:center; gap:10px; border-radius:999px;
-      padding:13px 18px; font-weight:700; transition:.18s ease; border:1px solid transparent;
+    .brand-name {
+      font-family: var(--headline);
+      font-size: 1.18rem;
+      letter-spacing: .03em;
     }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color:#1b1206; box-shadow: 0 16px 40px rgba(255,138,43,0.22); }
-    .btn-secondary { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); }
-    .btn-soft { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.10); color: var(--text); }
-    .btn-disabled, .btn[aria-disabled="true"] { opacity: .7; cursor: default; pointer-events: none; }
-    .hero { padding: 72px 0 34px; }
-    .hero-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:stretch; }
-    .panel, .card, .cta, .legal-shell, .doc-shell, .toc {
-      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.10); box-shadow: var(--shadow); border-radius: 28px;
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
     }
-    .hero-copy, .hero-card, .cta, .card, .legal-shell, .doc-shell { padding: 34px; }
-    .eyebrow {
-      display:inline-flex; align-items:center; gap:8px; border-radius:999px; padding:8px 14px;
-      font-size:.92rem; color:#ffe7d0; background: rgba(255,138,43,0.12); border: 1px solid rgba(255,138,43,0.20);
+    .nav-links a {
+      color: var(--muted);
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
+      font-size: .95rem;
     }
-    h1, h2, h3 { margin: 0 0 14px; line-height: 1.04; letter-spacing:-0.03em; }
-    h1 { font-size: clamp(3rem, 6vw, 4.9rem); max-width: 12ch; }
-    h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
-    h3 { font-size: 1.28rem; }
-    .lead, .doc-shell p, .doc-shell li, .card p, .card li, .hero-card p { color: var(--muted); line-height: 1.74; }
-    .lead { font-size: 1.08rem; max-width: 62ch; }
-    .hero-actions, .button-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:28px; }
-    .section { padding: 18px 0 34px; }
-    .section-head { display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:18px; }
-    .section-head p { color: var(--muted); max-width: 70ch; }
-    .grid-3, .grid-4, .legal-grid, .doc-grid, .steps { display:grid; gap:18px; }
-    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .grid-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
-    .legal-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .steps { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .icon {
-      width:52px; height:52px; border-radius:16px; display:grid; place-items:center; font-size:1.25rem;
-      background: rgba(255,138,43,0.12); border:1px solid rgba(255,138,43,0.22); margin-bottom:18px;
-    }
-    .mini-stat strong { display:block; font-size:1.12rem; margin-bottom:6px; }
-    .mini-stat span { color: var(--muted); line-height: 1.68; }
-    .hero-points { display:grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap:14px; margin-top:30px; }
-    .phone {
-      position:relative; overflow:hidden; border-radius:30px; border:1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(8,10,15,0.94), rgba(16,18,24,0.96)); padding: 20px;
-      min-height:560px; display:flex; flex-direction:column; gap:16px;
-    }
-    .screen-top { display:flex; align-items:center; justify-content:space-between; color:#d9dfeb; font-size:.86rem; opacity:.9; }
-    .screen-card {
-      position:relative; padding:18px; border-radius:22px; background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
-      overflow:hidden;
-    }
-    .forge-glow::before {
-      content:""; position:absolute; inset:auto -30px -60px auto; width:180px; height:180px; border-radius:50%;
-      background: radial-gradient(circle, rgba(255,138,43,0.28), transparent 68%);
-    }
-    .sword-line, .hammer-line { position:absolute; background: linear-gradient(90deg, rgba(255,190,115,0.18), rgba(255,138,43,0.9), rgba(255,190,115,0.18)); }
-    .sword-line { left: 24px; right: 34px; top: 78px; height: 4px; border-radius: 999px; transform: rotate(-10deg); }
-    .hammer-line { width: 72px; height: 10px; right: 34px; top: 46px; border-radius: 999px; transform: rotate(32deg); }
-    .progress { width:100%; height:10px; border-radius:999px; background: rgba(255,255,255,0.08); overflow:hidden; margin-top:14px; }
-    .progress > span { display:block; width:76%; height:100%; border-radius:inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
-    .pill {
-      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
-      color:#ffe1c2; background: rgba(255,138,43,0.10); border:1px solid rgba(255,138,43,0.18); font-size:.88rem;
-    }
-    .doc-grid { grid-template-columns: 280px minmax(0, 1fr); align-items:start; }
-    .toc {
-      position: sticky; top: 100px; padding: 22px; border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04)); border:1px solid rgba(255,255,255,0.10);
-    }
-    .toc h3 { margin-bottom: 14px; }
-    .toc a { display:block; padding:10px 12px; margin:4px 0; border-radius:14px; transition: color .2s ease, background .2s ease, border-color .2s ease; color: var(--muted); border:1px solid transparent; }
-    .toc a:hover, .toc a.active, .toc a[aria-current="true"] { color: var(--text); background: rgba(255,255,255,0.06); border-color: rgba(255,190,115,0.22); }
-    .doc-shell h1 { max-width: 100%; font-size: clamp(2.3rem, 4vw, 4rem); }
-    .doc-section { padding-top: 22px; margin-top: 22px; border-top: 1px solid rgba(255,255,255,0.08); scroll-margin-top: 110px; }
-    .doc-section:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
-    .doc-section ul { padding-left: 20px; }
-    .table-like { display:grid; gap:12px; margin-top:16px; }
-    .row { display:grid; grid-template-columns: 180px minmax(0,1fr); gap:14px; padding:14px 16px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); }
-    .legal-link {
-      display:block; padding:22px; border-radius:24px; background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
-      border:1px solid rgba(255,255,255,0.10); min-height: 200px; transition: transform .18s ease, border-color .18s ease;
-    }
-    .legal-link:hover { transform: translateY(-2px); border-color: rgba(255,190,115,0.34); }
-    .legal-link span { display:inline-block; color: var(--accent-2); font-weight:700; margin-bottom:12px; }
-    .alert {
-      padding:16px 18px; border-radius:18px; background: rgba(255,138,43,0.10); border:1px solid rgba(255,138,43,0.18);
-      color: #ffe4cd;
-    }
-    .note {
-      padding:16px 18px; border-radius:18px; background: rgba(155,231,180,0.08); border:1px solid rgba(155,231,180,0.18); color: #dff8e8;
-    }
-    .check-list { display:grid; gap:12px; margin-top:20px; }
-    .check-item { display:flex; gap:12px; align-items:flex-start; color: var(--muted); }
-    .check-item b { color: var(--text); }
-    .faq { display:grid; gap:16px; }
-    .faq details {
-      background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:18px 20px;
-    }
-    .faq summary { cursor:pointer; font-weight:700; }
-    .faq details p { margin:12px 0 0; color: var(--muted); }
-    footer { padding: 22px 0 50px; color: var(--muted); }
-    footer .foot {
-      display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
-      border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;
-    }
-    .tiny { font-size: .92rem; color: var(--muted); }
-    @media (max-width: 1050px) {
-      .hero-grid, .grid-3, .grid-4, .steps, .legal-grid, .doc-grid { grid-template-columns: 1fr 1fr; }
-      .doc-grid > *:last-child { grid-column: span 2; }
-    }
-    @media (max-width: 760px) {
-      .nav { padding:12px 0; align-items:flex-start; flex-direction:column; }
-      .nav-links { width:100%; }
-      .hero { padding-top:34px; }
-      .hero-grid, .grid-3, .grid-4, .steps, .legal-grid, .hero-points, .doc-grid { grid-template-columns:1fr; }
-      .hero-copy, .hero-card, .cta, .card, .legal-shell, .doc-shell { padding:24px; }
-      .phone { min-height:auto; }
-      h1 { max-width:100%; }
-      .section-head { align-items:flex-start; flex-direction:column; }
-      .row { grid-template-columns: 1fr; }
-      .toc { position: static; }
+    .nav-links a:hover,
+    .nav-links a.active,
+    .nav-links a[aria-current="page"] {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.08);
     }
 
+    .hero {
+      position: relative;
+      overflow: clip;
+      padding: 72px 0 34px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+    .panel,
+    .card,
+    .section-nav,
+    .pricing-featured,
+    .pricing-column,
+    .policy-link {
+      background: linear-gradient(180deg, rgba(38,31,25,0.84), rgba(23,19,16,0.92));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+    .hero-copy,
+    .hero-visual,
+    .card,
+    .pricing-featured,
+    .pricing-column {
+      padding: 34px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(237, 201, 139, 0.18);
+      background: rgba(198, 142, 73, 0.10);
+      color: #f3debc;
+      font-size: .9rem;
+      letter-spacing: .04em;
+    }
+    h1, h2, h3, h4 {
+      margin: 0 0 14px;
+      font-family: var(--headline);
+      line-height: 1.03;
+      letter-spacing: -.02em;
+      font-weight: 700;
+    }
+    h1 { font-size: clamp(2.95rem, 6vw, 5.2rem); max-width: 10ch; margin-top: 16px; }
+    h2 { font-size: clamp(2rem, 3.8vw, 3.1rem); }
+    h3 { font-size: 1.45rem; }
+    h4 { font-size: 1.15rem; }
+    p { margin: 0; color: var(--muted); }
+    .lead {
+      max-width: 62ch;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--soft);
+    }
+    .hero-actions,
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      color: #22170b;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      box-shadow: 0 16px 40px rgba(198, 142, 73, 0.24);
+    }
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.10);
+    }
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 30px;
+    }
+    .mini-stat {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .mini-stat strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 6px;
+      font-size: 1.02rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 78% 16%, rgba(237,201,139,0.12), transparent 26%),
+        radial-gradient(circle at 18% 88%, rgba(198,142,73,0.12), transparent 26%);
+      pointer-events: none;
+    }
+    .device-shell {
+      position: relative;
+      z-index: 1;
+      min-height: 100%;
+      padding: 18px;
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(14,12,10,0.94), rgba(21,18,15,0.98));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .device-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: .84rem;
+      color: #d7d0c6;
+      opacity: .9;
+    }
+    .screen-card {
+      position: relative;
+      overflow: hidden;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .screen-card strong { display: block; margin-bottom: 8px; color: var(--text); }
+    .screen-card p { color: var(--soft); }
+    .forge-line,
+    .forge-strike {
+      position: absolute;
+      background: linear-gradient(90deg, rgba(237, 201, 139, 0.15), rgba(198, 142, 73, 0.95), rgba(237, 201, 139, 0.15));
+      border-radius: 999px;
+      box-shadow: 0 0 18px rgba(198, 142, 73, 0.18);
+    }
+    .forge-line { left: 22px; right: 48px; top: 88px; height: 4px; transform: rotate(-10deg); }
+    .forge-strike { width: 74px; height: 10px; right: 30px; top: 54px; transform: rotate(30deg); }
+    .progress { height: 10px; border-radius: 999px; background: rgba(255,255,255,0.07); overflow: hidden; margin-top: 12px; }
+    .progress > span { display: block; width: 76%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(198,142,73,0.10);
+      border: 1px solid rgba(198,142,73,0.18);
+      color: #edd3ad;
+      font-size: .88rem;
+    }
+
+    .section-nav-wrap {
+      padding: 10px 0 0;
+    }
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px;
+      position: sticky;
+      top: 86px;
+      z-index: 18;
+      background: rgba(23, 19, 16, 0.86);
+      backdrop-filter: blur(14px);
+    }
+    .section-nav a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: .18s ease;
+      font-size: .94rem;
+    }
+    .section-nav a:hover,
+    .section-nav a.active,
+    .section-nav a[aria-current="true"] {
+      color: var(--text);
+      border-color: var(--border-strong);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .section {
+      padding: 34px 0;
+      scroll-margin-top: 150px;
+    }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .section-head p { max-width: 66ch; }
+    .grid-3,
+    .grid-4,
+    .policy-grid,
+    .faq-grid,
+    .journeyman-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .faq-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .journeyman-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .policy-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .card {
+      position: relative;
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(198,142,73,0.10), transparent 70%);
+      pointer-events: none;
+    }
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      margin-bottom: 18px;
+      color: var(--text);
+      background: rgba(198,142,73,0.12);
+      border: 1px solid rgba(198,142,73,0.18);
+    }
+    .steps { counter-reset: step; }
+    .step-card { position: relative; }
+    .step-card .step-number {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      color: #22170b;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      font-weight: 800;
+    }
+
+    .membership-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(0, 1.2fr) minmax(0, .95fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .pricing-featured,
+    .pricing-column {
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-featured::before,
+    .pricing-column::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 28%);
+      pointer-events: none;
+    }
+    .pricing-featured {
+      border-color: var(--border-strong);
+      background: linear-gradient(180deg, rgba(53, 39, 27, 0.94), rgba(26, 20, 16, 0.94));
+    }
+    .pricing-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(237,201,139,0.18);
+      color: #f0d9b6;
+      background: rgba(198,142,73,0.10);
+      font-size: .88rem;
+      margin-bottom: 14px;
+    }
+    .plan-name { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 10px; }
+    .price-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: baseline;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .price-line strong { font-size: 2rem; font-family: var(--headline); font-weight: 700; }
+    .price-line span { color: var(--muted); }
+    .plan-copy { margin-bottom: 18px; color: var(--soft); }
+    .feature-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+    .feature-list li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--muted);
+    }
+    .feature-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: -.02em;
+      color: var(--accent-2);
+    }
+    .journeyman-shell {
+      display: grid;
+      gap: 18px;
+    }
+    .journeyman-shell > .panel-head {
+      padding: 28px 28px 8px;
+    }
+    .journeyman-shell .journeyman-grid { padding: 0 28px 28px; }
+    .mini-plan {
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      min-height: 100%;
+    }
+    .mini-plan .plan-name { font-size: 1.45rem; }
+    .mini-plan .price-line strong { font-size: 1.4rem; }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+    }
+    .trust-grid .card p + p { margin-top: 14px; }
+    .trust-note {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .faq-item {
+      padding: 22px 24px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(38,31,25,0.84), rgba(23,19,16,0.92));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .faq-item p { color: var(--soft); }
+
+    .policy-link {
+      display: block;
+      padding: 24px;
+      min-height: 220px;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .policy-link:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+      background: linear-gradient(180deg, rgba(44,35,28,0.92), rgba(24,20,17,0.94));
+    }
+    .policy-link span {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--accent-2);
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+
+    footer {
+      padding: 22px 0 52px;
+      color: var(--muted);
+    }
+    .foot {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .foot strong { color: var(--text); font-family: var(--headline); font-size: 1.08rem; }
+    .foot .nav-links { justify-content: flex-start; }
+    .tiny { font-size: .92rem; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal,
+      .reveal.is-visible,
+      .btn,
+      .nav-links a,
+      .section-nav a,
+      .policy-link {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .membership-layout,
+      .trust-grid,
+      .grid-3,
+      .grid-4,
+      .faq-grid,
+      .policy-grid,
+      .journeyman-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .membership-layout > *:nth-child(2) { grid-column: span 2; }
+      .hero-points { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 12px 0;
+      }
+      .nav-links { justify-content: flex-start; }
+      .hero { padding-top: 38px; }
+      .hero-grid,
+      .membership-layout,
+      .trust-grid,
+      .grid-3,
+      .grid-4,
+      .faq-grid,
+      .policy-grid,
+      .journeyman-grid,
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+      .membership-layout > *:nth-child(2) { grid-column: span 1; }
+      .hero-copy,
+      .hero-visual,
+      .card,
+      .pricing-featured,
+      .pricing-column,
+      .journeyman-shell > .panel-head,
+      .journeyman-shell .journeyman-grid,
+      .policy-link { padding: 24px; }
+      .section-nav {
+        top: 72px;
+      }
+      h1 { max-width: 100%; }
+    }
   </style>
 </head>
 <body>
-
   <header class="topbar">
     <div class="wrap nav">
       <a href="home.html" class="brand" aria-label="FocusForge home">
         <div class="brand-mark">⚒</div>
-        <div>FocusForge</div>
+        <div class="brand-name">FocusForge</div>
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="home.html" data-nav="home.html">Home</a>
@@ -214,167 +627,326 @@
         <a href="terms.html" data-nav="terms.html">Usage</a>
         <a href="delete-account.html" data-nav="delete-account.html">Delete account</a>
         <a href="support.html" data-nav="support.html">Support</a>
+        <a href="refunds.html" data-nav="refunds.html">Refunds</a>
+        <a href="dmca.html" data-nav="dmca.html">DMCA</a>
       </nav>
     </div>
   </header>
 
-<main>
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="panel hero-copy">
-        <div class="eyebrow">Focus with structure. Progress with pressure. Momentum with style.</div>
-        <h1>Forge discipline that actually sticks.</h1>
-        <p class="lead">
-          FocusForge is a productivity app built to shut down distraction loops and turn daily effort into visible progress.
-          Block the apps that derail you, run focus sessions with intent, and use game-like progression to make consistency feel rewarding.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#get-started">Get started</a>
-          <a class="btn btn-secondary" href="#legal">View policies</a>
-          <a class="btn btn-soft" href="support.html">Contact support</a>
-        </div>
-        <div class="hero-points">
-          <div class="mini-stat"><strong>App blocking</strong><span>Stop selected distractions the moment they interrupt your workflow.</span></div>
-          <div class="mini-stat"><strong>Reward loops</strong><span>Progress, achievements, and streak pressure help consistency feel earned.</span></div>
-          <div class="mini-stat"><strong>Accountability</strong><span>Optional family or partner systems add extra friction when self-control is not enough.</span></div>
-        </div>
-      </div>
-      <div class="panel hero-card">
-        <div class="phone" aria-label="FocusForge app preview">
-          <div class="screen-top"><span>FocusForge</span><span>Today · Locked in</span></div>
-          <div class="screen-card forge-glow">
-            <div class="pill">Current forge session</div>
-            <h3 style="margin-top:14px;">Deep Work · 45 minutes</h3>
-            <p>Social apps blocked. Momentum building. Strike after strike, the blade gets sharper.</p>
-            <div class="sword-line"></div>
-            <div class="hammer-line"></div>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="panel hero-copy reveal">
+          <div class="eyebrow">Premium Android focus and enforcement</div>
+          <h1>Forge discipline that holds under pressure.</h1>
+          <p class="lead">
+            FocusForge helps people block distractions, run intentional Lock In sessions, build streak-backed momentum,
+            and add accountability when solo discipline is not enough.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#membership">Explore Membership</a>
+            <a class="btn btn-secondary" href="#policy-hub">Review Policies</a>
+            <a class="btn btn-secondary" href="support.html">Contact Support</a>
           </div>
-          <div class="screen-card">
-            <div class="pill">Focus score</div>
-            <h3 style="margin-top:14px;">76% session strength</h3>
-            <p>Your blockers are active, your streak is alive, and your challenge path is moving.</p>
-            <div class="progress"><span></span></div>
-          </div>
-          <div class="screen-card">
-            <div class="pill">Why it works</div>
-            <p>FocusForge blends friction, clarity, and progression. Instead of asking for motivation, it helps create conditions where focus is easier to keep.</p>
+          <div class="hero-points">
+            <div class="mini-stat">
+              <strong>Configurable blocking</strong>
+              <span>Choose the apps, schedules, and enforcement rules that match how you actually work.</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Progress with structure</strong>
+              <span>Lock Ins, streaks, achievements, and progression systems turn focus into visible momentum.</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Accountability layers</strong>
+              <span>Partner and family options add support when willpower alone is not enough.</span>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="features" class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <h2>Built for people who are done negotiating with distraction.</h2>
-          <p>FocusForge is designed around enforcement, visibility, and momentum — not just timers and pretty dashboards.</p>
+        <div class="panel hero-visual reveal">
+          <div class="device-shell" aria-label="FocusForge app preview">
+            <div class="device-top"><span>FocusForge</span><span>Android</span></div>
+            <div class="screen-card">
+              <div class="label">Lock In session</div>
+              <h3 style="margin-top: 14px;">Deep Work · 45 minutes</h3>
+              <p>Configured blockers are active. Progress is protected while the session runs.</p>
+              <div class="forge-line"></div>
+              <div class="forge-strike"></div>
+            </div>
+            <div class="screen-card">
+              <div class="label">Today’s structure</div>
+              <strong>Blocking windows</strong>
+              <p>Social, video, and custom distraction sets can be governed by the rules you choose.</p>
+            </div>
+            <div class="screen-card">
+              <div class="label">Progress</div>
+              <strong>Momentum stays visible</strong>
+              <p>Streaks, achievements, and progress systems keep attention pointed forward.</p>
+              <div class="progress"><span></span></div>
+            </div>
+            <div class="screen-card">
+              <div class="label">Shared modes</div>
+              <strong>Partner and family support</strong>
+              <p>Layer in accountability when you want more than solo guardrails.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="grid-3">
-        <div class="card"><div class="icon">🛡️</div><h3>Configurable blockers</h3><p>Choose what gets blocked, when it gets blocked, and how strict the response should be when you break your rules.</p></div>
-        <div class="card"><div class="icon">🔥</div><h3>Progression that feels tangible</h3><p>Sessions, points, achievements, and challenge systems give your focus a visible sense of weight and progression.</p></div>
-        <div class="card"><div class="icon">📈</div><h3>Usage insight tools</h3><p>Optional usage access can surface app-time patterns and projections so you can see where your attention is actually going.</p></div>
+    </section>
+
+    <div class="section-nav-wrap">
+      <div class="wrap">
+        <nav class="section-nav" aria-label="Page sections">
+          <a href="#overview">Overview</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#membership">Membership</a>
+          <a href="#trust">Trust</a>
+          <a href="#faq">FAQ</a>
+          <a href="#policy-hub">Policies</a>
+        </nav>
       </div>
     </div>
-  </section>
 
-  <section id="how-it-works" class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <h2>How FocusForge works</h2>
-          <p>Simple setup. High leverage. The goal is to make your default behavior better, not make productivity feel like homework.</p>
+    <section id="overview" class="section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Built for stronger control over distraction.</h2>
+            <p>FocusForge is not a generic timer. It is a structured Android system for blocking, Lock In sessions, accountability, and visible progress.</p>
+          </div>
+        </div>
+        <div class="grid-4">
+          <article class="card">
+            <div class="card-icon">🛡</div>
+            <h3>Configurable blocking</h3>
+            <p>Choose which apps get blocked, how strict the rules are, and when those guardrails should apply.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">⏳</div>
+            <h3>Lock In sessions</h3>
+            <p>Run intentional focus windows that make the work period clear, bounded, and harder to break.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">⚒</div>
+            <h3>Progression systems</h3>
+            <p>Streaks, achievements, and member systems keep discipline measurable instead of abstract.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🤝</div>
+            <h3>Accountability layers</h3>
+            <p>Add partner or family structure when you want shared guardrails alongside solo control.</p>
+          </article>
         </div>
       </div>
-      <div class="steps">
-        <div class="card"><div class="icon">1</div><h3>Set your rules</h3><p>Pick distracting apps, schedules, severity, and your preferred focus systems.</p></div>
-        <div class="card"><div class="icon">2</div><h3>Run the session</h3><p>When a blocked app takes over the foreground, FocusForge intervenes using the permissions you enabled.</p></div>
-        <div class="card"><div class="icon">3</div><h3>Build momentum</h3><p>Track progress, maintain streak pressure, and keep stacking wins instead of opening one more scroll feed.</p></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="trust" class="section">
-    <div class="wrap grid-3">
-      <div class="card"><div class="icon">🔒</div><h3>Permission clarity</h3><p>Accessibility is used to detect the foreground app package so blocking can work for the apps you choose. It is not used to read typed content, messages, or general screen contents.</p></div>
-      <div class="card"><div class="icon">⚙️</div><h3>Control stays with you</h3><p>You can disable permissions in Android settings, change your app rules in-app, request deletion of cloud-backed account data, or remove local app data from your device.</p></div>
-      <div class="card"><div class="icon">☁️</div><h3>Cloud features when enabled</h3><p>Some account, sync, accountability, or monetization features may rely on configured providers such as Firebase or ad services when those systems are enabled.</p></div>
-    </div>
-  </section>
-
-  <section id="get-started" class="section">
-    <div class="wrap panel cta">
-      <div class="section-head">
-        <div>
-          <h2>Get started</h2>
-          <p>Everything you need to understand the app, manage your account, and review policy details is available here.</p>
+    <section id="how-it-works" class="section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>How it works</h2>
+            <p>FocusForge combines enforcement, routine, and visible progress into one disciplined flow.</p>
+          </div>
+        </div>
+        <div class="grid-4 steps">
+          <article class="card step-card">
+            <div class="step-number">1</div>
+            <h3>Choose the apps and rules</h3>
+            <p>Select the apps that pull you off track and configure the blocking rules, schedules, and guardrails you want.</p>
+          </article>
+          <article class="card step-card">
+            <div class="step-number">2</div>
+            <h3>Run Lock Ins or scheduled guardrails</h3>
+            <p>Use intentional sessions or repeat structures that enforce the boundaries you set.</p>
+          </article>
+          <article class="card step-card">
+            <div class="step-number">3</div>
+            <h3>Build momentum through progress systems</h3>
+            <p>Use streaks, achievements, and progression systems to keep your effort visible from day to day.</p>
+          </article>
+          <article class="card step-card">
+            <div class="step-number">4</div>
+            <h3>Add partner or family accountability</h3>
+            <p>Bring in shared-value modes when you want additional structure beyond solo use.</p>
+          </article>
         </div>
       </div>
-      <div class="grid-3">
-        <div class="card"><div class="icon">📘</div><h3>Review the basics</h3><p>Learn how FocusForge approaches blocking, progression, permissions, and account controls before you begin.</p></div>
-        <div class="card"><div class="icon">🛠️</div><h3>Set up support access</h3><p>Use the support page for help with billing questions, privacy requests, technical issues, and account-related concerns.</p></div>
-        <div class="card"><div class="icon">🧾</div><h3>Check the policies</h3><p>Privacy, usage terms, refunds, copyright notices, and account deletion details are linked in one place.</p></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="faq" class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <h2>Common questions</h2>
-          <p>Quick answers to the questions users are most likely to ask.</p>
+    <section id="membership" class="section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Membership</h2>
+            <p>Structured plans for solo use, shared accountability, household controls, and the full flagship tier.</p>
+          </div>
+        </div>
+
+        <div class="membership-layout">
+          <article class="pricing-featured">
+            <div class="pricing-label">Best place to start</div>
+            <h3 class="plan-name">Apprentice</h3>
+            <div class="price-line"><strong>$5.99/mo</strong><span>or $49.99/yr</span></div>
+            <p class="plan-copy">Full solo guardrails with unlimited blocking, schedules, Addict Mode, custom block media, profile customization, and the core member catalog.</p>
+            <ul class="feature-list">
+              <li>Unlimited app blocking and schedules</li>
+              <li>Lock In sessions and structured solo use</li>
+              <li>Progression systems, streaks, and achievements</li>
+              <li>Core member customization and control tools</li>
+            </ul>
+          </article>
+
+          <section class="pricing-column">
+            <div class="panel-head">
+              <div class="pricing-label">Journeyman</div>
+              <h3 class="plan-name">Shared-value modes</h3>
+              <p>Three ways to extend Apprentice into accountability and family structure.</p>
+            </div>
+            <div class="journeyman-grid">
+              <article class="mini-plan">
+                <h4 class="plan-name">Journeyman Partner</h4>
+                <div class="price-line"><strong>$9.99/mo</strong><span>or $89.99/yr</span></div>
+                <p class="plan-copy">Everything in Apprentice plus one shared partner seat, partner Lock Ins, shared accountability sessions, and partner-triggered alerts.</p>
+              </article>
+              <article class="mini-plan">
+                <h4 class="plan-name">Journeyman Family</h4>
+                <div class="price-line"><strong>$13.99/mo</strong><span>or $129.99/yr</span></div>
+                <p class="plan-copy">Everything in Apprentice plus parent and child controls, remote family policy, and shared household scheduling across managed devices.</p>
+              </article>
+              <article class="mini-plan">
+                <h4 class="plan-name">Journeyman Complete</h4>
+                <div class="price-line"><strong>$17.99/mo</strong><span>or $169.99/yr</span></div>
+                <p class="plan-copy">Everything in Journeyman Partner and Journeyman Family together.</p>
+              </article>
+            </div>
+          </section>
+
+          <article class="pricing-featured">
+            <div class="pricing-label">Flagship plan</div>
+            <h3 class="plan-name">Master Smith</h3>
+            <div class="price-line"><strong>$21.99/mo</strong><span>or $199.99/yr</span></div>
+            <p class="plan-copy">Everything in Journeyman Complete plus Recovery Tools, Theme Studio, custom profile photos, and the full flagship plan as new Master Smith benefits ship.</p>
+            <ul class="feature-list">
+              <li>Every live premium capability</li>
+              <li>Recovery Tools and Theme Studio</li>
+              <li>Custom profile photos</li>
+              <li>Future flagship additions shipping into the same plan</li>
+            </ul>
+          </article>
         </div>
       </div>
-      <div class="faq">
-        <details open><summary>What does FocusForge actually do?</summary><p>FocusForge is built to help users reduce distraction by applying configurable app blocking, focus systems, and visible progression mechanics that make consistency easier to maintain.</p></details>
-        <details><summary>Does FocusForge need special permissions?</summary><p>Some blocking and usage features may require Android permissions such as accessibility or usage access. Those permissions are only used for the features you enable and are explained in the Privacy Policy.</p></details>
-        <details><summary>Can users request account deletion?</summary><p>Yes. The site includes a dedicated delete-account page with request instructions, plus linked privacy and support pages for related questions.</p></details>
-        <details><summary>Where should support or legal notices be sent?</summary><p>General support, privacy questions, deletion requests, refund questions, and copyright notices can be sent to <a href="mailto:officialfocusforgeapp@gmail.com">officialfocusforgeapp@gmail.com</a>.</p></details>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="legal" class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <h2>Policies and support</h2>
-          <p>Review the pages for privacy, terms, billing, deletion, support, and copyright requests.</p>
+    <section id="trust" class="section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Permission and trust clarity</h2>
+            <p>FocusForge explains what it needs and keeps that explanation plain.</p>
+          </div>
+        </div>
+        <div class="trust-grid">
+          <article class="card">
+            <div class="card-icon">🔒</div>
+            <h3>What Accessibility is used for</h3>
+            <p>Accessibility is used so FocusForge can detect which app is currently in the foreground and apply the blocking rules the user chose.</p>
+            <p>FocusForge is not using Accessibility to read typed content, messages, or general screen contents.</p>
+          </article>
+          <div class="grid-3" style="grid-template-columns: 1fr;">
+            <article class="card trust-note">
+              <h3>Usage Access</h3>
+              <p>Usage Access is optional and powers app-time insights when enabled.</p>
+            </article>
+            <article class="card trust-note">
+              <h3>Cloud-backed features</h3>
+              <p>Cloud-backed features may rely on configured providers such as Firebase and Google Play billing.</p>
+            </article>
+            <article class="card trust-note">
+              <h3>User control</h3>
+              <p>Users can review policies, manage permissions in Android settings, and request deletion of cloud-backed account data.</p>
+            </article>
+          </div>
         </div>
       </div>
-      <div class="legal-grid">
-        <a class="legal-link" href="privacy.html"><span>Privacy</span><h3>Privacy Policy</h3><p>What data FocusForge collects, how it is used, where it may be stored, and what controls users have.</p></a>
-        <a class="legal-link" href="terms.html"><span>Usage</span><h3>Usage Agreement</h3><p>The rules for using FocusForge, subscriptions, acceptable use, disclaimers, and account responsibilities.</p></a>
-        <a class="legal-link" href="delete-account.html"><span>Deletion</span><h3>Account Deletion</h3><p>How users can request deletion of cloud-backed account data and what may remain on-device.</p></a>
-        <a class="legal-link" href="refunds.html"><span>Billing</span><h3>Refund Policy</h3><p>How subscription and digital purchase questions are handled, including platform-specific billing limits.</p></a>
-        <a class="legal-link" href="dmca.html"><span>Copyright</span><h3>DMCA Policy</h3><p>How copyright complaints and counter-notices can be submitted if needed.</p></a>
-        <a class="legal-link" href="support.html"><span>Support</span><h3>Support Center</h3><p>Contact details and the best path for support, privacy, billing, and legal requests.</p></a>
+    </section>
+
+    <section id="faq" class="section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>FAQ</h2>
+            <p>Clear answers to the questions people usually ask first.</p>
+          </div>
+        </div>
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3>What does FocusForge do?</h3>
+            <p>FocusForge is an Android focus and enforcement app built around configurable app blocking, Lock In sessions, progression systems, accountability layers, and optional family controls.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Why does it need Accessibility?</h3>
+            <p>Accessibility lets FocusForge detect which app is currently in the foreground so it can apply the blocking rules the user chose.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Does it read messages or typed text?</h3>
+            <p>No. FocusForge does not use Accessibility to read typed content, messages, or general screen contents.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Can I manage or cancel subscriptions?</h3>
+            <p>Subscriptions are handled through Google Play billing. Billing and refund details are linked in the policy pages.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Can I request account deletion?</h3>
+            <p>Yes. FocusForge provides account deletion support and a dedicated delete-account page for cloud-backed account data requests.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Does it support accountability or family controls?</h3>
+            <p>Yes. FocusForge includes optional partner and family layers for users who want shared accountability or managed household structure.</p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+
+    <section id="policy-hub" class="section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Policy and support hub</h2>
+            <p>Every policy and support page remains visible and easy to review.</p>
+          </div>
+        </div>
+        <div class="policy-grid">
+          <a class="policy-link" href="privacy.html"><span>Privacy</span><h3>Privacy Policy</h3><p>Permission use, data handling, storage, and user controls.</p></a>
+          <a class="policy-link" href="terms.html"><span>Usage</span><h3>Usage Agreement</h3><p>Service terms, responsibilities, billing structure, and core rules.</p></a>
+          <a class="policy-link" href="delete-account.html"><span>Deletion</span><h3>Delete Account</h3><p>How to request deletion of cloud-backed account data.</p></a>
+          <a class="policy-link" href="support.html"><span>Support</span><h3>Support Center</h3><p>Contact routes for support, privacy, billing, and legal requests.</p></a>
+          <a class="policy-link" href="refunds.html"><span>Billing</span><h3>Refund Policy</h3><p>Subscription and digital purchase guidance.</p></a>
+          <a class="policy-link" href="dmca.html"><span>Copyright</span><h3>DMCA Policy</h3><p>Copyright notices and counter-notice handling.</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="wrap foot">
       <div>
         <strong>FocusForge</strong><br />
-        <span class="tiny">Built for stronger focus, clearer boundaries, and cleaner documentation.</span>
+        <span class="tiny">Premium focus, structured blocking, and clear account controls.</span>
       </div>
       <div class="nav-links">
         <a href="home.html">Home</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Usage</a>
-        <a href="refunds.html">Refunds</a>
-        <a href="dmca.html">DMCA</a>
         <a href="delete-account.html">Delete account</a>
         <a href="support.html">Support</a>
+        <a href="refunds.html">Refunds</a>
+        <a href="dmca.html">DMCA</a>
       </div>
       <div class="tiny">© <span id="year"></span> FocusForge</div>
     </div>
   </footer>
+
   <script>
     (function () {
       var page = location.pathname.split('/').pop() || 'index.html';
@@ -387,24 +959,38 @@
         }
       });
 
-      var y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
+      var year = document.getElementById('year');
+      if (year) year.textContent = new Date().getFullYear();
 
-      var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
-      if (!tocLinks.length) return;
+      var revealItems = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+      if ('IntersectionObserver' in window && revealItems.length) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14 });
+        revealItems.forEach(function (item, index) {
+          item.style.transitionDelay = (index * 0.05) + 's';
+          revealObserver.observe(item);
+        });
+      } else {
+        revealItems.forEach(function (item) { item.classList.add('is-visible'); });
+      }
 
-      var sections = tocLinks
-        .map(function (a) {
-          var id = a.getAttribute('href');
-          return id ? document.querySelector(id) : null;
-        })
-        .filter(Boolean);
+      var sectionLinks = Array.prototype.slice.call(document.querySelectorAll('.section-nav a[href^="#"]'));
+      var sectionTargets = sectionLinks.map(function (link) {
+        var id = link.getAttribute('href');
+        return id ? document.querySelector(id) : null;
+      }).filter(Boolean);
 
-      function setActive(id) {
-        tocLinks.forEach(function (link) {
-          var isActive = link.getAttribute('href') === '#' + id;
-          link.classList.toggle('active', isActive);
-          if (isActive) {
+      function setSectionActive(id) {
+        sectionLinks.forEach(function (link) {
+          var active = link.getAttribute('href') === '#' + id;
+          link.classList.toggle('active', active);
+          if (active) {
             link.setAttribute('aria-current', 'true');
           } else {
             link.removeAttribute('aria-current');
@@ -412,35 +998,31 @@
         });
       }
 
-      tocLinks.forEach(function (a) {
-        a.addEventListener('click', function () {
-          var target = a.getAttribute('href');
-          if (target) setActive(target.replace('#', ''));
+      sectionLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          var href = link.getAttribute('href');
+          if (href) setSectionActive(href.replace('#', ''));
         });
       });
 
-      if ('IntersectionObserver' in window && sections.length) {
-        var observer = new IntersectionObserver(function (entries) {
+      if ('IntersectionObserver' in window && sectionTargets.length) {
+        var sectionObserver = new IntersectionObserver(function (entries) {
           var visible = entries
             .filter(function (entry) { return entry.isIntersecting; })
             .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; });
-          if (visible.length) {
-            setActive(visible[0].target.id);
-          }
+          if (visible.length) setSectionActive(visible[0].target.id);
         }, {
           rootMargin: '-18% 0px -58% 0px',
           threshold: [0.15, 0.35, 0.6]
         });
-
-        sections.forEach(function (section) { observer.observe(section); });
+        sectionTargets.forEach(function (section) { sectionObserver.observe(section); });
       }
 
       var initial = location.hash && document.querySelector(location.hash)
         ? location.hash.slice(1)
-        : (sections[0] ? sections[0].id : null);
-      if (initial) setActive(initial);
+        : (sectionTargets[0] ? sectionTargets[0].id : null);
+      if (initial) setSectionActive(initial);
     })();
   </script>
-
 </body>
 </html>
