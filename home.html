@@ -8,6 +8,8 @@
   <meta name="theme-color" content="#0c0b0a" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://officialfocusforgeapp.github.io/home.html" />
+  <link rel="icon" type="image/png" href="FocusForgeIcon.png" />
+  <link rel="apple-touch-icon" href="FocusForgeIcon.png" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="FocusForge" />
   <meta property="og:title" content="FocusForge — Premium Android Focus, Blocking, and Accountability" />
@@ -103,9 +105,15 @@
       display: grid;
       place-items: center;
       border-radius: 15px;
-      color: #2a1d10;
+      overflow: hidden;
       background: linear-gradient(145deg, var(--accent-2), var(--accent));
       box-shadow: 0 12px 28px rgba(198, 142, 73, 0.22), inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .brand-name {
       font-family: var(--headline);
@@ -280,15 +288,25 @@
     }
     .screen-card strong { display: block; margin-bottom: 8px; color: var(--text); }
     .screen-card p { color: var(--soft); }
-    .forge-line,
-    .forge-strike {
-      position: absolute;
-      background: linear-gradient(90deg, rgba(237, 201, 139, 0.15), rgba(198, 142, 73, 0.95), rgba(237, 201, 139, 0.15));
-      border-radius: 999px;
-      box-shadow: 0 0 18px rgba(198, 142, 73, 0.18);
+    .screen-hero {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
     }
-    .forge-line { left: 22px; right: 48px; top: 88px; height: 4px; transform: rotate(-10deg); }
-    .forge-strike { width: 74px; height: 10px; right: 30px; top: 54px; transform: rotate(30deg); }
+    .screen-emblem {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .screen-emblem img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+    }
     .progress { height: 10px; border-radius: 999px; background: rgba(255,255,255,0.07); overflow: hidden; margin-top: 12px; }
     .progress > span { display: block; width: 76%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
     .label {
@@ -356,7 +374,7 @@
     .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
     .grid-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
     .faq-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .journeyman-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .journeyman-grid { grid-template-columns: 1fr; }
     .policy-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
     .card {
       position: relative;
@@ -599,6 +617,7 @@
         grid-template-columns: 1fr;
       }
       .membership-layout > *:nth-child(2) { grid-column: span 1; }
+      .screen-hero { grid-template-columns: 1fr; }
       .hero-copy,
       .hero-visual,
       .card,
@@ -618,7 +637,7 @@
   <header class="topbar">
     <div class="wrap nav">
       <a href="home.html" class="brand" aria-label="FocusForge home">
-        <div class="brand-mark">⚒</div>
+        <div class="brand-mark"><img src="FocusForgeIcon.png" alt="" /></div>
         <div class="brand-name">FocusForge</div>
       </a>
       <nav class="nav-links" aria-label="Primary">
@@ -669,10 +688,15 @@
             <div class="device-top"><span>FocusForge</span><span>Android</span></div>
             <div class="screen-card">
               <div class="label">Lock In session</div>
-              <h3 style="margin-top: 14px;">Deep Work · 45 minutes</h3>
-              <p>Configured blockers are active. Progress is protected while the session runs.</p>
-              <div class="forge-line"></div>
-              <div class="forge-strike"></div>
+              <div class="screen-hero" style="margin-top: 14px;">
+                <div class="screen-emblem">
+                  <img src="FocusForgeIcon.png" alt="FocusForge icon" />
+                </div>
+                <div>
+                  <h3 style="margin: 0 0 10px;">Deep Work · 45 minutes</h3>
+                  <p>Configured blockers are active. Progress is protected while the session runs.</p>
+                </div>
+              </div>
             </div>
             <div class="screen-card">
               <div class="label">Today’s structure</div>
@@ -801,7 +825,7 @@
             <div class="panel-head">
               <div class="pricing-label">Journeyman</div>
               <h3 class="plan-name">Shared-value modes</h3>
-              <p>Three ways to extend Apprentice into accountability and family structure.</p>
+              <p>Choose the Journeyman path that matches the kind of shared structure you want.</p>
             </div>
             <div class="journeyman-grid">
               <article class="mini-plan">
