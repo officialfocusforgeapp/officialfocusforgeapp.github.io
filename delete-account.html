@@ -1,644 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FocusForge Account Deletion</title>
-  <meta name="description" content="How to request deletion of a FocusForge account and related cloud data." />
-  <meta name="theme-color" content="#0b0d12" />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://officialfocusforgeapp.github.io/delete-account.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="FocusForge" />
-  <meta property="og:title" content="FocusForge Account Deletion" />
-  <meta property="og:description" content="How to request deletion of a FocusForge account and related cloud data." />
-  <meta property="og:url" content="https://officialfocusforgeapp.github.io/delete-account.html" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="FocusForge Account Deletion" />
-  <meta name="twitter:description" content="How to request deletion of a FocusForge account and related cloud data." />
-
-  <style>
-
-    :root {
-      --bg: #0b0d12;
-      --panel: rgba(255,255,255,0.06);
-      --panel-strong: rgba(255,255,255,0.09);
-      --border: rgba(255,255,255,0.12);
-      --text: #f5f7fb;
-      --muted: #b8c0d0;
-      --accent: #ff8a2b;
-      --accent-2: #ffbe73;
-      --danger: #ff9e7a;
-      --success: #9be7b4;
-      --shadow: 0 18px 60px rgba(0,0,0,0.38);
-      --radius: 24px;
-      --max: 1180px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top, rgba(255,138,43,0.20), transparent 34%),
-        radial-gradient(circle at 85% 18%, rgba(255,190,115,0.10), transparent 18%),
-        linear-gradient(180deg, #10141d 0%, #0b0d12 55%, #090b10 100%);
-      min-height: 100vh;
-    }
-    a { color: inherit; text-decoration: none; }
-    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
-    .topbar {
-      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
-      background: rgba(11,13,18,0.62); border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .nav {
-      display:flex; align-items:center; justify-content:space-between; gap:18px; min-height:76px;
-    }
-    .brand { display:flex; align-items:center; gap:14px; font-weight:800; letter-spacing:.02em; }
-    .brand-mark {
-      width:46px; height:46px; border-radius:15px; display:grid; place-items:center; font-size:1.2rem;
-      background: linear-gradient(135deg, rgba(255,138,43,0.32), rgba(255,190,115,0.16));
-      border: 1px solid rgba(255,190,115,0.24);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 30px rgba(255,138,43,0.12);
-    }
-    .nav-links { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-    .nav-links a { color: var(--muted); padding:10px 14px; border-radius:999px; transition:.2s ease; }
-    .nav-links a:hover, .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--text); background: rgba(255,255,255,0.06); }
-    .btn {
-      display:inline-flex; align-items:center; justify-content:center; gap:10px; border-radius:999px;
-      padding:13px 18px; font-weight:700; transition:.18s ease; border:1px solid transparent;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color:#1b1206; box-shadow: 0 16px 40px rgba(255,138,43,0.22); }
-    .btn-secondary { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); }
-    .btn-soft { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.10); color: var(--text); }
-    .btn-disabled, .btn[aria-disabled="true"] { opacity: .7; cursor: default; pointer-events: none; }
-    .hero { padding: 72px 0 34px; }
-    .hero-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:stretch; }
-    .panel, .card, .cta, .legal-shell, .doc-shell, .toc {
-      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.10); box-shadow: var(--shadow); border-radius: 28px;
-    }
-    .hero-copy, .hero-card, .cta, .card, .legal-shell, .doc-shell { padding: 34px; }
-    .eyebrow {
-      display:inline-flex; align-items:center; gap:8px; border-radius:999px; padding:8px 14px;
-      font-size:.92rem; color:#ffe7d0; background: rgba(255,138,43,0.12); border: 1px solid rgba(255,138,43,0.20);
-    }
-    h1, h2, h3 { margin: 0 0 14px; line-height: 1.04; letter-spacing:-0.03em; }
-    h1 { font-size: clamp(3rem, 6vw, 4.9rem); max-width: 12ch; }
-    h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
-    h3 { font-size: 1.28rem; }
-    .lead, .doc-shell p, .doc-shell li, .card p, .card li, .hero-card p { color: var(--muted); line-height: 1.74; }
-    .lead { font-size: 1.08rem; max-width: 62ch; }
-    .hero-actions, .button-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:28px; }
-    .section { padding: 18px 0 34px; }
-    .section-head { display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:18px; }
-    .section-head p { color: var(--muted); max-width: 70ch; }
-    .grid-3, .grid-4, .legal-grid, .doc-grid, .steps { display:grid; gap:18px; }
-    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .grid-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
-    .legal-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .steps { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .icon {
-      width:52px; height:52px; border-radius:16px; display:grid; place-items:center; font-size:1.25rem;
-      background: rgba(255,138,43,0.12); border:1px solid rgba(255,138,43,0.22); margin-bottom:18px;
-    }
-    .mini-stat strong { display:block; font-size:1.12rem; margin-bottom:6px; }
-    .mini-stat span { color: var(--muted); line-height: 1.68; }
-    .hero-points { display:grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap:14px; margin-top:30px; }
-    .phone {
-      position:relative; overflow:hidden; border-radius:30px; border:1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(8,10,15,0.94), rgba(16,18,24,0.96)); padding: 20px;
-      min-height:560px; display:flex; flex-direction:column; gap:16px;
-    }
-    .screen-top { display:flex; align-items:center; justify-content:space-between; color:#d9dfeb; font-size:.86rem; opacity:.9; }
-    .screen-card {
-      position:relative; padding:18px; border-radius:22px; background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
-      overflow:hidden;
-    }
-    .forge-glow::before {
-      content:""; position:absolute; inset:auto -30px -60px auto; width:180px; height:180px; border-radius:50%;
-      background: radial-gradient(circle, rgba(255,138,43,0.28), transparent 68%);
-    }
-    .sword-line, .hammer-line { position:absolute; background: linear-gradient(90deg, rgba(255,190,115,0.18), rgba(255,138,43,0.9), rgba(255,190,115,0.18)); }
-    .sword-line { left: 24px; right: 34px; top: 78px; height: 4px; border-radius: 999px; transform: rotate(-10deg); }
-    .hammer-line { width: 72px; height: 10px; right: 34px; top: 46px; border-radius: 999px; transform: rotate(32deg); }
-    .progress { width:100%; height:10px; border-radius:999px; background: rgba(255,255,255,0.08); overflow:hidden; margin-top:14px; }
-    .progress > span { display:block; width:76%; height:100%; border-radius:inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
-    .pill {
-      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
-      color:#ffe1c2; background: rgba(255,138,43,0.10); border:1px solid rgba(255,138,43,0.18); font-size:.88rem;
-    }
-    .doc-grid { grid-template-columns: 280px minmax(0, 1fr); align-items:start; }
-    .toc {
-      position: sticky; top: 100px; padding: 22px; border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04)); border:1px solid rgba(255,255,255,0.10);
-    }
-    .toc h3 { margin-bottom: 14px; }
-    .toc a { display:block; padding:10px 12px; margin:4px 0; border-radius:14px; transition: color .2s ease, background .2s ease, border-color .2s ease; color: var(--muted); border:1px solid transparent; }
-    .toc a:hover, .toc a.active, .toc a[aria-current="true"] { color: var(--text); background: rgba(255,255,255,0.06); border-color: rgba(255,190,115,0.22); }
-    .doc-shell h1 { max-width: 100%; font-size: clamp(2.3rem, 4vw, 4rem); }
-    .doc-section { padding-top: 22px; margin-top: 22px; border-top: 1px solid rgba(255,255,255,0.08); scroll-margin-top: 110px; }
-    .doc-section:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
-    .doc-section ul { padding-left: 20px; }
-    .table-like { display:grid; gap:12px; margin-top:16px; }
-    .row { display:grid; grid-template-columns: 180px minmax(0,1fr); gap:14px; padding:14px 16px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); }
-    .legal-link {
-      display:block; padding:22px; border-radius:24px; background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
-      border:1px solid rgba(255,255,255,0.10); min-height: 200px; transition: transform .18s ease, border-color .18s ease;
-    }
-    .legal-link:hover { transform: translateY(-2px); border-color: rgba(255,190,115,0.34); }
-    .legal-link span { display:inline-block; color: var(--accent-2); font-weight:700; margin-bottom:12px; }
-    .alert {
-      padding:16px 18px; border-radius:18px; background: rgba(255,138,43,0.10); border:1px solid rgba(255,138,43,0.18);
-      color: #ffe4cd;
-    }
-    .note {
-      padding:16px 18px; border-radius:18px; background: rgba(155,231,180,0.08); border:1px solid rgba(155,231,180,0.18); color: #dff8e8;
-    }
-    .check-list { display:grid; gap:12px; margin-top:20px; }
-    .check-item { display:flex; gap:12px; align-items:flex-start; color: var(--muted); }
-    .check-item b { color: var(--text); }
-    .faq { display:grid; gap:16px; }
-    .faq details {
-      background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:18px 20px;
-    }
-    .faq summary { cursor:pointer; font-weight:700; }
-    .faq details p { margin:12px 0 0; color: var(--muted); }
-    footer { padding: 22px 0 50px; color: var(--muted); }
-    footer .foot {
-      display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
-      border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;
-    }
-    .tiny { font-size: .92rem; color: var(--muted); }
-    @media (max-width: 1050px) {
-      .hero-grid, .grid-3, .grid-4, .steps, .legal-grid, .doc-grid { grid-template-columns: 1fr 1fr; }
-      .doc-grid > *:last-child { grid-column: span 2; }
-    }
-    @media (max-width: 760px) {
-      .nav { padding:12px 0; align-items:flex-start; flex-direction:column; }
-      .nav-links { width:100%; }
-      .hero { padding-top:34px; }
-      .hero-grid, .grid-3, .grid-4, .steps, .legal-grid, .hero-points, .doc-grid { grid-template-columns:1fr; }
-      .hero-copy, .hero-card, .cta, .card, .legal-shell, .doc-shell { padding:24px; }
-      .phone { min-height:auto; }
-      h1 { max-width:100%; }
-      .section-head { align-items:flex-start; flex-direction:column; }
-      .row { grid-template-columns: 1fr; }
-      .toc { position: static; }
-    }
-
-  </style>
-
-  <style id="focusforge-refresh">
-    :root {
-      --bg: #070b14 !important;
-      --bg-2: #0c1424 !important;
-      --panel: rgba(13, 20, 35, 0.82) !important;
-      --panel-2: rgba(18, 29, 49, 0.9) !important;
-      --panel-strong: rgba(18, 29, 49, 0.94) !important;
-      --border: rgba(113, 160, 255, 0.18) !important;
-      --border-strong: rgba(255, 156, 61, 0.26) !important;
-      --text: #f7f8fc !important;
-      --muted: #aebad0 !important;
-      --soft: #d6deeb !important;
-      --accent: #ff7a18 !important;
-      --accent-2: #ffb14b !important;
-      --accent-3: #5fa3ff !important;
-      --danger: #ff9b78 !important;
-      --success: #89e0b0 !important;
-      --shadow: 0 28px 80px rgba(0, 0, 0, 0.42) !important;
-      --radius: 26px !important;
-      --headline: Georgia, "Times New Roman", serif !important;
-      --body: "Segoe UI", "Avenir Next", "Helvetica Neue", Arial, sans-serif !important;
-    }
-
-    html { scroll-padding-top: 110px; }
-    body {
-      color: var(--text) !important;
-      font-family: var(--body) !important;
-      background:
-        radial-gradient(circle at 14% 0%, rgba(95, 163, 255, 0.18), transparent 26%),
-        radial-gradient(circle at 86% 12%, rgba(255, 122, 24, 0.18), transparent 24%),
-        radial-gradient(circle at 50% 100%, rgba(47, 85, 170, 0.18), transparent 26%),
-        linear-gradient(180deg, #0d1425 0%, #0a101c 38%, #070b14 100%) !important;
-      position: relative;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(rgba(255,255,255,0.018), rgba(255,255,255,0.018)),
-        repeating-linear-gradient(135deg, transparent 0 38px, rgba(255,255,255,0.02) 38px 39px, transparent 39px 78px);
-      opacity: .3;
-      mix-blend-mode: screen;
-      z-index: 0;
-    }
-    main, footer, header { position: relative; z-index: 1; }
-    h1, h2, h3, h4, .plan-name, .brand-name { font-family: var(--headline) !important; letter-spacing: -0.02em; }
-    .wrap { width: min(var(--max, 1180px), calc(100% - 28px)) !important; }
-
-    .topbar {
-      position: sticky !important;
-      top: 0;
-      z-index: 50 !important;
-      backdrop-filter: blur(20px);
-      background: rgba(6, 10, 19, 0.72) !important;
-      border-bottom: 1px solid rgba(113, 160, 255, 0.12) !important;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.16);
-    }
-    .nav-shell {
-      min-height: 80px;
-      display: grid !important;
-      grid-template-columns: auto 1fr;
-      align-items: center;
-      gap: 16px;
-      padding-block: 10px;
-    }
-    .brand {
-      display: inline-flex !important;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-    .brand-mark {
-      width: 50px;
-      height: 50px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex: 0 0 50px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.02) inset;
-    }
-    .brand-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .brand-copy { display: grid; line-height: 1.05; }
-    .brand-name { font-size: 1.16rem; font-weight: 700; }
-    .brand-tag { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-
-    .nav-toggle {
-      display: none;
-      margin-left: auto;
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .nav-toggle span:not(.sr-only) {
-      display: block;
-      width: 18px;
-      height: 2px;
-      border-radius: 999px;
-      background: currentColor;
-      transition: transform .2s ease, opacity .2s ease;
-    }
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    .nav-links {
-      margin-left: auto;
-      display: flex !important;
-      flex-wrap: nowrap !important;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      padding-bottom: 2px;
-      max-width: 100%;
-    }
-    .nav-links::-webkit-scrollbar { display: none; }
-    .nav-links a {
-      white-space: nowrap;
-      color: var(--muted) !important;
-      padding: 10px 14px !important;
-      border-radius: 999px;
-      border: 1px solid transparent !important;
-      background: transparent;
-      transition: background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
-      font-size: 0.95rem;
-    }
-    .nav-links a:hover,
-    .nav-links a.active,
-    .nav-links a[aria-current="page"] {
-      color: var(--text) !important;
-      background: linear-gradient(180deg, rgba(95, 163, 255, 0.16), rgba(255, 122, 24, 0.10)) !important;
-      border-color: rgba(113, 160, 255, 0.18) !important;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
-    }
-
-    .panel, .card, .cta, .doc-shell, .toc, .support-card, .policy-link, .section-nav, .pricing-featured, .pricing-column, .mini-plan {
-      background: linear-gradient(180deg, rgba(15, 22, 38, 0.88), rgba(11, 17, 30, 0.94)) !important;
-      border: 1px solid rgba(113, 160, 255, 0.14) !important;
-      box-shadow: var(--shadow) !important;
-      backdrop-filter: blur(14px);
-    }
-    .panel::before, .pricing-featured::before, .pricing-column::before {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 30%) !important;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #ff7a18, #ffb14b 52%, #ffd98a 100%) !important;
-      color: #1b1108 !important;
-      box-shadow: 0 18px 40px rgba(255,122,24,0.22) !important;
-    }
-    .btn-secondary, .btn-soft {
-      background: rgba(255,255,255,0.04) !important;
-      border-color: rgba(113, 160, 255, 0.18) !important;
-      color: var(--text) !important;
-    }
-    .eyebrow, .pricing-label, .label {
-      color: #ffe0b2 !important;
-      background: linear-gradient(180deg, rgba(255,122,24,0.14), rgba(95,163,255,0.10)) !important;
-      border: 1px solid rgba(255,166,83,0.22) !important;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
-    }
-    .card-icon, .step-number {
-      background: linear-gradient(135deg, rgba(255,177,75,0.98), rgba(95,163,255,0.9)) !important;
-      color: #111827 !important;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
-    }
-    .feature-list li::before { color: #ffb14b !important; }
-    .progress { background: rgba(255,255,255,0.08) !important; }
-    .progress > span { background: linear-gradient(90deg, #5fa3ff, #ff7a18, #ffb14b) !important; }
-
-    .toc a, .section-nav a {
-      border-color: transparent !important;
-      color: var(--muted) !important;
-    }
-    .toc a:hover, .toc a.active, .toc a[aria-current="true"],
-    .section-nav a:hover, .section-nav a.active, .section-nav a[aria-current="true"] {
-      color: var(--text) !important;
-      background: linear-gradient(180deg, rgba(95,163,255,0.16), rgba(255,122,24,0.10)) !important;
-      border-color: rgba(113, 160, 255, 0.2) !important;
-    }
-
-    .hero-banner {
-      margin: 0 0 18px;
-      border-radius: 26px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 22px 48px rgba(0,0,0,0.28);
-      position: relative;
-    }
-    .hero-banner::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      height: 42%;
-      background: linear-gradient(180deg, transparent, rgba(9,12,20,0.9));
-      pointer-events: none;
-    }
-    .hero-banner img { display: block; width: 100%; height: auto; }
-    .hero-visual .device-shell { margin-top: 0 !important; }
-    .screen-hero { grid-template-columns: 96px minmax(0, 1fr) !important; }
-
-    .membership-layout {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.14fr) minmax(0, 1fr) !important;
-      align-items: stretch !important;
-    }
-    .pricing-column.journeyman-shell { display: grid !important; gap: 16px; }
-    .pricing-column.journeyman-shell .panel-head { padding: 28px 28px 4px !important; }
-    .journeyman-grid {
-      display: grid !important;
-      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-      gap: 14px !important;
-      padding: 0 28px 28px !important;
-      align-items: stretch;
-    }
-    .mini-plan {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      min-height: 0 !important;
-    }
-
-    footer {
-      background: transparent !important;
-      border-top: 1px solid rgba(113, 160, 255, 0.12) !important;
-    }
-
-    @media (max-width: 1100px) {
-      .membership-layout { grid-template-columns: 1fr 1fr !important; }
-      .membership-layout > *:nth-child(2) { grid-column: 1 / -1 !important; }
-      .journeyman-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
-    }
-    @media (max-width: 900px) {
-      .nav-shell { grid-template-columns: auto auto; }
-      .nav-toggle { display: inline-flex; }
-      .nav-links {
-        grid-column: 1 / -1;
-        display: none !important;
-        margin: 6px 0 0;
-        width: 100%;
-        flex-wrap: wrap !important;
-        justify-content: flex-start;
-        overflow: visible;
-        padding: 12px;
-        border-radius: 20px;
-        background: rgba(11, 17, 30, 0.94);
-        border: 1px solid rgba(113,160,255,0.14);
-      }
-      .nav-shell.nav-open .nav-links { display: flex !important; }
-      .journeyman-grid { grid-template-columns: 1fr !important; }
-      .membership-layout { grid-template-columns: 1fr !important; }
-      .membership-layout > *:nth-child(2) { grid-column: span 1 !important; }
-    }
-    @media (max-width: 720px) {
-      .brand-tag { display: none; }
-      .hero-banner { margin-bottom: 14px; }
-      .screen-hero { grid-template-columns: 74px 1fr !important; }
-      .section-nav, .toc { top: 84px !important; }
-    }
-  </style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delete Your FocusForge Account</title>
+  <meta name="description" content="How to request deletion of eligible FocusForge cloud-backed account data.">
+  <link rel="stylesheet" href="assets/site.css">
+  <script defer src="assets/site.js"></script>
 </head>
-<body>
-
-  <header class="topbar">
-    <div class="wrap nav-shell">
-      <a href="home.html" class="brand" aria-label="FocusForge home">
-        <span class="brand-mark"><img src="FocusForgeIcon.png" alt="" /></span>
-        <span class="brand-copy">
-          <span class="brand-name">FocusForge</span>
-          <span class="brand-tag">Discipline with teeth</span>
-        </span>
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-        <span></span><span></span><span></span>
-        <span class="sr-only">Toggle navigation</span>
-      </button>
-      <nav id="primary-nav" class="nav-links" aria-label="Primary">
-        <a href="home.html" data-nav="home.html">Home</a>
-        <a href="privacy.html" data-nav="privacy.html">Privacy</a>
-        <a href="terms.html" data-nav="terms.html">Usage</a>
-        <a href="delete-account.html" data-nav="delete-account.html">Delete account</a>
-        <a href="support.html" data-nav="support.html">Support</a>
-        <a href="refunds.html" data-nav="refunds.html">Refunds</a>
-        <a href="dmca.html" data-nav="dmca.html">DMCA</a>
-      </nav>
+<body class="article-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="home.html" aria-label="FocusForge home"><span class="brand__mark" aria-hidden="true"></span><span class="brand__text"><span class="brand__name">FocusForge</span><span class="brand__sub">Luxury intervention system</span></span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span class="visually-hidden">Toggle navigation</span><span class="nav-toggle__bar" aria-hidden="true"></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary" data-nav><ul class="site-nav__list"><li><a class="site-nav__link" href="home.html#system">System</a></li><li><a class="site-nav__link" href="home.html#depth">Depth</a></li><li><a class="site-nav__link" href="home.html#membership">Membership</a></li><li><a class="site-nav__link" href="home.html#trust">Permissions</a></li><li><a class="site-nav__link" href="support.html">Support</a></li><li><a class="site-nav__link" href="privacy.html">Privacy</a></li><li><a class="site-nav__link" href="terms.html">Terms</a></li></ul><div class="site-nav__actions"><a class="button button--secondary" href="https://play.google.com/store/apps/details?id=app.focusforge" target="_blank" rel="noreferrer">Google Play</a></div></nav>
     </div>
   </header>
-
-<main class="section">
-  <div class="wrap doc-grid">
-    <aside class="toc">
-      <h3>On this page</h3>
-      <a href="#request">How to Request Deletion</a><a href="#deleted">What Gets Deleted</a><a href="#remain">What May Remain</a><a href="#local">Local Device Data</a><a href="#timing">Processing and Verification</a><a href="#contact">Related Pages</a>
-    </aside>
-    <article class="doc-shell">
-      <div class="eyebrow">Account support</div>
-      <h1>Delete cloud-backed account data with a clear process.</h1>
-      <p class="lead">This page explains how a FocusForge user can request deletion of cloud-backed account data and what may remain for legal or operational reasons.</p>
-      <div class="table-like">
-        <div class="row"><strong>Effective date</strong><div>March 11, 2026</div></div>
-        <div class="row"><strong>App</strong><div>FocusForge</div></div>
-        <div class="row"><strong>Contact</strong><div><a href="mailto:officialfocusforgeapp@gmail.com">officialfocusforgeapp@gmail.com</a></div></div>
+  <main id="main">
+    <section class="article-hero">
+      <div class="container--narrow" data-reveal>
+        <span class="eyebrow">Delete account</span>
+        <h1>Delete eligible cloud-backed account data.</h1>
+        <p class="article-hero__lede">If you use FocusForge features backed by account infrastructure, you can request deletion of eligible cloud-backed account data. Local data stored only on your device can typically be removed by uninstalling the app or clearing app storage in Android settings.</p>
+        <p class="article-meta">Last updated: April 9, 2026</p>
       </div>
-      <div class="note" style="margin-top:18px;">This page explains how to request deletion of cloud-backed account data. Local on-device data may need to be removed separately through Android settings or by uninstalling the app.</div>
-      <section id="request" class="doc-section"><h3>1. How to Request Deletion</h3><p>To request deletion of a FocusForge cloud-backed account, email <a href="mailto:officialfocusforgeapp@gmail.com">officialfocusforgeapp@gmail.com</a> using the subject line <strong>FocusForge Account Deletion Request</strong>.</p>
-<div class="table-like">
-  <div class="row"><strong>Include</strong><div>Your account email address, username if available, and a clear statement that you want your FocusForge account deleted.</div></div>
-  <div class="row"><strong>Optional</strong><div>Any additional information that helps verify ownership of the account you want removed.</div></div>
-</div></section><section id="deleted" class="doc-section"><h3>2. What Gets Deleted</h3><ul>
-<li>Cloud-backed account profile information and account metadata associated with the account.</li>
-<li>Linked family-control, accountability, or relationship records stored for that account where technically associated with the deletion request.</li>
-<li>Remote settings, sync records, and related cloud data tied to the account, subject to legal and operational retention limits.</li>
-</ul></section><section id="remain" class="doc-section"><h3>3. What May Remain</h3><ul>
-<li>Local on-device data stays on your device until you separately clear app data or uninstall the app.</li>
-<li>Limited records may be retained for security, fraud prevention, dispute handling, accounting, backup integrity, or legal compliance.</li>
-<li>Residual data may persist temporarily in logs, backups, or archived systems before normal deletion cycles complete.</li>
-</ul></section><section id="local" class="doc-section"><h3>4. Local Device Data</h3><p>Deleting a cloud-backed account does not automatically erase data stored locally on your device. To remove local app data, use the app’s data controls if available, clear local app storage in Android settings, or uninstall the app.</p></section><section id="timing" class="doc-section"><h3>5. Processing and Verification</h3><p>Deletion requests are reviewed manually. FocusForge may ask for reasonable verification before deleting cloud-backed data to help prevent unauthorized deletion requests.</p></section><section id="contact" class="doc-section"><h3>6. Related Pages</h3><p>For related information, review the <a href="privacy.html">Privacy Policy</a>, <a href="terms.html">Usage Agreement</a>, and <a href="refunds.html">Refund Policy</a>.</p></section>
-    </article>
-  </div>
-</main>
-
-  <footer>
-    <div class="wrap foot">
-      <div>
-        <strong>FocusForge</strong><br />
-        <span class="tiny">Built for stronger focus, clearer boundaries, and cleaner documentation.</span>
+    </section>
+    <section class="article-shell">
+      <div class="container--narrow article-grid">
+        <aside class="article-sidebar" data-reveal>
+          <div class="article-card">
+            <h2>On this page</h2>
+            <ul class="article-nav">
+              <li><a href="#who">1. What this page covers</a></li>
+              <li><a href="#request">2. How to request deletion</a></li>
+              <li><a href="#scope">3. What may be deleted</a></li>
+              <li><a href="#local">4. Local device data</a></li>
+              <li><a href="#timing">5. Processing and verification</a></li>
+              <li><a href="#contact">6. Contact</a></li>
+            </ul>
+          </div>
+          <div class="article-card">
+            <div class="article-callout">
+              <p>Deletion requests: <a class="inline-link" data-support-email href="mailto:officialfocusforgeapp@gmail.com">officialfocusforgeapp@gmail.com</a></p>
+            </div>
+          </div>
+        </aside>
+        <div data-reveal>
+          <article class="article-card" id="who">
+            <h2>1. What this page covers</h2>
+            <p>This page explains how to request deletion of eligible cloud-backed FocusForge account data associated with account-based or cloud-backed features. It does not change any rights or obligations described in the Privacy Policy or Terms of Use.</p>
+          </article>
+          <article class="article-card" id="request">
+            <h2>2. How to request deletion</h2>
+            <p>Send a deletion request to <a class="inline-link" data-support-email href="mailto:officialfocusforgeapp@gmail.com">officialfocusforgeapp@gmail.com</a> from the email address associated with your account, or include enough detail for us to identify the correct account record. Include “Delete FocusForge account data” in the subject line where possible.</p>
+            <div class="note-box">
+              <p>To help process the request, include any relevant identifiers you used with FocusForge, such as the account email address, linked profile name, or related purchase context if the request concerns a paid account.</p>
+            </div>
+          </article>
+          <article class="article-card" id="scope">
+            <h2>3. What may be deleted</h2>
+            <p>Eligible cloud-backed account data may include account profile data, linked-account relationships, cloud-stored configuration or profile elements, and other cloud-backed records maintained for account features, subject to legal, security, fraud-prevention, accounting, or dispute-retention needs.</p>
+            <p>Some records may need to be retained for a limited period where required by law, security, billing reconciliation, abuse prevention, or platform obligations.</p>
+          </article>
+          <article class="article-card" id="local">
+            <h2>4. Local device data</h2>
+            <p>If certain FocusForge data exists only on your device, that data may not be removable through an email request alone. Local device data can generally be removed by uninstalling the app or clearing app storage through Android settings, subject to your device behavior and Android version.</p>
+          </article>
+          <article class="article-card" id="timing">
+            <h2>5. Processing and verification</h2>
+            <p>FocusForge may need to verify the request before taking action. Verification may include confirming control of the account email or requesting additional details necessary to avoid deleting the wrong account.</p>
+            <p>Where a subscription was purchased through Google Play, account deletion does not automatically cancel store-managed billing. Subscription status and cancellation are generally handled through your Google Play account.</p>
+          </article>
+          <article class="article-card" id="contact">
+            <h2>6. Contact</h2>
+            <p>For deletion requests or questions about account-data handling, contact <a class="inline-link" data-support-email href="mailto:officialfocusforgeapp@gmail.com">officialfocusforgeapp@gmail.com</a>.</p>
+          </article>
+        </div>
       </div>
-      <div class="nav-links">
-        <a href="home.html">Home</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Usage</a>
-        <a href="refunds.html">Refunds</a>
-        <a href="dmca.html">DMCA</a>
-        <a href="delete-account.html">Delete account</a>
-        <a href="support.html">Support</a>
-      </div>
-      <div class="tiny">© <span id="year"></span> FocusForge</div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-card"><span class="card-label">FocusForge</span><p>FocusForge is an Android blocking system for people who need firmer control than a timer alone can offer. It supports solo use, partner accountability, family controls, and recovery-oriented routines.</p><p class="footer-meta">Cloud-backed features may rely on configured providers such as Firebase and Google Play Billing. Users can manage Android permissions directly in system settings and may request deletion of eligible cloud-backed account data.</p></div>
+      <div class="footer-card"><ul class="footer-nav"><li><a href="home.html">Home</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="delete-account.html">Delete account</a></li><li><a href="support.html">Support</a></li><li><a href="refunds.html">Refunds</a></li><li><a href="dmca.html">DMCA</a></li></ul><p class="footer-meta">Support: <a class="inline-link" data-support-email href="mailto:officialfocusforgeapp@gmail.com">officialfocusforgeapp@gmail.com</a></p><p class="footer-meta">© <span data-year></span> FocusForge. All rights reserved.</p></div>
     </div>
   </footer>
-  <script>
-    (function () {
-      var page = location.pathname.split('/').pop() || 'index.html';
-      if (page === 'index.html') page = 'home.html';
-      document.querySelectorAll('[data-nav]').forEach(function (a) {
-        var href = a.getAttribute('data-nav');
-        if (href === page) {
-          a.classList.add('active');
-          a.setAttribute('aria-current', 'page');
-        }
-      });
-
-      var y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
-
-      var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
-      if (!tocLinks.length) return;
-
-      var sections = tocLinks
-        .map(function (a) {
-          var id = a.getAttribute('href');
-          return id ? document.querySelector(id) : null;
-        })
-        .filter(Boolean);
-
-      function setActive(id) {
-        tocLinks.forEach(function (link) {
-          var isActive = link.getAttribute('href') === '#' + id;
-          link.classList.toggle('active', isActive);
-          if (isActive) {
-            link.setAttribute('aria-current', 'true');
-          } else {
-            link.removeAttribute('aria-current');
-          }
-        });
-      }
-
-      tocLinks.forEach(function (a) {
-        a.addEventListener('click', function () {
-          var target = a.getAttribute('href');
-          if (target) setActive(target.replace('#', ''));
-        });
-      });
-
-      if ('IntersectionObserver' in window && sections.length) {
-        var observer = new IntersectionObserver(function (entries) {
-          var visible = entries
-            .filter(function (entry) { return entry.isIntersecting; })
-            .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; });
-          if (visible.length) {
-            setActive(visible[0].target.id);
-          }
-        }, {
-          rootMargin: '-18% 0px -58% 0px',
-          threshold: [0.15, 0.35, 0.6]
-        });
-
-        sections.forEach(function (section) { observer.observe(section); });
-      }
-
-      var initial = location.hash && document.querySelector(location.hash)
-        ? location.hash.slice(1)
-        : (sections[0] ? sections[0].id : null);
-      if (initial) setActive(initial);
-    })();
-  </script>
-
-
-  <script id="focusforge-nav-script">
-    (function () {
-      var shell = document.querySelector('.nav-shell');
-      var toggle = document.querySelector('.nav-toggle');
-      if (shell && toggle) {
-        toggle.addEventListener('click', function () {
-          var open = shell.classList.toggle('nav-open');
-          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-        document.querySelectorAll('.nav-links a').forEach(function (link) {
-          link.addEventListener('click', function () {
-            shell.classList.remove('nav-open');
-            toggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
-    })();
-  </script>
-
 </body>
 </html>
