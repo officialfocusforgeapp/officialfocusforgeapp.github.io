@@ -147,7 +147,8 @@ function renderNav() {
     const current = normalizePath(window.location.pathname);
     mount.innerHTML = SITE.nav.map((item) => {
       const active = current === normalizePath(item.href) ? 'is-active' : '';
-      return `<a class="${active}" href="${item.href}">${item.label}</a>`;
+      const ariaCurrent = active ? ' aria-current="page"' : '';
+      return `<a class="${active}" href="${item.href}"${ariaCurrent}>${item.label}</a>`;
     }).join("");
   });
 
@@ -301,7 +302,13 @@ function setupArticleNav() {
 
     const setActive = (id) => {
       links.forEach((link) => {
-        link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
+        const isActive = link.getAttribute('href') === `#${id}`;
+        link.classList.toggle('is-active', isActive);
+        if (isActive) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+      sections.forEach((section) => {
+        section.classList.toggle('is-active', section.id === id);
       });
     };
 
@@ -343,6 +350,54 @@ function setupArticleNav() {
   });
 }
 
+function setupPlanRails() {
+  document.querySelectorAll('.plan-rail').forEach((rail) => {
+    let pointerActive = false;
+    let dragMoved = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    const endDrag = (event) => {
+      if (!pointerActive) return;
+      pointerActive = false;
+      rail.classList.remove('is-dragging');
+      if (event && typeof event.pointerId === 'number' && rail.hasPointerCapture?.(event.pointerId)) {
+        rail.releasePointerCapture(event.pointerId);
+      }
+    };
+
+    rail.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      pointerActive = true;
+      dragMoved = false;
+      startX = event.clientX;
+      startScrollLeft = rail.scrollLeft;
+      rail.classList.add('is-dragging');
+      rail.setPointerCapture?.(event.pointerId);
+    });
+
+    rail.addEventListener('pointermove', (event) => {
+      if (!pointerActive) return;
+      const delta = event.clientX - startX;
+      if (Math.abs(delta) > 6) dragMoved = true;
+      rail.scrollLeft = startScrollLeft - delta;
+    });
+
+    rail.addEventListener('pointerup', endDrag);
+    rail.addEventListener('pointercancel', endDrag);
+    rail.addEventListener('pointerleave', (event) => {
+      if (event.pointerType === 'mouse') endDrag(event);
+    });
+
+    rail.addEventListener('click', (event) => {
+      if (!dragMoved) return;
+      event.preventDefault();
+      event.stopPropagation();
+      dragMoved = false;
+    }, true);
+  });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   renderNav();
   renderPlans();
@@ -351,5 +406,6 @@ window.addEventListener('DOMContentLoaded', () => {
   setupDetails();
   setupMobileNav();
   setupArticleNav();
+  setupPlanRails();
   setYear();
 });
