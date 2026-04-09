@@ -562,12 +562,23 @@ function setupPlanRails() {
       centerCardInRail(nextIndex, behavior);
     };
 
-    const endDrag = (event) => {
+    const endDrag = (event, { activate = false } = {}) => {
       if (!pointerActive) return;
+      const shouldActivate =
+        activate &&
+        !dragMoved &&
+        !isInteractiveTarget(event?.target);
+
       pointerActive = false;
       rail.classList.remove('is-dragging');
       if (event && typeof event.pointerId === 'number' && rail.hasPointerCapture?.(event.pointerId)) {
         rail.releasePointerCapture(event.pointerId);
+      }
+
+      if (shouldActivate) {
+        const card = event.target instanceof Element ? event.target.closest('.plan-card') : null;
+        const nextIndex = card ? cards.indexOf(card) : -1;
+        if (nextIndex >= 0) activateCard(nextIndex);
       }
     };
 
@@ -590,7 +601,7 @@ function setupPlanRails() {
       rail.scrollLeft = startScrollLeft - delta;
     });
 
-    rail.addEventListener('pointerup', endDrag);
+    rail.addEventListener('pointerup', (event) => endDrag(event, { activate: true }));
     rail.addEventListener('pointercancel', endDrag);
     rail.addEventListener('pointerleave', (event) => {
       if (event.pointerType === 'mouse') endDrag(event);
@@ -604,7 +615,7 @@ function setupPlanRails() {
       const card = event.target instanceof Element ? event.target.closest('.plan-card') : null;
       if (!dragMoved && card) {
         const nextIndex = cards.indexOf(card);
-        if (nextIndex >= 0) activateCard(nextIndex);
+        if (nextIndex >= 0 && nextIndex !== activeIndex) activateCard(nextIndex);
         return;
       }
       if (!dragMoved) return;
