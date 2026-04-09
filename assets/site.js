@@ -321,9 +321,13 @@ function setupArticleNav() {
     const targetIsComfortablyVisible = (target) => {
       const offset = headerOffset();
       const rect = target.getBoundingClientRect();
-      const topBound = offset + 8;
-      const bottomBound = Math.max(topBound + 120, window.innerHeight * 0.68);
-      return rect.bottom > topBound && rect.top >= topBound && rect.top <= bottomBound;
+      const topBound = offset + 12;
+      const bottomBound = window.innerHeight - 24;
+      const visibleTop = Math.max(rect.top, topBound);
+      const visibleBottom = Math.min(rect.bottom, bottomBound);
+      const visibleHeight = visibleBottom - visibleTop;
+      const requiredHeight = Math.min(Math.max(rect.height * 0.45, 120), 240);
+      return visibleHeight >= requiredHeight;
     };
 
     const scrollToSection = (target, behavior) => {
@@ -332,14 +336,19 @@ function setupArticleNav() {
     };
 
     const computeActiveSection = () => {
-      const threshold = headerOffset() + 56;
-      let current = sections[0];
+      const offset = headerOffset();
+      const focusLine = Math.max(offset + 36, Math.min(window.innerHeight * 0.32, offset + 210));
+      let current = null;
 
       sections.forEach((section) => {
-        if (section.getBoundingClientRect().top <= threshold) current = section;
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= focusLine && rect.bottom >= focusLine) current = section;
       });
 
-      return current;
+      if (current) return current;
+
+      const firstVisible = sections.find((section) => section.getBoundingClientRect().bottom > offset + 24);
+      return firstVisible || sections[sections.length - 1];
     };
 
     const syncActiveSection = () => {
