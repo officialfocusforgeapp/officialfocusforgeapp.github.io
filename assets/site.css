@@ -30,17 +30,17 @@
 }
 
 :root[data-theme="molten"] {
-  --surface: rgba(255,164,78,0.05);
-  --surface-2: rgba(255,188,110,0.09);
-  --surface-3: rgba(255,210,146,0.13);
-  --muted: rgba(249,231,203,0.8);
-  --soft: rgba(249,231,203,0.56);
-  --line: rgba(255,190,120,0.12);
-  --line-strong: rgba(255,214,154,0.18);
-  --accent: #ff9d3f;
-  --accent-2: #ffe2a8;
-  --glow: rgba(255,157,63,0.42);
-  --page-gradient: linear-gradient(180deg, rgba(255,166,76,0.18) 0%, rgba(255,166,76,0.08) 16%, transparent 36%), linear-gradient(124deg, rgba(255,221,145,0.08) 0%, transparent 42%), linear-gradient(180deg, #090909 0%, #060606 48%, #030303 100%);
+  --surface: rgba(255,190,108,0.08);
+  --surface-2: rgba(255,210,138,0.12);
+  --surface-3: rgba(255,227,174,0.17);
+  --muted: rgba(252,236,210,0.84);
+  --soft: rgba(252,236,210,0.6);
+  --line: rgba(255,205,140,0.18);
+  --line-strong: rgba(255,224,176,0.26);
+  --accent: #ffa648;
+  --accent-2: #ffe4ac;
+  --glow: rgba(255,166,72,0.38);
+  --page-gradient: linear-gradient(180deg, rgba(255,186,96,0.26) 0%, rgba(255,186,96,0.11) 14%, rgba(255,129,42,0.05) 38%, transparent 58%), linear-gradient(128deg, rgba(255,227,166,0.1) 0%, transparent 44%), linear-gradient(180deg, #120c08 0%, #0a0807 34%, #040404 100%);
 }
 :root[data-theme="frozen"] {
   --accent: #7bc9ff;
@@ -330,6 +330,25 @@ button, input, textarea, select { font: inherit; }
   color: var(--soft);
   font-size: 0.92rem;
 }
+:root[data-theme="molten"] .eyebrow {
+  background: linear-gradient(180deg, rgba(255,216,151,0.15), rgba(255,157,70,0.08));
+  border-color: rgba(255,214,150,0.18);
+  color: #fae6bf;
+  box-shadow: inset 0 1px 0 rgba(255,248,224,0.05);
+}
+:root[data-theme="molten"] .hero h1 {
+  text-shadow: 0 16px 42px rgba(255,165,78,0.14);
+}
+:root[data-theme="molten"] .hero p.lead {
+  color: rgba(252,236,210,0.88);
+}
+:root[data-theme="molten"] .hero-meta span {
+  padding: 0.52rem 0.78rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,220,162,0.11), rgba(255,157,70,0.05));
+  border: 1px solid rgba(255,210,146,0.14);
+  color: #f6ddb5;
+}
 
 .showcase {
   background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
@@ -339,8 +358,9 @@ button, input, textarea, select { font: inherit; }
   box-shadow: var(--shadow);
 }
 :root[data-theme="molten"] .showcase {
-  background: linear-gradient(180deg, rgba(255,176,96,0.08), rgba(255,255,255,0.03));
-  border-color: rgba(255,189,121,0.14);
+  background: linear-gradient(180deg, rgba(255,210,132,0.16), rgba(255,160,72,0.06));
+  border-color: rgba(255,214,150,0.22);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,245,219,0.05);
 }
 .phone-frame {
   position: relative;
@@ -348,6 +368,10 @@ button, input, textarea, select { font: inherit; }
   padding: 1rem;
   background: linear-gradient(180deg, rgba(12,12,13,0.9), rgba(10,10,10,0.96));
   border: 1px solid rgba(255,255,255,0.08);
+}
+:root[data-theme="molten"] .phone-frame {
+  background: linear-gradient(180deg, rgba(28,20,12,0.97), rgba(13,10,8,0.99));
+  border-color: rgba(255,214,150,0.12);
 }
 .phone-top {
   display: flex;
@@ -384,8 +408,9 @@ button, input, textarea, select { font: inherit; }
 :root[data-theme="molten"] .article-card,
 :root[data-theme="molten"] .callout,
 :root[data-theme="molten"] .download-bar {
-  background: linear-gradient(180deg, rgba(255,176,98,0.06), rgba(255,255,255,0.03));
-  border-color: rgba(255,189,121,0.1);
+  background: linear-gradient(180deg, rgba(255,214,138,0.13), rgba(255,165,76,0.05));
+  border-color: rgba(255,214,150,0.18);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,245,219,0.05);
 }
 .mock-card { padding: 1rem; }
 .mock-kicker {
@@ -463,6 +488,10 @@ button, input, textarea, select { font: inherit; }
   border-radius: 18px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.06);
+}
+:root[data-theme="molten"] .metric {
+  background: linear-gradient(180deg, rgba(255,224,170,0.12), rgba(255,170,82,0.05));
+  border-color: rgba(255,212,145,0.16);
 }
 .metric strong { display: block; font-size: 1.25rem; letter-spacing: -0.04em; }
 .metric span { color: var(--soft); font-size: 0.84rem; }

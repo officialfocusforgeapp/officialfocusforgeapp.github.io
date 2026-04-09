@@ -299,8 +299,14 @@ function setupArticleNav() {
         return id ? document.querySelector(id) : null;
       })
       .filter(Boolean);
+    if (!sections.length) return;
+
+    let activeId = '';
+    let ticking = false;
 
     const setActive = (id) => {
+      if (!id || activeId === id) return;
+      activeId = id;
       links.forEach((link) => {
         const isActive = link.getAttribute('href') === `#${id}`;
         link.classList.toggle('is-active', isActive);
@@ -312,6 +318,42 @@ function setupArticleNav() {
       });
     };
 
+    const targetIsComfortablyVisible = (target) => {
+      const offset = headerOffset();
+      const rect = target.getBoundingClientRect();
+      const topBound = offset + 8;
+      const bottomBound = Math.max(topBound + 120, window.innerHeight * 0.68);
+      return rect.bottom > topBound && rect.top >= topBound && rect.top <= bottomBound;
+    };
+
+    const scrollToSection = (target, behavior) => {
+      const top = window.scrollY + target.getBoundingClientRect().top - headerOffset();
+      window.scrollTo({ top, behavior });
+    };
+
+    const computeActiveSection = () => {
+      const threshold = headerOffset() + 56;
+      let current = sections[0];
+
+      sections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= threshold) current = section;
+      });
+
+      return current;
+    };
+
+    const syncActiveSection = () => {
+      ticking = false;
+      const current = computeActiveSection();
+      if (current?.id) setActive(current.id);
+    };
+
+    const requestSync = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(syncActiveSection);
+    };
+
     links.forEach((link) => {
       link.addEventListener('click', (event) => {
         const id = link.getAttribute('href');
@@ -319,33 +361,32 @@ function setupArticleNav() {
         const target = document.querySelector(id);
         if (!target) return;
         event.preventDefault();
-        const top = window.scrollY + target.getBoundingClientRect().top - headerOffset();
         history.replaceState(null, '', id);
-        window.scrollTo({ top, behavior: 'smooth' });
         setActive(id.slice(1));
+        if (!targetIsComfortablyVisible(target)) {
+          scrollToSection(target, 'smooth');
+        }
       });
     });
 
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible && visible.target && visible.target.id) setActive(visible.target.id);
-    }, { rootMargin: `-${headerOffset()}px 0px -55% 0px`, threshold: [0.2, 0.4, 0.65] });
-
-    sections.forEach((section) => observer.observe(section));
+    window.addEventListener('scroll', requestSync, { passive: true });
+    window.addEventListener('resize', requestSync);
 
     if (window.location.hash) {
       const hashed = document.querySelector(window.location.hash);
       if (hashed) {
         setTimeout(() => {
-          const top = window.scrollY + hashed.getBoundingClientRect().top - headerOffset();
-          window.scrollTo({ top, behavior: 'auto' });
           setActive(hashed.id);
+          if (!targetIsComfortablyVisible(hashed)) {
+            scrollToSection(hashed, 'auto');
+          } else {
+            requestSync();
+          }
         }, 0);
       }
     } else if (sections[0] && sections[0].id) {
       setActive(sections[0].id);
+      requestSync();
     }
   });
 }
