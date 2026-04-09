@@ -475,6 +475,7 @@ function setupPlanRails() {
   document.querySelectorAll('.plan-rail').forEach((rail) => {
     const cards = Array.from(rail.querySelectorAll('.plan-card'));
     if (!cards.length) return;
+    const interactiveSelector = 'a, button, input, textarea, select, summary, [role="button"]';
 
     rail.tabIndex = 0;
     rail.setAttribute('role', 'region');
@@ -552,6 +553,9 @@ function setupPlanRails() {
       window.requestAnimationFrame(syncActiveCard);
     };
 
+    const isInteractiveTarget = (target) =>
+      target instanceof Element && Boolean(target.closest(interactiveSelector));
+
     const endDrag = (event) => {
       if (!pointerActive) return;
       pointerActive = false;
@@ -563,6 +567,7 @@ function setupPlanRails() {
 
     rail.addEventListener('pointerdown', (event) => {
       if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      if (isInteractiveTarget(event.target)) return;
       pointerActive = true;
       hasInteracted = true;
       dragMoved = false;
@@ -586,6 +591,10 @@ function setupPlanRails() {
     });
 
     rail.addEventListener('click', (event) => {
+      if (isInteractiveTarget(event.target)) {
+        dragMoved = false;
+        return;
+      }
       if (!dragMoved) return;
       event.preventDefault();
       event.stopPropagation();
