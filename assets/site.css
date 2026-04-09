@@ -27,17 +27,17 @@
 }
 
 :root[data-theme="molten"] {
-  --surface: rgba(255,152,76,0.08);
-  --surface-2: rgba(255,176,98,0.13);
-  --surface-3: rgba(255,197,131,0.18);
-  --muted: rgba(249,229,198,0.82);
-  --soft: rgba(249,229,198,0.6);
-  --line: rgba(255,176,108,0.16);
-  --line-strong: rgba(255,204,151,0.24);
+  --surface: rgba(255,164,78,0.05);
+  --surface-2: rgba(255,188,110,0.09);
+  --surface-3: rgba(255,210,146,0.13);
+  --muted: rgba(249,231,203,0.8);
+  --soft: rgba(249,231,203,0.56);
+  --line: rgba(255,190,120,0.12);
+  --line-strong: rgba(255,214,154,0.18);
   --accent: #ff9d3f;
   --accent-2: #ffe2a8;
   --glow: rgba(255,157,63,0.42);
-  --page-gradient: radial-gradient(circle at 18% 0%, rgba(255,158,67,0.34), transparent 28%), radial-gradient(circle at 82% 8%, rgba(255,215,130,0.15), transparent 24%), radial-gradient(circle at 48% 22%, rgba(255,114,32,0.13), transparent 30%), linear-gradient(180deg, #160d08 0%, #0d0806 42%, #060505 100%);
+  --page-gradient: radial-gradient(circle at 16% 0%, rgba(255,166,76,0.3), transparent 28%), radial-gradient(circle at 80% 9%, rgba(255,221,145,0.14), transparent 22%), radial-gradient(circle at 52% 18%, rgba(255,119,38,0.1), transparent 26%), linear-gradient(180deg, #090909 0%, #060606 48%, #030303 100%);
 }
 :root[data-theme="frozen"] {
   --accent: #7bc9ff;
@@ -110,10 +110,7 @@ button, input, textarea, select { font: inherit; }
   top: 0;
   z-index: 60;
   backdrop-filter: blur(18px);
-  background: linear-gradient(180deg, rgba(7,7,8,0.9), rgba(7,7,8,0.68));
-}
-:root[data-theme="molten"] .site-header {
-  background: linear-gradient(180deg, rgba(24,12,7,0.92), rgba(17,9,6,0.72));
+  background: linear-gradient(180deg, rgba(6,6,7,0.94), rgba(6,6,7,0.8));
 }
 .site-header__inner {
   width: min(calc(100% - 2rem), 1260px);
@@ -202,16 +199,19 @@ button, input, textarea, select { font: inherit; }
   padding: 0.82rem 1.15rem;
   border-radius: 999px;
   border: 1px solid transparent;
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease, box-shadow 160ms ease;
   font-size: 0.96rem;
   font-weight: 650;
   letter-spacing: -0.01em;
+  line-height: 1;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: top;
 }
 .button:hover,
 .button:focus-visible {
-  transform: translateY(-1px);
   outline: none;
 }
 .button--primary {
@@ -240,9 +240,9 @@ button, input, textarea, select { font: inherit; }
   color: var(--text);
 }
 :root[data-theme="molten"] .button--secondary {
-  background: linear-gradient(180deg, rgba(255,199,126,0.14), rgba(255,154,71,0.06));
-  border-color: rgba(255,202,131,0.18);
-  color: #f7e8cf;
+  background: linear-gradient(180deg, rgba(255,199,126,0.1), rgba(255,154,71,0.04));
+  border-color: rgba(255,202,131,0.14);
+  color: #f5e4c6;
 }
 .button--ghost {
   background: transparent;
@@ -250,9 +250,9 @@ button, input, textarea, select { font: inherit; }
   color: var(--muted);
 }
 :root[data-theme="molten"] .button--ghost {
-  background: rgba(255,176,98,0.03);
-  border-color: rgba(255,198,124,0.14);
-  color: #f2dcb9;
+  background: rgba(255,176,98,0.02);
+  border-color: rgba(255,198,124,0.12);
+  color: #f2dfbc;
 }
 .button--google {
   background: rgba(255,255,255,0.95);
@@ -334,8 +334,8 @@ button, input, textarea, select { font: inherit; }
   overflow: hidden;
 }
 :root[data-theme="molten"] .showcase {
-  background: linear-gradient(180deg, rgba(255,174,94,0.14), rgba(255,255,255,0.04));
-  border-color: rgba(255,189,121,0.18);
+  background: linear-gradient(180deg, rgba(255,176,96,0.08), rgba(255,255,255,0.03));
+  border-color: rgba(255,189,121,0.14);
   box-shadow: 0 28px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,165,85,0.05);
 }
 .showcase::before {
@@ -390,8 +390,8 @@ button, input, textarea, select { font: inherit; }
 :root[data-theme="molten"] .article-card,
 :root[data-theme="molten"] .callout,
 :root[data-theme="molten"] .download-bar {
-  background: linear-gradient(180deg, rgba(255,176,98,0.1), rgba(255,255,255,0.035));
-  border-color: rgba(255,189,121,0.14);
+  background: linear-gradient(180deg, rgba(255,176,98,0.06), rgba(255,255,255,0.03));
+  border-color: rgba(255,189,121,0.1);
 }
 .mock-card { padding: 1rem; }
 .mock-kicker {
