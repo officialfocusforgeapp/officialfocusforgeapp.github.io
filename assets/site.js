@@ -303,6 +303,8 @@ function setupArticleNav() {
 
     let activeId = '';
     let ticking = false;
+    let pendingTargetId = '';
+    let pendingTargetTimer = 0;
 
     const setActive = (id) => {
       if (!id || activeId === id) return;
@@ -318,6 +320,21 @@ function setupArticleNav() {
       });
     };
 
+    const clearPendingTarget = () => {
+      if (pendingTargetTimer) window.clearTimeout(pendingTargetTimer);
+      pendingTargetTimer = 0;
+      pendingTargetId = '';
+    };
+
+    const setPendingTarget = (id) => {
+      clearPendingTarget();
+      pendingTargetId = id;
+      pendingTargetTimer = window.setTimeout(() => {
+        clearPendingTarget();
+        requestSync();
+      }, 900);
+    };
+
     const targetIsComfortablyVisible = (target) => {
       const offset = headerOffset();
       const rect = target.getBoundingClientRect();
@@ -325,8 +342,8 @@ function setupArticleNav() {
       const bottomBound = window.innerHeight - 24;
       const visibleTop = Math.max(rect.top, topBound);
       const visibleBottom = Math.min(rect.bottom, bottomBound);
-      const visibleHeight = visibleBottom - visibleTop;
-      const requiredHeight = Math.min(Math.max(rect.height * 0.45, 120), 240);
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+      const requiredHeight = Math.min(Math.max(rect.height * 0.38, 96), 220);
       return visibleHeight >= requiredHeight;
     };
 
@@ -337,12 +354,27 @@ function setupArticleNav() {
 
     const computeActiveSection = () => {
       const offset = headerOffset();
-      const focusLine = Math.max(offset + 36, Math.min(window.innerHeight * 0.32, offset + 210));
+      const topBound = offset + 18;
+      const bottomBound = window.innerHeight - 24;
+      const targetCenter = Math.max(topBound + 110, Math.min(window.innerHeight * 0.4, bottomBound - 110));
       let current = null;
+      let bestScore = -Infinity;
 
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        if (rect.top <= focusLine && rect.bottom >= focusLine) current = section;
+        const visibleTop = Math.max(rect.top, topBound);
+        const visibleBottom = Math.min(rect.bottom, bottomBound);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        if (!visibleHeight) return;
+
+        const visibleCenter = visibleTop + visibleHeight / 2;
+        const distancePenalty = Math.abs(visibleCenter - targetCenter);
+        const score = visibleHeight * 3 - distancePenalty;
+
+        if (score > bestScore) {
+          bestScore = score;
+          current = section;
+        }
       });
 
       if (current) return current;
@@ -353,6 +385,17 @@ function setupArticleNav() {
 
     const syncActiveSection = () => {
       ticking = false;
+      if (pendingTargetId) {
+        const pendingTarget = sections.find((section) => section.id === pendingTargetId);
+        if (!pendingTarget) {
+          clearPendingTarget();
+        } else if (!targetIsComfortablyVisible(pendingTarget)) {
+          setActive(pendingTargetId);
+          return;
+        } else {
+          clearPendingTarget();
+        }
+      }
       const current = computeActiveSection();
       if (current?.id) setActive(current.id);
     };
@@ -373,7 +416,10 @@ function setupArticleNav() {
         history.replaceState(null, '', id);
         setActive(id.slice(1));
         if (!targetIsComfortablyVisible(target)) {
+          setPendingTarget(target.id);
           scrollToSection(target, 'smooth');
+        } else {
+          clearPendingTarget();
         }
       });
     });
@@ -388,6 +434,7 @@ function setupArticleNav() {
           setActive(hashed.id);
           if (!targetIsComfortablyVisible(hashed)) {
             scrollToSection(hashed, 'auto');
+            clearPendingTarget();
           } else {
             requestSync();
           }
