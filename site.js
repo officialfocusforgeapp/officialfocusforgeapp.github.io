@@ -226,11 +226,70 @@ function setYear() {
   });
 }
 
+function setupArticleNav() {
+  document.querySelectorAll('.article-nav').forEach((nav) => {
+    const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+    if (!links.length) return;
+
+    const header = document.querySelector('.site-header');
+    const headerOffset = () => (header ? header.offsetHeight + 20 : 96);
+    const sections = links
+      .map((link) => {
+        const id = link.getAttribute('href');
+        return id ? document.querySelector(id) : null;
+      })
+      .filter(Boolean);
+
+    const setActive = (id) => {
+      links.forEach((link) => {
+        link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
+      });
+    };
+
+    links.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const id = link.getAttribute('href');
+        if (!id || !id.startsWith('#')) return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        event.preventDefault();
+        const top = window.scrollY + target.getBoundingClientRect().top - headerOffset();
+        history.replaceState(null, '', id);
+        window.scrollTo({ top, behavior: 'smooth' });
+        setActive(id.slice(1));
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible && visible.target && visible.target.id) setActive(visible.target.id);
+    }, { rootMargin: `-${headerOffset()}px 0px -55% 0px`, threshold: [0.2, 0.4, 0.65] });
+
+    sections.forEach((section) => observer.observe(section));
+
+    if (window.location.hash) {
+      const hashed = document.querySelector(window.location.hash);
+      if (hashed) {
+        setTimeout(() => {
+          const top = window.scrollY + hashed.getBoundingClientRect().top - headerOffset();
+          window.scrollTo({ top, behavior: 'auto' });
+          setActive(hashed.id);
+        }, 0);
+      }
+    } else if (sections[0] && sections[0].id) {
+      setActive(sections[0].id);
+    }
+  });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   renderNav();
   renderPlans();
   renderFaqs();
   setupDetails();
   setupMobileNav();
+  setupArticleNav();
   setYear();
 });
