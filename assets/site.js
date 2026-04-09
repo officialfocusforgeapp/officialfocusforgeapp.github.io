@@ -172,6 +172,7 @@ function renderPlans() {
       const attrs = isTrial
         ? 'href="#trial" data-trial-modal="true"'
         : `href="${href}" target="_blank" rel="noopener noreferrer"`;
+      const buttonClass = isTrial ? 'button--primary' : 'button--secondary';
       return `
       <article class="plan-card${isActive ? ' is-active' : ''}" data-plan-index="${index}" data-featured="${plan.featured}">
         <div class="plan-badge">${plan.tag}</div>
@@ -183,7 +184,7 @@ function renderPlans() {
           ${plan.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}
         </ul>
         <div class="plan-footer">
-          <a class="button ${isActive ? 'button--primary' : 'button--secondary'} button--small plan-card__cta" ${attrs}>${plan.cta}</a>
+          <a class="button ${buttonClass} button--small plan-card__cta" ${attrs}>${plan.cta}</a>
         </div>
       </article>`;
     }).join("");
@@ -495,11 +496,6 @@ function setupPlanRails() {
       cards.forEach((card, index) => {
         const isActive = index === boundedIndex;
         card.classList.toggle('is-active', isActive);
-        card.toggleAttribute('data-active', isActive);
-        const cta = card.querySelector('.plan-card__cta');
-        if (!cta) return;
-        cta.classList.toggle('button--primary', isActive);
-        cta.classList.toggle('button--secondary', !isActive);
       });
     };
 

@@ -30,17 +30,17 @@
 }
 
 :root[data-theme="molten"] {
-  --surface: rgba(69,40,18,0.8);
-  --surface-2: rgba(82,48,21,0.88);
-  --surface-3: rgba(100,58,24,0.94);
-  --muted: rgba(245,226,197,0.8);
-  --soft: rgba(245,226,197,0.54);
-  --line: rgba(205,136,49,0.16);
-  --line-strong: rgba(221,158,68,0.22);
-  --accent: #ff7f24;
-  --accent-2: #d9a447;
-  --glow: rgba(255,127,36,0.24);
-  --page-gradient: linear-gradient(180deg, rgba(255,127,36,0.18) 0%, rgba(255,127,36,0.06) 11%, rgba(217,164,71,0.03) 28%, transparent 46%), linear-gradient(136deg, rgba(217,164,71,0.06) 0%, rgba(255,127,36,0.03) 24%, transparent 44%), linear-gradient(180deg, #100b08 0%, #070607 36%, #030303 100%);
+  --surface: rgba(18,17,15,0.9);
+  --surface-2: rgba(26,24,21,0.94);
+  --surface-3: rgba(38,34,28,0.98);
+  --muted: rgba(245,230,199,0.82);
+  --soft: rgba(245,230,199,0.56);
+  --line: rgba(219,181,105,0.16);
+  --line-strong: rgba(238,205,136,0.24);
+  --accent: #e2b961;
+  --accent-2: #f6dfab;
+  --glow: rgba(226,185,97,0.18);
+  --page-gradient: linear-gradient(180deg, rgba(226,185,97,0.12) 0%, rgba(226,185,97,0.03) 10%, transparent 24%), radial-gradient(circle at 14% 0%, rgba(226,185,97,0.14), transparent 30%), radial-gradient(circle at 84% 8%, rgba(196,145,61,0.08), transparent 24%), linear-gradient(180deg, #090806 0%, #040404 40%, #020202 100%);
 }
 :root[data-theme="frozen"] {
   --accent: #7bc9ff;
@@ -227,11 +227,11 @@ button, input, textarea, select { font: inherit; }
 }
 :root[data-theme="molten"] .button--primary {
   background:
-    linear-gradient(180deg, #e2b252 0%, #cf852c 46%, #ff791d 100%) padding-box,
-    linear-gradient(180deg, rgba(245,214,148,0.4), rgba(204,122,39,0.34)) border-box;
+    linear-gradient(180deg, #f6e4b7 0%, #e1bc70 56%, #c9913d 100%) padding-box,
+    linear-gradient(180deg, rgba(251,238,204,0.48), rgba(207,155,72,0.34)) border-box;
   border-color: transparent;
   color: #2a1508;
-  box-shadow: inset 0 1px 0 rgba(255,236,193,0.2);
+  box-shadow: inset 0 1px 0 rgba(255,241,206,0.22);
 }
 .button--primary:hover,
 .button--primary:focus-visible {
@@ -247,9 +247,9 @@ button, input, textarea, select { font: inherit; }
   color: var(--text);
 }
 :root[data-theme="molten"] .button--secondary {
-  background: linear-gradient(180deg, rgba(71,38,15,0.92), rgba(27,16,9,0.96));
-  border-color: rgba(211,161,66,0.18);
-  color: #f1d8ac;
+  background: linear-gradient(180deg, rgba(29,25,19,0.96), rgba(15,13,11,0.98));
+  border-color: rgba(219,181,105,0.18);
+  color: #f0dab2;
 }
 .button--ghost {
   background: transparent;
@@ -257,9 +257,9 @@ button, input, textarea, select { font: inherit; }
   color: var(--muted);
 }
 :root[data-theme="molten"] .button--ghost {
-  background: rgba(255,121,29,0.02);
-  border-color: rgba(211,161,66,0.12);
-  color: #ead0a2;
+  background: rgba(226,185,97,0.03);
+  border-color: rgba(219,181,105,0.12);
+  color: #ead3a7;
 }
 .button--google {
   background: rgba(255,255,255,0.95);
@@ -331,16 +331,16 @@ button, input, textarea, select { font: inherit; }
   font-size: 0.92rem;
 }
 :root[data-theme="molten"] .eyebrow {
-  background: linear-gradient(180deg, rgba(211,161,66,0.14), rgba(255,121,29,0.06));
-  border-color: rgba(221,165,74,0.16);
-  color: #f0d2a0;
-  box-shadow: inset 0 1px 0 rgba(255,240,201,0.04);
+  background: linear-gradient(180deg, rgba(226,185,97,0.14), rgba(219,181,105,0.04));
+  border-color: rgba(228,192,116,0.16);
+  color: #f2d8a8;
+  box-shadow: inset 0 1px 0 rgba(255,244,213,0.04);
 }
 :root[data-theme="molten"] .hero h1 {
-  text-shadow: 0 18px 46px rgba(255,121,29,0.2);
+  text-shadow: 0 18px 40px rgba(226,185,97,0.12);
 }
 :root[data-theme="molten"] .hero p.lead {
-  color: rgba(246,226,197,0.78);
+  color: rgba(245,230,199,0.8);
 }
 .hero-meta span {
   display: inline-flex;
@@ -359,7 +359,7 @@ button, input, textarea, select { font: inherit; }
   padding: 0;
   background: none;
   border: 0;
-  color: #ebd0a1;
+  color: #ead7b0;
 }
 
 .showcase {
@@ -370,9 +370,9 @@ button, input, textarea, select { font: inherit; }
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
 }
 :root[data-theme="molten"] .showcase {
-  background: linear-gradient(180deg, rgba(58,34,15,0.9), rgba(20,13,8,0.95));
-  border-color: rgba(211,161,66,0.16);
-  box-shadow: inset 0 1px 0 rgba(255,226,170,0.04);
+  background: linear-gradient(180deg, rgba(21,20,18,0.94), rgba(10,10,9,0.98));
+  border-color: rgba(219,181,105,0.16);
+  box-shadow: inset 0 1px 0 rgba(255,235,189,0.04);
 }
 .phone-frame {
   position: relative;
@@ -382,8 +382,8 @@ button, input, textarea, select { font: inherit; }
   border: 1px solid rgba(255,255,255,0.08);
 }
 :root[data-theme="molten"] .phone-frame {
-  background: linear-gradient(180deg, rgba(35,21,11,0.97), rgba(15,9,6,0.99));
-  border-color: rgba(211,161,66,0.14);
+  background: linear-gradient(180deg, rgba(15,14,13,0.97), rgba(8,8,8,0.99));
+  border-color: rgba(219,181,105,0.14);
 }
 .phone-top {
   display: flex;
@@ -420,9 +420,9 @@ button, input, textarea, select { font: inherit; }
 :root[data-theme="molten"] .article-card,
 :root[data-theme="molten"] .callout,
 :root[data-theme="molten"] .download-bar {
-  background: linear-gradient(180deg, rgba(50,29,14,0.84), rgba(18,12,8,0.94));
-  border-color: rgba(211,161,66,0.16);
-  box-shadow: inset 0 1px 0 rgba(255,228,176,0.04);
+  background: linear-gradient(180deg, rgba(21,20,18,0.92), rgba(11,10,9,0.97));
+  border-color: rgba(219,181,105,0.14);
+  box-shadow: inset 0 1px 0 rgba(255,235,189,0.04);
 }
 .mock-card { padding: 1rem; }
 .mock-kicker {
@@ -502,8 +502,8 @@ button, input, textarea, select { font: inherit; }
   border: 1px solid rgba(255,255,255,0.06);
 }
 :root[data-theme="molten"] .metric {
-  background: linear-gradient(180deg, rgba(50,29,14,0.78), rgba(18,12,8,0.9));
-  border-color: rgba(211,161,66,0.14);
+  background: linear-gradient(180deg, rgba(24,22,19,0.88), rgba(11,10,9,0.95));
+  border-color: rgba(219,181,105,0.14);
 }
 .metric strong { display: block; font-size: 1.25rem; letter-spacing: -0.04em; }
 .metric span { color: var(--soft); font-size: 0.84rem; }
