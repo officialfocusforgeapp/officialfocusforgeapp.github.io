@@ -584,6 +584,11 @@ button, input, textarea, select { font: inherit; }
 .article-card p + p,
 .article-card ul,
 .article-card ol { margin-top: 0.85rem; }
+.article-endnote {
+  margin-top: 1.2rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
 .article-aside {
   position: sticky;
   top: calc(var(--nav-height) + 1.2rem);
