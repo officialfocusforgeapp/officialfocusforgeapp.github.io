@@ -75,16 +75,23 @@ button, input, textarea, select { font: inherit; }
 ::selection { background: color-mix(in srgb, var(--accent) 38%, transparent); color: var(--text); }
 
 .skip-link {
-  position: absolute;
+  position: fixed;
   left: 1rem;
-  top: -3rem;
+  top: 1rem;
   background: #fff;
   color: #111;
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
   z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(calc(-100% - 1rem));
 }
-.skip-link:focus { top: 1rem; }
+.skip-link:focus {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
 
 .site-shell {
   width: min(calc(100% - 2rem), var(--container));
