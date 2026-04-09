@@ -97,7 +97,6 @@ button, input, textarea, select { font: inherit; }
   z-index: 60;
   backdrop-filter: blur(18px);
   background: linear-gradient(180deg, rgba(7,7,8,0.9), rgba(7,7,8,0.68));
-  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .site-header__inner {
   width: min(calc(100% - 2rem), 1260px);
