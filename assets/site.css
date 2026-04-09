@@ -888,6 +888,10 @@ main [id] { scroll-margin-top: calc(var(--nav-height) + 20px); }
 .plan-rail .plan-card {
   min-height: 100%;
   scroll-snap-align: start;
+  cursor: pointer;
+}
+.plan-rail .plan-card .button {
+  cursor: pointer;
 }
 .plan-rail-intro {
   display: flex;

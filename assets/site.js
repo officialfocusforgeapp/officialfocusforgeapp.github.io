@@ -556,6 +556,12 @@ function setupPlanRails() {
     const isInteractiveTarget = (target) =>
       target instanceof Element && Boolean(target.closest(interactiveSelector));
 
+    const activateCard = (nextIndex, behavior = 'smooth') => {
+      hasInteracted = true;
+      setActiveCard(nextIndex);
+      centerCardInRail(nextIndex, behavior);
+    };
+
     const endDrag = (event) => {
       if (!pointerActive) return;
       pointerActive = false;
@@ -595,6 +601,12 @@ function setupPlanRails() {
         dragMoved = false;
         return;
       }
+      const card = event.target instanceof Element ? event.target.closest('.plan-card') : null;
+      if (!dragMoved && card) {
+        const nextIndex = cards.indexOf(card);
+        if (nextIndex >= 0) activateCard(nextIndex);
+        return;
+      }
       if (!dragMoved) return;
       event.preventDefault();
       event.stopPropagation();
@@ -620,10 +632,8 @@ function setupPlanRails() {
       else return;
 
       event.preventDefault();
-      hasInteracted = true;
       nextIndex = Math.max(0, Math.min(cards.length - 1, nextIndex));
-      setActiveCard(nextIndex);
-      centerCardInRail(nextIndex, 'auto');
+      activateCard(nextIndex, 'auto');
     });
 
     window.addEventListener('resize', () => {
