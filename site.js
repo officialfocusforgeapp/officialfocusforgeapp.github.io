@@ -22,7 +22,8 @@ const SITE = {
         "Upgrade path into stricter systems"
       ],
       featured: false,
-      cta: "View memberships"
+      cta: "Get on Google Play",
+      ctaType: "play"
     },
     {
       name: "Apprentice",
@@ -39,7 +40,8 @@ const SITE = {
         "Profile customization"
       ],
       featured: true,
-      cta: "Try for free"
+      cta: "Try for free",
+      ctaType: "trial"
     },
     {
       name: "Journeyman Partner",
@@ -54,7 +56,8 @@ const SITE = {
         "Approval-state workflows"
       ],
       featured: false,
-      cta: "Try for free"
+      cta: "Get on Google Play",
+      ctaType: "play"
     },
     {
       name: "Journeyman Family",
@@ -69,7 +72,8 @@ const SITE = {
         "Family management controls"
       ],
       featured: false,
-      cta: "Try for free"
+      cta: "Get on Google Play",
+      ctaType: "play"
     },
     {
       name: "Journeyman Total",
@@ -84,7 +88,8 @@ const SITE = {
         "Broader premium depth"
       ],
       featured: false,
-      cta: "Try for free"
+      cta: "Get on Google Play",
+      ctaType: "play"
     },
     {
       name: "Master Smith",
@@ -99,7 +104,8 @@ const SITE = {
         "Future flagship additions"
       ],
       featured: false,
-      cta: "Try for free"
+      cta: "Get on Google Play",
+      ctaType: "play"
     }
   ],
   faqs: [
@@ -156,8 +162,15 @@ function renderNav() {
 
 function renderPlans() {
   document.querySelectorAll("[data-plan-grid]").forEach((mount) => {
-    mount.classList.add("plan-grid");
-    mount.innerHTML = SITE.plans.map((plan) => `
+    const isRail = mount.hasAttribute('data-plan-rail');
+    mount.classList.add(isRail ? 'plan-rail' : 'plan-grid');
+    mount.innerHTML = SITE.plans.map((plan) => {
+      const isTrial = plan.ctaType === 'trial';
+      const href = isTrial ? '#trial' : SITE.googlePlayUrl;
+      const attrs = isTrial
+        ? 'href="#trial" data-trial-modal="true"'
+        : `href="${href}" target="_blank" rel="noopener noreferrer"`;
+      return `
       <article class="plan-card" data-featured="${plan.featured}">
         <div class="plan-badge">${plan.tag}</div>
         <h3>${plan.name}</h3>
@@ -168,10 +181,56 @@ function renderPlans() {
           ${plan.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}
         </ul>
         <div class="plan-footer">
-          <a class="button ${plan.featured ? 'button--primary' : 'button--secondary'} button--small" href="/memberships/#plans">${plan.cta}</a>
+          <a class="button ${plan.featured ? 'button--primary' : 'button--secondary'} button--small" ${attrs}>${plan.cta}</a>
         </div>
-      </article>
-    `).join("");
+      </article>`;
+    }).join("");
+  });
+}
+
+function renderTrialModal() {
+  if (document.querySelector('[data-trial-modal-root]')) return;
+  const modal = document.createElement('div');
+  modal.className = 'trial-modal';
+  modal.setAttribute('hidden', 'hidden');
+  modal.setAttribute('data-trial-modal-root', 'true');
+  modal.innerHTML = `
+    <div class="trial-modal__backdrop" data-trial-close="true"></div>
+    <div class="trial-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="trial-modal-title">
+      <button class="trial-modal__close" type="button" aria-label="Close" data-trial-close="true">×</button>
+      <div class="trial-modal__eyebrow">Free Trial</div>
+      <h2 id="trial-modal-title">Access a Free Trial in the App!</h2>
+      <p class="trial-modal__note">(New Users Only)</p>
+      <div class="trial-modal__actions">
+        <a class="button button--primary" href="${SITE.googlePlayUrl}" target="_blank" rel="noopener noreferrer">Open Google Play</a>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+function setupTrialModal() {
+  renderTrialModal();
+  const modal = document.querySelector('[data-trial-modal-root]');
+  if (!modal) return;
+  const open = () => {
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+  };
+  const close = () => {
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+  };
+  document.querySelectorAll('[data-trial-modal="true"]').forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      open();
+    });
+  });
+  modal.addEventListener('click', (event) => {
+    if (event.target instanceof HTMLElement && event.target.hasAttribute('data-trial-close')) close();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !modal.hidden) close();
   });
 }
 
@@ -288,6 +347,7 @@ window.addEventListener('DOMContentLoaded', () => {
   renderNav();
   renderPlans();
   renderFaqs();
+  setupTrialModal();
   setupDetails();
   setupMobileNav();
   setupArticleNav();
