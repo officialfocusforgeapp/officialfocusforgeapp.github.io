@@ -431,10 +431,10 @@ button, input, textarea, select { font: inherit; }
   position: absolute;
   inset: -4px;
   border-radius: calc(var(--radius-md) + 4px);
-  border: 1px solid color-mix(in srgb, var(--card-glow) 26%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-glow) 34%, transparent);
   background: transparent;
-  filter: blur(8px);
-  opacity: 0.72;
+  filter: blur(10px);
+  opacity: 0.84;
   z-index: -1;
   pointer-events: none;
 }
@@ -747,10 +747,10 @@ button, input, textarea, select { font: inherit; }
   position: absolute;
   inset: -4px;
   border-radius: 22px;
-  border: 1px solid color-mix(in srgb, var(--card-glow) 26%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-glow) 34%, transparent);
   background: transparent;
-  filter: blur(8px);
-  opacity: 0.72;
+  filter: blur(10px);
+  opacity: 0.84;
   z-index: -1;
   pointer-events: none;
 }
