@@ -185,7 +185,7 @@ function renderPlans() {
         ? 'href="#trial" data-trial-modal="true"'
         : `href="${href}" target="_blank" rel="noopener noreferrer"`;
       const buttonClass = isTrial ? 'button--primary' : 'button--secondary';
-      const promoBadge = plan.badge ? `<div class=\"plan-badge plan-badge--promo\">${plan.badge}</div>` : '';
+      const promoBadge = plan.badge ? `<div class="plan-badge plan-badge--promo">${plan.badge}</div>` : '';
       return `
       <article class="plan-card${isActive ? ' is-active' : ''}" data-plan-index="${index}" data-featured="${plan.featured}" data-plan-tone="${plan.tone}">
         <div class="plan-badge-row">
