@@ -12,6 +12,8 @@ const SITE = {
     {
       name: "Free",
       tag: "Starter",
+      badge: "No Ads!",
+      tone: "free",
       priceMonthly: "$0",
       priceYearly: "Always free",
       blurb: "Start with hard limits on the apps that cost you the most time.",
@@ -28,6 +30,8 @@ const SITE = {
     {
       name: "Apprentice",
       tag: "Best starting point",
+      badge: "Favorite!",
+      tone: "apprentice",
       priceMonthly: "$4.99/mo",
       priceYearly: "$49.99/yr",
       blurb: "Unlimited solo control with stricter blocking and customization.",
@@ -46,6 +50,8 @@ const SITE = {
     {
       name: "Journeyman Partner",
       tag: "Shared accountability",
+      badge: "Two Memberships Included!",
+      tone: "partner",
       priceMonthly: "$8.99/mo",
       priceYearly: "$79.99/yr",
       blurb: "Bring one partner into the loop for approvals, alerts, and shared sessions.",
@@ -62,6 +68,8 @@ const SITE = {
     {
       name: "Journeyman Family",
       tag: "Household controls",
+      badge: "For you and your kids!",
+      tone: "family",
       priceMonthly: "$12.99/mo",
       priceYearly: "$119.99/yr",
       blurb: "Parent controls for linked child devices and household scheduling.",
@@ -78,6 +86,8 @@ const SITE = {
     {
       name: "Journeyman Total",
       tag: "Partner + Family",
+      badge: "A Family Favorite!",
+      tone: "total",
       priceMonthly: "$16.99/mo",
       priceYearly: "$159.99/yr",
       blurb: "Combine partner accountability with family management in one tier.",
@@ -94,6 +104,8 @@ const SITE = {
     {
       name: "Master Smith",
       tag: "Flagship tier",
+      badge: "VIP",
+      tone: "master",
       priceMonthly: "$19.99/mo",
       priceYearly: "$179.99/yr",
       blurb: "Recovery-focused tools, deeper customization, and the highest premium limits.",
@@ -105,7 +117,8 @@ const SITE = {
       ],
       featured: false,
       cta: "Get on Google Play",
-      ctaType: "play"
+      ctaType: "play",
+      highlightBullet: "Future flagship additions"
     }
   ],
   faqs: [
@@ -174,14 +187,19 @@ function renderPlans() {
         : `href="${href}" target="_blank" rel="noopener noreferrer"`;
       const buttonClass = isTrial ? 'button--primary' : 'button--secondary';
       return `
-      <article class="plan-card${isActive ? ' is-active' : ''}" data-plan-index="${index}" data-featured="${plan.featured}">
-        <div class="plan-badge">${plan.tag}</div>
+      <article class="plan-card${isActive ? ' is-active' : ''}" data-plan-index="${index}" data-featured="${plan.featured}" data-plan-tone="${plan.tone}">
+        <div class="plan-badge-row">
+          <div class="plan-badge plan-badge--primary">${plan.tag}</div>
+          <div class="plan-badge plan-badge--promo">${plan.badge}</div>
+        </div>
         <h3>${plan.name}</h3>
         <div class="plan-price">${plan.priceMonthly}</div>
         <div class="tiny-note">${plan.priceYearly}</div>
         <p class="plan-sub">${plan.blurb}</p>
-        <ul class="feature-list">
-          ${plan.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}
+        <ul class="feature-list plan-features">
+          ${plan.bullets.map((bullet) => bullet === plan.highlightBullet
+            ? `<li class="feature-list__item feature-list__item--flagship"><span class="feature-list__callout">Flagship additions</span><span>${bullet}</span></li>`
+            : `<li>${bullet}</li>`).join("")}
         </ul>
         <div class="plan-footer">
           <a class="button ${buttonClass} button--small plan-card__cta" ${attrs}>${plan.cta}</a>
