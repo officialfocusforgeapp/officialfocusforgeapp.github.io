@@ -12,7 +12,6 @@ const SITE = {
     {
       name: "Free",
       tag: "Starter",
-      badge: "No Ads!",
       tone: "free",
       priceMonthly: "$0",
       priceYearly: "Always free",
@@ -186,11 +185,12 @@ function renderPlans() {
         ? 'href="#trial" data-trial-modal="true"'
         : `href="${href}" target="_blank" rel="noopener noreferrer"`;
       const buttonClass = isTrial ? 'button--primary' : 'button--secondary';
+      const promoBadge = plan.badge ? `<div class=\"plan-badge plan-badge--promo\">${plan.badge}</div>` : '';
       return `
       <article class="plan-card${isActive ? ' is-active' : ''}" data-plan-index="${index}" data-featured="${plan.featured}" data-plan-tone="${plan.tone}">
         <div class="plan-badge-row">
           <div class="plan-badge plan-badge--primary">${plan.tag}</div>
-          <div class="plan-badge plan-badge--promo">${plan.badge}</div>
+          ${promoBadge}
         </div>
         <h3>${plan.name}</h3>
         <div class="plan-price">${plan.priceMonthly}</div>
