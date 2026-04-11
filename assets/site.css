@@ -429,19 +429,28 @@ button, input, textarea, select { font: inherit; }
 .download-bar::before {
   content: "";
   position: absolute;
-  inset: -12px;
-  border-radius: calc(var(--radius-md) + 12px);
-  padding: 10px;
-  background: radial-gradient(140% 140% at 50% 50%, transparent 60%, color-mix(in srgb, var(--card-glow) 18%, transparent) 73%, color-mix(in srgb, var(--card-glow-soft) 12%, transparent) 84%, transparent 100%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  filter: blur(16px);
-  opacity: 0.72;
+  inset: -18px;
+  border-radius: calc(var(--radius-md) + 18px);
+  background:
+    radial-gradient(62% 18% at 50% 0%, color-mix(in srgb, var(--card-glow-soft) 20%, transparent) 0%, transparent 72%),
+    radial-gradient(62% 18% at 50% 100%, color-mix(in srgb, var(--card-glow) 16%, transparent) 0%, transparent 72%),
+    radial-gradient(18% 62% at 0% 50%, color-mix(in srgb, var(--card-glow) 12%, transparent) 0%, transparent 72%),
+    radial-gradient(18% 62% at 100% 50%, color-mix(in srgb, var(--card-glow) 12%, transparent) 0%, transparent 72%),
+    radial-gradient(24% 24% at 10% 10%, color-mix(in srgb, var(--card-glow-soft) 10%, transparent) 0%, transparent 78%),
+    radial-gradient(24% 24% at 90% 10%, color-mix(in srgb, var(--card-glow-soft) 10%, transparent) 0%, transparent 78%),
+    radial-gradient(24% 24% at 10% 90%, color-mix(in srgb, var(--card-glow) 8%, transparent) 0%, transparent 78%),
+    radial-gradient(24% 24% at 90% 90%, color-mix(in srgb, var(--card-glow) 8%, transparent) 0%, transparent 78%);
+  filter: blur(18px);
+  opacity: 0.34;
+  transition: opacity 180ms ease, filter 180ms ease;
   z-index: -1;
   pointer-events: none;
 }
+:is(.mock-card, .feature-card, .info-card, .use-card, .plan-card, .faq-card, .article-card, .callout, .download-bar):is(:hover, :focus-within, .is-active)::before {
+  opacity: 0.5;
+  filter: blur(20px);
+}
+
 :root[data-theme="molten"] .mock-card,
 :root[data-theme="molten"] .feature-card,
 :root[data-theme="molten"] .info-card,
@@ -749,19 +758,28 @@ button, input, textarea, select { font: inherit; }
 .faq-item::before {
   content: "";
   position: absolute;
-  inset: -12px;
-  border-radius: 30px;
-  padding: 10px;
-  background: radial-gradient(140% 140% at 50% 50%, transparent 60%, color-mix(in srgb, var(--card-glow) 18%, transparent) 73%, color-mix(in srgb, var(--card-glow-soft) 12%, transparent) 84%, transparent 100%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  filter: blur(16px);
-  opacity: 0.72;
+  inset: -18px;
+  border-radius: 36px;
+  background:
+    radial-gradient(62% 18% at 50% 0%, color-mix(in srgb, var(--card-glow-soft) 20%, transparent) 0%, transparent 72%),
+    radial-gradient(62% 18% at 50% 100%, color-mix(in srgb, var(--card-glow) 16%, transparent) 0%, transparent 72%),
+    radial-gradient(18% 62% at 0% 50%, color-mix(in srgb, var(--card-glow) 12%, transparent) 0%, transparent 72%),
+    radial-gradient(18% 62% at 100% 50%, color-mix(in srgb, var(--card-glow) 12%, transparent) 0%, transparent 72%),
+    radial-gradient(24% 24% at 10% 10%, color-mix(in srgb, var(--card-glow-soft) 10%, transparent) 0%, transparent 78%),
+    radial-gradient(24% 24% at 90% 10%, color-mix(in srgb, var(--card-glow-soft) 10%, transparent) 0%, transparent 78%),
+    radial-gradient(24% 24% at 10% 90%, color-mix(in srgb, var(--card-glow) 8%, transparent) 0%, transparent 78%),
+    radial-gradient(24% 24% at 90% 90%, color-mix(in srgb, var(--card-glow) 8%, transparent) 0%, transparent 78%);
+  filter: blur(18px);
+  opacity: 0.34;
+  transition: opacity 180ms ease, filter 180ms ease;
   z-index: -1;
   pointer-events: none;
 }
+.faq-item:is(:hover, :focus-within, [open], .is-active)::before {
+  opacity: 0.5;
+  filter: blur(20px);
+}
+
 :root[data-theme="molten"] .faq-item {
   background: linear-gradient(180deg, rgba(50,29,14,0.84), rgba(18,12,8,0.94));
   border-color: rgba(211,161,66,0.16);
