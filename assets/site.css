@@ -270,11 +270,11 @@ button, input, textarea, select { font: inherit; }
 .button--small { min-height: 40px; padding: 0.68rem 0.95rem; font-size: 0.92rem; }
 
 .page {
-  padding-top: 2rem;
+  padding-top: 0.85rem;
   padding-bottom: 5rem;
 }
 .hero {
-  padding: 4rem 0 2rem;
+  padding: 2.5rem 0 2rem;
 }
 .hero-grid {
   display: grid;
@@ -429,12 +429,16 @@ button, input, textarea, select { font: inherit; }
 .download-bar::before {
   content: "";
   position: absolute;
-  inset: -4px;
-  border-radius: calc(var(--radius-md) + 4px);
-  border: 1px solid color-mix(in srgb, var(--card-glow) 34%, transparent);
-  background: transparent;
-  filter: blur(10px);
-  opacity: 0.84;
+  inset: -6px;
+  border-radius: calc(var(--radius-md) + 6px);
+  padding: 2px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--card-glow) 58%, transparent), color-mix(in srgb, var(--card-glow-soft) 28%, transparent) 52%, color-mix(in srgb, var(--card-glow) 34%, transparent));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  filter: blur(11px);
+  opacity: 0.9;
   z-index: -1;
   pointer-events: none;
 }
@@ -745,12 +749,16 @@ button, input, textarea, select { font: inherit; }
 .faq-item::before {
   content: "";
   position: absolute;
-  inset: -4px;
-  border-radius: 22px;
-  border: 1px solid color-mix(in srgb, var(--card-glow) 34%, transparent);
-  background: transparent;
-  filter: blur(10px);
-  opacity: 0.84;
+  inset: -6px;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--card-glow) 58%, transparent), color-mix(in srgb, var(--card-glow-soft) 28%, transparent) 52%, color-mix(in srgb, var(--card-glow) 34%, transparent));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  filter: blur(11px);
+  opacity: 0.9;
   z-index: -1;
   pointer-events: none;
 }
@@ -785,7 +793,7 @@ button, input, textarea, select { font: inherit; }
 }
 
 .page-hero {
-  padding: 3.4rem 0 1.4rem;
+  padding: 2rem 0 1.4rem;
   max-width: 760px;
 }
 .page-hero .lead { font-size: var(--body-large); }
