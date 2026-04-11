@@ -448,7 +448,7 @@ button, input, textarea, select { font: inherit; }
 :root[data-theme="molten"] .download-bar {
   background: linear-gradient(180deg, rgba(21,20,18,0.92), rgba(11,10,9,0.97));
   border-color: rgba(223,168,86,0.14);
-  box-shadow: inset 0 1px 0 rgba(255,235,189,0.04), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,235,189,0.04);
 }
 .mock-card { padding: 1rem; }
 .mock-kicker {
@@ -742,7 +742,7 @@ button, input, textarea, select { font: inherit; }
 :root[data-theme="molten"] .faq-item {
   background: linear-gradient(180deg, rgba(50,29,14,0.84), rgba(18,12,8,0.94));
   border-color: rgba(211,161,66,0.16);
-  box-shadow: inset 0 1px 0 rgba(255,228,176,0.04), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,228,176,0.04);
 }
 .faq-question {
   width: 100%;
