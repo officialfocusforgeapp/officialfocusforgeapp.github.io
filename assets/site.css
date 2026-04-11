@@ -365,16 +365,16 @@ button, input, textarea, select { font: inherit; }
 }
 
 .showcase {
-  background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
-  border: 1px solid transparent;
-  border-radius: 32px;
-  padding: 1.1rem;
-  box-shadow: 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent), 0 10px 24px color-mix(in srgb, var(--card-glow) 5%, transparent);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
 }
 :root[data-theme="molten"] .showcase {
-  background: linear-gradient(180deg, rgba(21,20,18,0.94), rgba(10,10,9,0.98));
+  background: transparent;
   border-color: transparent;
-  box-shadow: 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent), 0 10px 24px color-mix(in srgb, var(--card-glow) 5%, transparent);
+  box-shadow: none;
 }
 .phone-frame {
   position: relative;
@@ -414,7 +414,7 @@ button, input, textarea, select { font: inherit; }
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.035));
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius-md);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent), 0 10px 24px color-mix(in srgb, var(--card-glow) 5%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent);
 }
 :root[data-theme="molten"] .mock-card,
 :root[data-theme="molten"] .feature-card,
@@ -427,7 +427,7 @@ button, input, textarea, select { font: inherit; }
 :root[data-theme="molten"] .download-bar {
   background: linear-gradient(180deg, rgba(21,20,18,0.92), rgba(11,10,9,0.97));
   border-color: rgba(223,168,86,0.14);
-  box-shadow: inset 0 1px 0 rgba(255,235,189,0.04), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent), 0 10px 24px color-mix(in srgb, var(--card-glow) 5%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,235,189,0.04), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent);
 }
 .mock-card { padding: 1rem; }
 .mock-kicker {
@@ -643,7 +643,7 @@ button, input, textarea, select { font: inherit; }
 .plan-card.is-active {
   background: linear-gradient(180deg, color-mix(in srgb, var(--plan-accent) 16%, rgba(255,255,255,0.08)), color-mix(in srgb, var(--plan-accent) 7%, rgba(255,255,255,0.03)));
   border-color: color-mix(in srgb, var(--plan-accent) 34%, rgba(255,255,255,0.16));
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--plan-accent-soft) 18%, rgba(255,255,255,0.12)), 0 0 20px color-mix(in srgb, var(--plan-accent) 12%, transparent), 0 12px 28px color-mix(in srgb, var(--plan-accent) 6%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--plan-accent-soft) 18%, rgba(255,255,255,0.12)), 0 0 20px color-mix(in srgb, var(--plan-accent) 12%, transparent);
 }
 .plan-badge-row {
   display: flex;
@@ -714,13 +714,13 @@ button, input, textarea, select { font: inherit; }
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 18px;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.035));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent), 0 10px 24px color-mix(in srgb, var(--card-glow) 5%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent);
   overflow: hidden;
 }
 :root[data-theme="molten"] .faq-item {
   background: linear-gradient(180deg, rgba(50,29,14,0.84), rgba(18,12,8,0.94));
   border-color: rgba(211,161,66,0.16);
-  box-shadow: inset 0 1px 0 rgba(255,228,176,0.04), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent), 0 10px 24px color-mix(in srgb, var(--card-glow) 5%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,228,176,0.04), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent);
 }
 .faq-question {
   width: 100%;
@@ -744,7 +744,7 @@ button, input, textarea, select { font: inherit; }
 .faq-item.is-active {
   background: var(--active-surface);
   border-color: var(--active-border);
-  box-shadow: var(--active-shadow), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent), 0 10px 24px color-mix(in srgb, var(--card-glow) 5%, transparent);
+  box-shadow: var(--active-shadow), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent);
 }
 
 .page-hero {
@@ -812,7 +812,7 @@ button, input, textarea, select { font: inherit; }
 .callout.is-active {
   background: var(--active-surface);
   border-color: var(--active-border);
-  box-shadow: var(--active-shadow), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent), 0 10px 24px color-mix(in srgb, var(--card-glow) 5%, transparent);
+  box-shadow: var(--active-shadow), 0 0 18px color-mix(in srgb, var(--card-glow) 10%, transparent);
 }
 .callout strong { display: block; margin-bottom: 0.35rem; letter-spacing: -0.02em; }
 
@@ -924,8 +924,7 @@ main [id] { scroll-margin-top: calc(var(--nav-height) + 20px); }
   .faq-card,
   .article-card,
   .download-bar,
-  .callout,
-  .showcase { padding: 1rem; }
+  .callout { padding: 1rem; }
   .hero-actions,
   .stack-actions,
   .download-bar,
