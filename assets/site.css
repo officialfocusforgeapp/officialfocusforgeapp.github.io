@@ -429,10 +429,12 @@ button, input, textarea, select { font: inherit; }
 .download-bar::before {
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--card-glow) 16%, transparent);
-  opacity: 0.42;
+  inset: -4px;
+  border-radius: calc(var(--radius-md) + 4px);
+  border: 1px solid color-mix(in srgb, var(--card-glow) 26%, transparent);
+  background: transparent;
+  filter: blur(8px);
+  opacity: 0.72;
   z-index: -1;
   pointer-events: none;
 }
@@ -743,10 +745,12 @@ button, input, textarea, select { font: inherit; }
 .faq-item::before {
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--card-glow) 16%, transparent);
-  opacity: 0.42;
+  inset: -4px;
+  border-radius: 22px;
+  border: 1px solid color-mix(in srgb, var(--card-glow) 26%, transparent);
+  background: transparent;
+  filter: blur(8px);
+  opacity: 0.72;
   z-index: -1;
   pointer-events: none;
 }
