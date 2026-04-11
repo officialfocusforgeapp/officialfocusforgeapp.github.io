@@ -429,11 +429,10 @@ button, input, textarea, select { font: inherit; }
 .download-bar::before {
   content: "";
   position: absolute;
-  inset: -8px;
-  border-radius: calc(var(--radius-md) + 8px);
-  background: radial-gradient(circle at center, color-mix(in srgb, var(--card-glow) 16%, transparent) 0%, color-mix(in srgb, var(--card-glow) 9%, transparent) 46%, transparent 74%);
-  filter: blur(16px);
-  opacity: 0.95;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--card-glow) 16%, transparent);
+  opacity: 0.42;
   z-index: -1;
   pointer-events: none;
 }
@@ -732,12 +731,24 @@ button, input, textarea, select { font: inherit; }
 .faq-item {
   --card-glow: var(--accent);
   --card-glow-soft: var(--accent-2);
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 18px;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.035));
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
-  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--card-glow) 14%, transparent));
-  overflow: hidden;
+  overflow: visible;
+}
+.faq-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--card-glow) 16%, transparent);
+  opacity: 0.42;
+  z-index: -1;
+  pointer-events: none;
 }
 :root[data-theme="molten"] .faq-item {
   background: linear-gradient(180deg, rgba(50,29,14,0.84), rgba(18,12,8,0.94));
