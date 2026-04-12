@@ -2,12 +2,14 @@
   {
     "relation": [
       "delegate_permission/common.handle_all_urls"
+      "delegate_permission/common.get_login_creds"
     ],
     "target": {
       "namespace": "android_app",
       "package_name": "app.focusforge",
       "sha256_cert_fingerprints": [
         "FD:A5:28:62:33:EF:25:9E:0D:46:46:E3:27:FD:4F:01:90:EA:0E:68:4D:72:D0:DF:20:F7:87:2D:06:BF:32:CF"
+        "8D:55:5E:93:48:BB:83:AE:22:44:E4:00:99:50:54:64:EF:5B:F2:51:95:F7:4E:68:95:55:26:D3:21:8F:70:66"
       ]
     }
   }
