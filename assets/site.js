@@ -12,6 +12,8 @@ const SITE = {
     {
       name: "Free",
       tag: "Starter",
+      badge: "Free Dragon Included!",
+      badgeStyle: "dragon-note",
       tone: "free",
       priceMonthly: "$0",
       priceYearly: "Always free",
@@ -220,7 +222,9 @@ function renderPlans() {
         ? 'href="#trial" data-trial-modal="true"'
         : `href="${href}" target="_blank" rel="noopener noreferrer"`;
       const buttonClass = isTrial ? 'button--primary' : 'button--secondary';
-      const promoBadge = plan.badge ? `<div class="plan-badge plan-badge--promo">${plan.badge}</div>` : '';
+      const promoBadgeClass = ["plan-badge", "plan-badge--promo"];
+      if (plan.badgeStyle) promoBadgeClass.push(`plan-badge--${plan.badgeStyle}`);
+      const promoBadge = plan.badge ? `<div class="${promoBadgeClass.join(" ")}">${plan.badge}</div>` : '';
       return `
       <article class="plan-card${isActive ? ' is-active' : ''}" data-plan-index="${index}" data-featured="${plan.featured}" data-plan-tone="${plan.tone}">
         <div class="plan-badge-row">
