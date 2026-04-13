@@ -119,19 +119,19 @@ const SITE = {
     },
     {
       q: "Why does the app request Accessibility?",
-      a: "Accessibility is used so FocusForge can detect which app is in the foreground and apply the blocking rules you chose. It is not used to read typed content, messages, or general screen contents."
+      a: "Accessibility is used so FocusForge can detect the foreground app and, in supported browsers, visible browser text that looks like a domain or URL so selected app and website rules can be enforced. It is not intended for password capture, messaging apps, or general-purpose screen recording."
     },
     {
       q: "What is Usage Access for?",
-      a: "Usage Access is optional. When enabled, it powers app-time insights and related diagnostics."
+      a: "Usage Access is optional. When enabled, it powers app-time insights and projections."
     },
     {
       q: "Do cloud features rely on outside providers?",
-      a: "Yes. Cloud-backed features may rely on configured providers such as Firebase and Google Play billing."
+      a: "Yes. Signed-in and cloud-backed features may use Firebase for account sync, notifications, social and family features, selected media sync, and crash diagnostics, and Google Play for subscription billing."
     },
     {
       q: "How do I delete account data?",
-      a: "Use the live Delete Account page linked in the footer. It explains what to send and how cloud-backed account data requests are handled."
+      a: "Use the live Delete Account page linked in the footer for cloud-backed deletion requests. Local on-device data can be exported or cleared from the app Privacy screen."
     }
   ]
 };
