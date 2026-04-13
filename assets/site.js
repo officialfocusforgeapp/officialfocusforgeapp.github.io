@@ -716,25 +716,166 @@ function setupPlanRails() {
   });
 }
 
+const HOURS_COUNTER_FORMATTER = new Intl.NumberFormat('en-US');
+const HOURS_COUNTER_ANIMATION_MS = 760;
+
+function parseHoursCounterEpoch(counter) {
+  const rawValue = counter.dataset.hoursCounterEpoch;
+  if (!rawValue) return Date.now();
+
+  const numericValue = Number(rawValue);
+  if (Number.isFinite(numericValue)) return numericValue;
+
+  const parsedValue = Date.parse(rawValue);
+  return Number.isFinite(parsedValue) ? parsedValue : Date.now();
+}
+
+function createHoursCounterCell(digit) {
+  const cell = document.createElement('span');
+  cell.className = 'hours-counter-cell';
+  cell.textContent = String(digit);
+  return cell;
+}
+
+function createHoursCounterDigit(previousDigit, nextDigit, shouldAnimate, isNewDigit) {
+  const digit = document.createElement('span');
+  digit.className = 'hours-counter-digit';
+  if (isNewDigit) digit.classList.add('is-new');
+
+  const track = document.createElement('span');
+  track.className = 'hours-counter-track';
+
+  const delta = shouldAnimate ? (nextDigit - previousDigit + 10) % 10 : 0;
+  const sequence = delta === 0 ? [nextDigit] : Array.from({ length: delta + 1 }, (_, index) => (previousDigit + index) % 10);
+
+  sequence.forEach((digitValue) => {
+    track.append(createHoursCounterCell(digitValue));
+  });
+
+  if (delta > 0) {
+    track.dataset.tickerSteps = String(delta);
+    track.dataset.tickerTargetDigit = String(nextDigit);
+  }
+
+  digit.append(track);
+  return digit;
+}
+
+function createHoursCounterSeparator(character) {
+  const separator = document.createElement('span');
+  separator.className = 'hours-counter-separator';
+  separator.textContent = character;
+  return separator;
+}
+
+function finalizeHoursCounterTrack(track) {
+  if (track.dataset.tickerSettled === 'true') return;
+  track.dataset.tickerSettled = 'true';
+
+  const finalDigit = Number(track.dataset.tickerTargetDigit || 0);
+  track.classList.remove('is-animating');
+  track.style.transform = 'translateY(0)';
+  track.replaceChildren(createHoursCounterCell(finalDigit));
+}
+
+function animateHoursCounter(counter) {
+  const tracks = Array.from(counter.querySelectorAll('.hours-counter-track[data-ticker-steps]'));
+  if (!tracks.length) return;
+
+  window.requestAnimationFrame(() => {
+    tracks.forEach((track) => {
+      const steps = Number(track.dataset.tickerSteps || 0);
+      if (!steps) return;
+
+      const finalize = () => finalizeHoursCounterTrack(track);
+
+      track.classList.add('is-animating');
+      track.style.transform = `translateY(calc(${steps} * -1em))`;
+      track.addEventListener('transitionend', finalize, { once: true });
+      window.setTimeout(finalize, HOURS_COUNTER_ANIMATION_MS + 120);
+    });
+  });
+}
+
+function renderHoursCounter(counter, value, shouldAnimate) {
+  const safeValue = Math.max(0, value);
+  const previousValue = Number(counter.dataset.hoursCounterValue || safeValue);
+  const formattedValue = HOURS_COUNTER_FORMATTER.format(safeValue);
+  const nextDigits = String(safeValue);
+  const previousDigits = String(Math.max(0, previousValue));
+  const totalDigits = nextDigits.length;
+  const fragment = document.createDocumentFragment();
+  let digitIndex = 0;
+
+  for (const character of formattedValue) {
+    if (/\d/.test(character)) {
+      const placeFromRight = totalDigits - digitIndex - 1;
+      const previousIndex = previousDigits.length - placeFromRight - 1;
+      const previousDigit = previousIndex >= 0 ? Number(previousDigits[previousIndex]) : 0;
+      const nextDigit = Number(character);
+      const isNewDigit = previousIndex < 0;
+
+      fragment.append(createHoursCounterDigit(
+        shouldAnimate ? previousDigit : nextDigit,
+        nextDigit,
+        shouldAnimate,
+        isNewDigit
+      ));
+
+      digitIndex += 1;
+      continue;
+    }
+
+    fragment.append(createHoursCounterSeparator(character));
+  }
+
+  counter.replaceChildren(fragment);
+  counter.dataset.hoursCounterValue = String(safeValue);
+  counter.setAttribute('aria-label', `${formattedValue} hours regained through FocusForge`);
+
+  if (shouldAnimate) animateHoursCounter(counter);
+}
+
 function setupHoursCounter() {
   document.querySelectorAll('[data-hours-counter]').forEach((counter) => {
     if (counter.dataset.counterBound === 'true') return;
     counter.dataset.counterBound = 'true';
 
-    let currentValue = Number(counter.dataset.hoursCounterStart || 0);
+    const startValue = Number(counter.dataset.hoursCounterStart || 0);
     const step = Number(counter.dataset.hoursCounterStep || 5);
     const intervalMs = Number(counter.dataset.hoursCounterInterval || 1500);
-    const formatValue = (value) => Math.max(0, value).toLocaleString('en-US');
+    const epochMs = parseHoursCounterEpoch(counter);
 
-    counter.textContent = formatValue(currentValue);
+    const getCurrentValue = () => {
+      const elapsedMs = Math.max(0, Date.now() - epochMs);
+      const increments = Math.floor(elapsedMs / intervalMs);
+      return Math.max(0, startValue + increments * step);
+    };
 
-    window.setInterval(() => {
-      currentValue += step;
-      counter.classList.remove('is-updating');
-      void counter.offsetWidth;
-      counter.textContent = formatValue(currentValue);
-      counter.classList.add('is-updating');
-    }, intervalMs);
+    const syncCounter = (shouldAnimate) => {
+      const nextValue = getCurrentValue();
+      const currentValue = Number(counter.dataset.hoursCounterValue || Number.NaN);
+      const animateUpdate = shouldAnimate && Number.isFinite(currentValue) && nextValue !== currentValue;
+      renderHoursCounter(counter, nextValue, animateUpdate);
+    };
+
+    const scheduleNextSync = () => {
+      const elapsedMs = Math.max(0, Date.now() - epochMs);
+      const remainderMs = elapsedMs % intervalMs;
+      const delayMs = remainderMs === 0 ? intervalMs : intervalMs - remainderMs;
+
+      window.setTimeout(() => {
+        syncCounter(true);
+        scheduleNextSync();
+      }, delayMs);
+    };
+
+    syncCounter(false);
+    scheduleNextSync();
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') syncCounter(false);
+    });
   });
 }
 
