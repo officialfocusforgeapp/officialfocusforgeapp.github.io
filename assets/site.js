@@ -42,6 +42,12 @@ const SITE = {
         "Theme Studio",
         "Profile customization"
       ],
+      promoCards: [
+        {
+          text: "Free Dragon Included!",
+          tone: "dragon"
+        }
+      ],
       featured: true,
       cta: "Try for free",
       ctaType: "trial"
@@ -59,6 +65,12 @@ const SITE = {
         "Partner sessions",
         "Partner alerts",
         "Approval-state workflows"
+      ],
+      promoCards: [
+        {
+          text: "Free Dragon Included!",
+          tone: "dragon"
+        }
       ],
       featured: false,
       cta: "Get on Google Play",
@@ -78,6 +90,12 @@ const SITE = {
         "Household scheduling",
         "Family management controls"
       ],
+      promoCards: [
+        {
+          text: "Free Dragon Included!",
+          tone: "dragon"
+        }
+      ],
       featured: false,
       cta: "Get on Google Play",
       ctaType: "play"
@@ -96,6 +114,12 @@ const SITE = {
         "Shared accountability + household control",
         "Broader premium depth"
       ],
+      promoCards: [
+        {
+          text: "Free Dragon Included!",
+          tone: "dragon"
+        }
+      ],
       featured: false,
       cta: "Get on Google Play",
       ctaType: "play"
@@ -113,6 +137,16 @@ const SITE = {
         "Custom profile photos",
         "Deeper premium limits",
         "Future flagship additions"
+      ],
+      promoCards: [
+        {
+          text: "Free Dragon Included!",
+          tone: "dragon"
+        },
+        {
+          text: "Free Monthly Ember Shards Package",
+          tone: "ember"
+        }
       ],
       featured: false,
       cta: "Get on Google Play",
@@ -181,6 +215,7 @@ function renderPlans() {
       const isTrial = plan.ctaType === 'trial';
       const isActive = Boolean(plan.featured);
       const href = isTrial ? '#trial' : SITE.googlePlayUrl;
+      const promoCards = Array.isArray(plan.promoCards) ? plan.promoCards : [];
       const attrs = isTrial
         ? 'href="#trial" data-trial-modal="true"'
         : `href="${href}" target="_blank" rel="noopener noreferrer"`;
@@ -201,6 +236,14 @@ function renderPlans() {
             ? `<li class="feature-list__item feature-list__item--flagship"><span class="feature-list__callout">Flagship additions</span><span>${bullet}</span></li>`
             : `<li>${bullet}</li>`).join("")}
         </ul>
+        ${promoCards.length ? `
+        <div class="plan-mini-card-group" aria-label="Included bonuses">
+          ${promoCards.map((card) => `
+            <div class="plan-mini-card plan-mini-card--${card.tone || 'dragon'}">
+              <span class="plan-mini-card__text">${card.text}</span>
+            </div>
+          `).join("")}
+        </div>` : ''}
         <div class="plan-footer">
           <a class="button ${buttonClass} button--small plan-card__cta" ${attrs}>${plan.cta}</a>
         </div>
@@ -673,6 +716,28 @@ function setupPlanRails() {
   });
 }
 
+function setupHoursCounter() {
+  document.querySelectorAll('[data-hours-counter]').forEach((counter) => {
+    if (counter.dataset.counterBound === 'true') return;
+    counter.dataset.counterBound = 'true';
+
+    let currentValue = Number(counter.dataset.hoursCounterStart || 0);
+    const step = Number(counter.dataset.hoursCounterStep || 5);
+    const intervalMs = Number(counter.dataset.hoursCounterInterval || 1500);
+    const formatValue = (value) => Math.max(0, value).toLocaleString('en-US');
+
+    counter.textContent = formatValue(currentValue);
+
+    window.setInterval(() => {
+      currentValue += step;
+      counter.classList.remove('is-updating');
+      void counter.offsetWidth;
+      counter.textContent = formatValue(currentValue);
+      counter.classList.add('is-updating');
+    }, intervalMs);
+  });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   renderNav();
   renderPlans();
@@ -682,5 +747,6 @@ window.addEventListener('DOMContentLoaded', () => {
   setupMobileNav();
   setupArticleNav();
   setupPlanRails();
+  setupHoursCounter();
   setYear();
 });
