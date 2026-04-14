@@ -1230,8 +1230,14 @@ main [id] { scroll-margin-top: calc(var(--nav-height) + 20px); }
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
-  padding: 0.15rem var(--rail-edge-padding, 0.2rem) 0.85rem;
-  scroll-padding-inline: var(--rail-edge-padding, 0.2rem);
+  padding:
+    0.15rem
+    var(--rail-edge-padding-end, 0.2rem)
+    0.85rem
+    var(--rail-edge-padding-start, 0);
+  scroll-padding-inline:
+    var(--rail-edge-padding-start, 0)
+    var(--rail-edge-padding-end, 0.2rem);
   scrollbar-width: none;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;

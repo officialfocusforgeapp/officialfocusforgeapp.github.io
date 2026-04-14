@@ -567,8 +567,9 @@ function setupPlanRails() {
       const sampleCard = cards[0];
       if (!sampleCard) return;
       const cardWidth = sampleCard.getBoundingClientRect().width;
-      const edgePadding = Math.max((rail.clientWidth - cardWidth) / 2, 0);
-      rail.style.setProperty('--rail-edge-padding', `${edgePadding}px`);
+      const endPadding = Math.max((rail.clientWidth - cardWidth) / 2, 0);
+      rail.style.setProperty('--rail-edge-padding-start', '0px');
+      rail.style.setProperty('--rail-edge-padding-end', `${endPadding}px`);
     };
 
     const centerCardInRail = (index, behavior = 'auto') => {
@@ -689,7 +690,6 @@ function setupPlanRails() {
 
     updateEdgePadding();
     setActiveCard(activeIndex);
-    centerCardInRail(activeIndex, 'auto');
 
     rail.addEventListener('scroll', () => {
       hasInteracted = true;
