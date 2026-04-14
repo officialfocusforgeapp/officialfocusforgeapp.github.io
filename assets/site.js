@@ -12,8 +12,6 @@ const SITE = {
     {
       name: "Free",
       tag: "Starter",
-      badge: "Free Dragon Included!",
-      badgeStyle: "dragon-note",
       tone: "free",
       priceMonthly: "$0",
       priceYearly: "Always free",
