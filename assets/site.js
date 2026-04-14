@@ -782,19 +782,37 @@ function finalizeHoursCounterTrack(track) {
   track.replaceChildren(createHoursCounterCell(finalDigit));
 }
 
+function runAfterNextPaint(callback) {
+  if (document.visibilityState !== 'visible') {
+    window.setTimeout(callback, 16);
+    return;
+  }
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(callback);
+  });
+}
+
 function animateHoursCounter(counter) {
   const tracks = Array.from(counter.querySelectorAll('.hours-counter-track[data-ticker-steps]'));
   if (!tracks.length) return;
 
-  window.requestAnimationFrame(() => {
+  runAfterNextPaint(() => {
     tracks.forEach((track) => {
       const steps = Number(track.dataset.tickerSteps || 0);
       if (!steps) return;
+      const firstCell = track.firstElementChild instanceof HTMLElement ? track.firstElementChild : null;
+      const cellHeight = firstCell?.getBoundingClientRect().height || 0;
+      const translateY = cellHeight > 0
+        ? `translateY(-${cellHeight * steps}px)`
+        : `translateY(calc(${steps} * -1em))`;
 
       const finalize = () => finalizeHoursCounterTrack(track);
 
+      // Force the browser to commit the starting layout before enabling the transition.
+      track.getBoundingClientRect();
       track.classList.add('is-animating');
-      track.style.transform = `translateY(calc(${steps} * -1em))`;
+      track.style.transform = translateY;
       track.addEventListener('transitionend', finalize, { once: true });
       window.setTimeout(finalize, HOURS_COUNTER_ANIMATION_MS + 120);
     });
