@@ -10,6 +10,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/site.css?v=20260413-5">
   <script defer src="../assets/site.js?v=20260413-5"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof SITE === 'undefined' || !Array.isArray(SITE.plans)) return;
+      const yearlyPricing = {
+        'Apprentice': '$39.99/yr (33% off)',
+        'Journeyman Partner': '$59.99/yr (44% off)',
+        'Journeyman Family': '$99.99/yr (36% off)',
+        'Journeyman Total': '$119.99/yr (41% off)',
+        'Master Smith': '$149.99/yr (38% off)'
+      };
+      SITE.plans.forEach((plan) => {
+        if (yearlyPricing[plan.name]) {
+          plan.priceYearly = yearlyPricing[plan.name];
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <script>document.documentElement.setAttribute('data-theme','verdant');</script>
@@ -23,7 +40,7 @@
           <span class="brand-sub">Digital discipline for Android</span>
         </span>
       </a>
-      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>☰</button>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>&#9776;</button>
       <nav class="nav" aria-label="Primary" data-nav></nav>
       <div class="header-actions">
         <a class="button button--secondary button--small" data-google-play href="#">Google Play</a>
@@ -154,4 +171,3 @@
   </footer>
 </body>
 </html>
-
