@@ -59,8 +59,9 @@ const SITE = {
       tone: "partner",
       priceMonthly: "$8.99/mo",
       priceYearly: "$79.99/yr",
-      blurb: "Bring one partner into the loop for approvals, alerts, and shared sessions.",
+      blurb: "Includes every Apprentice perk, plus a shared partner seat for approvals, alerts, and shared sessions.",
       bullets: [
+        "Includes all Apprentice perks",
         "One shared partner seat",
         "Partner sessions",
         "Partner alerts",
@@ -83,8 +84,9 @@ const SITE = {
       tone: "family",
       priceMonthly: "$12.99/mo",
       priceYearly: "$119.99/yr",
-      blurb: "Parent controls for linked child devices and household scheduling.",
+      blurb: "Includes every Apprentice perk, plus parent controls for linked child devices and household scheduling.",
       bullets: [
+        "Includes all Apprentice perks",
         "Parent controls",
         "Up to 3 linked child devices",
         "Household scheduling",
@@ -107,10 +109,11 @@ const SITE = {
       tone: "total",
       priceMonthly: "$16.99/mo",
       priceYearly: "$159.99/yr",
-      blurb: "Combine partner accountability with family management in one tier.",
+      blurb: "Includes every Apprentice perk, plus the full Partner and Family feature set in one tier.",
       bullets: [
-        "Includes Partner features",
-        "Includes Family features",
+        "Includes all Apprentice perks",
+        "Includes all Partner features",
+        "Includes all Family features",
         "Shared accountability + household control",
         "Broader premium depth"
       ],
@@ -131,8 +134,9 @@ const SITE = {
       tone: "master",
       priceMonthly: "$19.99/mo",
       priceYearly: "$179.99/yr",
-      blurb: "Recovery-focused tools, deeper customization, and the highest premium limits.",
+      blurb: "Includes every Apprentice perk, plus recovery-focused tools, deeper customization, and the highest premium limits.",
       bullets: [
+        "Includes all Apprentice perks",
         "Recovery Tools",
         "Custom profile photos",
         "Deeper premium limits",
