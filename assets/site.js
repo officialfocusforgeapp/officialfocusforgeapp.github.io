@@ -33,11 +33,12 @@ const SITE = {
       tone: "apprentice",
       priceMonthly: "$4.99/mo",
       priceYearly: "$49.99/yr",
-      blurb: "Unlimited solo control with stricter blocking and customization.",
+      blurb: "Unlimited solo control with stricter blocking, deeper customization, and 3x Ember Shard earnings.",
       bullets: [
         "Unlimited solo blocking",
         "Lock Ins and saved schedules",
         "Addict Mode",
+        "Earn Ember Shards at 3x the normal rate",
         "Custom block media",
         "Theme Studio",
         "Profile customization"
@@ -59,9 +60,9 @@ const SITE = {
       tone: "partner",
       priceMonthly: "$8.99/mo",
       priceYearly: "$79.99/yr",
-      blurb: "Includes every Apprentice perk for both people on the plan, plus a shared partner seat for approvals, alerts, and shared sessions.",
+      blurb: "Includes every Apprentice perk for both people on the plan, including 3x Ember Shard earnings, plus a shared partner seat for approvals, alerts, and shared sessions.",
       bullets: [
-        "All Apprentice perks for you and your partner",
+        "All Apprentice perks for you and your partner, including 3x Ember Shard earnings",
         "One shared partner seat",
         "Partner sessions",
         "Partner alerts",
@@ -84,9 +85,9 @@ const SITE = {
       tone: "family",
       priceMonthly: "$12.99/mo",
       priceYearly: "$119.99/yr",
-      blurb: "Includes every Apprentice perk across the plan, including linked child devices, plus parent controls and household scheduling.",
+      blurb: "Includes every Apprentice perk across the plan, including linked child devices and 3x Ember Shard earnings, plus parent controls and household scheduling.",
       bullets: [
-        "All Apprentice perks for the parent account and linked child devices",
+        "All Apprentice perks for the parent account and linked child devices, including 3x Ember Shard earnings",
         "Parent controls",
         "Up to 3 linked child devices",
         "Household scheduling",
@@ -109,9 +110,9 @@ const SITE = {
       tone: "total",
       priceMonthly: "$16.99/mo",
       priceYearly: "$159.99/yr",
-      blurb: "Includes every Apprentice perk for everyone on the plan, including your partner and linked child devices, plus the full Partner and Family feature set.",
+      blurb: "Includes every Apprentice perk for everyone on the plan, including your partner, linked child devices, and 3x Ember Shard earnings, plus the full Partner and Family feature set.",
       bullets: [
-        "All Apprentice perks for you, your partner, and linked child devices",
+        "All Apprentice perks for you, your partner, and linked child devices, including 3x Ember Shard earnings",
         "Includes all Partner features",
         "Includes all Family features",
         "Shared accountability + household control",
@@ -136,7 +137,7 @@ const SITE = {
       priceYearly: "$179.99/yr",
       blurb: "Keeps every Apprentice perk on the account, plus recovery-focused tools, deeper customization, and the highest premium limits.",
       bullets: [
-        "All Apprentice perks stay included",
+        "All Apprentice perks stay included, including 3x Ember Shard earnings",
         "Recovery Tools",
         "Custom profile photos",
         "Deeper premium limits",
