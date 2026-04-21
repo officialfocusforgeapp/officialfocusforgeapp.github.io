@@ -10,9 +10,82 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/site.css?v=20260413-5">
   <script defer src="../assets/site.js?v=20260413-5"></script>
+  <style>
+    .delete-request-form {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .delete-request-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .field {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .field span {
+      font-weight: 650;
+      letter-spacing: -0.01em;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: var(--soft);
+    }
+
+    .field input:focus-visible,
+    .field textarea:focus-visible {
+      outline: none;
+      border-color: color-mix(in srgb, var(--accent) 45%, rgba(255, 255, 255, 0.12));
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent);
+    }
+
+    .field textarea {
+      min-height: 144px;
+      resize: vertical;
+    }
+
+    .delete-request-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .delete-request-status {
+      margin: 0;
+    }
+
+    @media (max-width: 620px) {
+      .delete-request-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .delete-request-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
 </head>
 <body>
-  <script>document.documentElement.setAttribute('data-theme','dawn');</script>
+  <script>document.documentElement.setAttribute("data-theme", "dawn");</script>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="site-header__inner">
@@ -23,7 +96,7 @@
           <span class="brand-sub">Digital discipline for Android</span>
         </span>
       </a>
-      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>☰</button>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>&#9776;</button>
       <nav class="nav" aria-label="Primary" data-nav></nav>
       <div class="header-actions">
         <a class="button button--secondary button--small" data-google-play href="#">Google Play</a>
@@ -31,7 +104,70 @@
       </div>
     </div>
   </header>
-  <main id="main" class="page"><div class="site-shell"><section class="page-hero"><div class="eyebrow">Delete Account</div><h1>How to request deletion of cloud-backed account data.</h1><p class="lead">Use this page if you want FocusForge account data removed from supported cloud services.</p></section><section class="article-grid"><div><article class="article-card" id="request"><h2>How to request deletion</h2><p>Email <a data-support-email href="#"></a> from the account email associated with FocusForge, or clearly identify that account email in the request.</p><ul class="article-list"><li>Subject line: Delete FocusForge account</li><li>Include the account email used in the app</li><li>State that you want cloud-backed account data deleted</li><li>Include your username if it helps us locate the account faster</li></ul></article><article class="article-card" id="notes"><h2>Important notes</h2><p>Deletion processing may require enough information to verify the request and locate the relevant cloud-backed data. Some records may need to be retained where required by law, platform obligations, fraud prevention, transaction support, or security review.</p><ul class="article-list"><li>Deleting cloud-backed data does not automatically delete data that still exists on a device. Local on-device data can be exported or cleared from the app Privacy screen.</li><li>Canceling a Google Play subscription is separate from account deletion and must be handled through Google Play.</li><li>If we need more detail to verify ownership or identify the right records, we may reply before completing the deletion request.</li></ul></article></div><aside class="article-aside"><div class="callout"><strong>Need billing help too?</strong><p class="muted">Use the Support page for subscription questions, refunds, and platform billing issues.</p></div><nav class="article-nav" aria-label="Deletion sections"><a href="#request">Request deletion</a><a href="#notes">Important notes</a><a href="/support/#billing">Billing help</a></nav></aside></section></div></main>
+  <main id="main" class="page">
+    <div class="site-shell">
+      <section class="page-hero">
+        <div class="eyebrow">Delete Account</div>
+        <h1>How to request deletion of cloud-backed account data.</h1>
+        <p class="lead">Use the request helper below to prepare a deletion email with the account details we need to process the request.</p>
+      </section>
+      <section class="article-grid">
+        <div>
+          <article class="article-card" id="request">
+            <h2>How to request deletion</h2>
+            <p>Enter the account details below and select <strong>Open deletion email</strong>. We will prepare an email addressed to <a data-support-email href="#"></a> with the required information filled in for you.</p>
+            <ul class="article-list">
+              <li>Required: the email address used with your FocusForge account</li>
+              <li>Recommended: your username if you know it</li>
+              <li>Optional: any extra detail that helps us locate the right account faster</li>
+            </ul>
+            <form class="delete-request-form" data-delete-request-form>
+              <div class="delete-request-grid">
+                <label class="field">
+                  <span>FocusForge account email</span>
+                  <input type="email" name="account-email" placeholder="you@example.com" autocomplete="email" required>
+                </label>
+                <label class="field">
+                  <span>Username</span>
+                  <input type="text" name="username" placeholder="Optional" autocomplete="username">
+                </label>
+              </div>
+              <label class="field">
+                <span>Additional details</span>
+                <textarea name="details" rows="5" placeholder="Optional. Include anything that will help us identify the correct account faster."></textarea>
+              </label>
+              <div class="delete-request-actions">
+                <button class="button button--primary" type="submit">Open deletion email</button>
+                <a class="button button--secondary" data-support-email href="#">Email support directly</a>
+              </div>
+              <p class="muted delete-request-status" data-delete-request-status>The button opens your default mail app with the request already addressed to support.</p>
+            </form>
+          </article>
+          <article class="article-card" id="notes">
+            <h2>Important notes</h2>
+            <p>Deletion processing may require enough information to verify the request and locate the relevant cloud-backed data. Some records may need to be retained where required by law, platform obligations, fraud prevention, transaction support, or security review.</p>
+            <ul class="article-list">
+              <li>Deleting cloud-backed data does not automatically delete data that still exists on a device. Local on-device data can be exported or cleared from the app Privacy screen.</li>
+              <li>Canceling a Google Play subscription is separate from account deletion and must be handled through Google Play.</li>
+              <li>If no mail app opens, send the same request manually to <a data-support-email href="#"></a>.</li>
+              <li>If we need more detail to verify ownership or identify the right records, we may reply before completing the deletion request.</li>
+            </ul>
+          </article>
+        </div>
+        <aside class="article-aside">
+          <div class="callout">
+            <strong>Need billing help too?</strong>
+            <p class="muted">Use the Support page for subscription questions, refunds, and platform billing issues.</p>
+          </div>
+          <nav class="article-nav" aria-label="Deletion sections">
+            <a href="#request">Request deletion</a>
+            <a href="#notes">Important notes</a>
+            <a href="/support/#billing">Billing help</a>
+          </nav>
+        </aside>
+      </section>
+    </div>
+  </main>
   <footer class="site-footer">
     <div class="site-shell footer-grid">
       <div class="footer-brand">
@@ -83,10 +219,60 @@
       </div>
     </div>
     <div class="site-shell footer-bottom">
-      <span>© <span data-year></span> FocusForge</span>
+      <span>&copy; <span data-year></span> FocusForge</span>
       <a href="../support/">Help Center</a>
     </div>
   </footer>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      var form = document.querySelector("[data-delete-request-form]");
+      if (!form) return;
+
+      var status = form.querySelector("[data-delete-request-status]");
+      var supportEmailNode = document.querySelector("[data-support-email]");
+      var supportEmail = supportEmailNode && supportEmailNode.textContent
+        ? supportEmailNode.textContent.trim()
+        : "officialfocusforgeapp@gmail.com";
+
+      function buildBody(accountEmail, username, details) {
+        return [
+          "Hello FocusForge Support,",
+          "",
+          "I am requesting deletion of my FocusForge cloud-backed account data.",
+          "",
+          "Account email: " + accountEmail,
+          "Username: " + (username || "Not provided"),
+          "Request source: https://focusforge-app.com/delete-account/",
+          "",
+          "Additional details:",
+          details || "None",
+          "",
+          "Please let me know if you need anything else to verify this request.",
+          "",
+          "Thank you."
+        ].join("\n");
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+
+        var formData = new FormData(form);
+        var accountEmail = String(formData.get("account-email") || "").trim();
+        var username = String(formData.get("username") || "").trim();
+        var details = String(formData.get("details") || "").trim();
+        var subject = "Delete FocusForge account";
+        var mailtoUrl = "mailto:" + supportEmail
+          + "?subject=" + encodeURIComponent(subject)
+          + "&body=" + encodeURIComponent(buildBody(accountEmail, username, details));
+
+        window.location.href = mailtoUrl;
+
+        if (status) {
+          status.textContent = "If your email app did not open, send the same request manually to " + supportEmail + ".";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-
