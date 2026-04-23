@@ -562,6 +562,7 @@ function setupPlanRails() {
 
     let pointerActive = false;
     let dragMoved = false;
+    let suppressNextClick = false;
     let startX = 0;
     let startScrollLeft = 0;
     let activeIndex = cards.findIndex((card) => card.dataset.featured === 'true');
@@ -642,23 +643,18 @@ function setupPlanRails() {
       centerCardInRail(nextIndex, behavior);
     };
 
-    const endDrag = (event, { activate = false } = {}) => {
+    const endDrag = (event) => {
       if (!pointerActive) return;
-      const shouldActivate =
-        activate &&
-        !dragMoved &&
-        !isInteractiveTarget(event?.target);
-
+      const endedWithClick = event?.type === 'pointerup';
+      suppressNextClick = endedWithClick && dragMoved;
       pointerActive = false;
       rail.classList.remove('is-dragging');
       if (event && typeof event.pointerId === 'number' && rail.hasPointerCapture?.(event.pointerId)) {
         rail.releasePointerCapture(event.pointerId);
       }
-
-      if (shouldActivate) {
-        const card = event.target instanceof Element ? event.target.closest('.plan-card') : null;
-        const nextIndex = card ? cards.indexOf(card) : -1;
-        if (nextIndex >= 0) activateCard(nextIndex);
+      if (dragMoved) {
+        hasInteracted = true;
+        requestSync();
       }
     };
 
@@ -668,6 +664,7 @@ function setupPlanRails() {
       pointerActive = true;
       hasInteracted = true;
       dragMoved = false;
+      suppressNextClick = false;
       startX = event.clientX;
       startScrollLeft = rail.scrollLeft;
       rail.classList.add('is-dragging');
@@ -681,28 +678,30 @@ function setupPlanRails() {
       rail.scrollLeft = startScrollLeft - delta;
     });
 
-    rail.addEventListener('pointerup', (event) => endDrag(event, { activate: true }));
+    rail.addEventListener('pointerup', endDrag);
     rail.addEventListener('pointercancel', endDrag);
     rail.addEventListener('pointerleave', (event) => {
       if (event.pointerType === 'mouse') endDrag(event);
     });
 
     rail.addEventListener('click', (event) => {
-      if (isInteractiveTarget(event.target)) {
-        dragMoved = false;
-        return;
-      }
-      const card = event.target instanceof Element ? event.target.closest('.plan-card') : null;
-      if (!dragMoved && card) {
-        const nextIndex = cards.indexOf(card);
-        if (nextIndex >= 0 && nextIndex !== activeIndex) activateCard(nextIndex);
-        return;
-      }
-      if (!dragMoved) return;
+      if (!suppressNextClick) return;
       event.preventDefault();
       event.stopPropagation();
-      dragMoved = false;
+      suppressNextClick = false;
     }, true);
+
+    cards.forEach((card, index) => {
+      card.addEventListener('click', (event) => {
+        if (suppressNextClick) {
+          event.preventDefault();
+          suppressNextClick = false;
+          return;
+        }
+        if (isInteractiveTarget(event.target)) return;
+        activateCard(index);
+      });
+    });
 
     updateEdgePadding();
     setActiveCard(activeIndex);
