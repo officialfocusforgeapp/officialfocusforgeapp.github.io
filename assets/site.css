@@ -720,8 +720,24 @@ button, input, textarea, select { font: inherit; }
   margin-bottom: 0.16rem;
 }
 .plan-price--yearly {
+  display: flex;
+  align-items: baseline;
+  gap: 0.38rem;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   margin-top: 0;
   margin-bottom: 0.75rem;
+}
+.plan-price__value {
+  display: inline-block;
+}
+.plan-price__savings {
+  display: inline-block;
+  color: var(--soft);
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
 }
 .kicker {
   color: var(--accent-2);

@@ -175,12 +175,18 @@ function renderPlans() {
       const hasYearlyPrice = plan.priceYearly && plan.priceYearly !== 'Always free';
       const monthlyPrice = hasYearlyPrice ? `${plan.priceMonthly} or` : plan.priceMonthly;
       const yearlyPriceClass = hasYearlyPrice ? 'plan-price plan-price--yearly' : 'tiny-note';
+      const yearlyPriceMatch = hasYearlyPrice
+        ? String(plan.priceYearly).match(/^(.*?)(\s*\([^)]*\))$/)
+        : null;
+      const yearlyPriceMarkup = yearlyPriceMatch
+        ? `<div class="${yearlyPriceClass}"><span class="plan-price__value">${yearlyPriceMatch[1].trim()}</span><span class="plan-price__savings">${yearlyPriceMatch[2].trim()}</span></div>`
+        : `<div class="${yearlyPriceClass}">${plan.priceYearly}</div>`;
       return `
       <article class="plan-card" data-featured="${plan.featured}">
         <div class="plan-badge">${plan.tag}</div>
         <h3>${plan.name}</h3>
         <div class="plan-price plan-price--monthly">${monthlyPrice}</div>
-        <div class="${yearlyPriceClass}">${plan.priceYearly}</div>
+        ${yearlyPriceMarkup}
         <p class="plan-sub">${plan.blurb}</p>
         <ul class="feature-list">
           ${plan.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}

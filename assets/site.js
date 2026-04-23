@@ -233,6 +233,12 @@ function renderPlans() {
       const hasYearlyPrice = plan.priceYearly && plan.priceYearly !== 'Always free';
       const monthlyPrice = hasYearlyPrice ? `${plan.priceMonthly} or` : plan.priceMonthly;
       const yearlyPriceClass = hasYearlyPrice ? 'plan-price plan-price--yearly' : 'tiny-note';
+      const yearlyPriceMatch = hasYearlyPrice
+        ? String(plan.priceYearly).match(/^(.*?)(\s*\([^)]*\))$/)
+        : null;
+      const yearlyPriceMarkup = yearlyPriceMatch
+        ? `<div class="${yearlyPriceClass}"><span class="plan-price__value">${yearlyPriceMatch[1].trim()}</span><span class="plan-price__savings">${yearlyPriceMatch[2].trim()}</span></div>`
+        : `<div class="${yearlyPriceClass}">${plan.priceYearly}</div>`;
       return `
       <article class="plan-card${isActive ? ' is-active' : ''}" data-plan-index="${index}" data-featured="${plan.featured}" data-plan-tone="${plan.tone}">
         <div class="plan-badge-row">
@@ -241,7 +247,7 @@ function renderPlans() {
         </div>
         <h3>${plan.name}</h3>
         <div class="plan-price plan-price--monthly">${monthlyPrice}</div>
-        <div class="${yearlyPriceClass}">${plan.priceYearly}</div>
+        ${yearlyPriceMarkup}
         <p class="plan-sub">${plan.blurb}</p>
         <ul class="feature-list plan-features">
           ${plan.bullets.map((bullet) => bullet === plan.highlightBullet
