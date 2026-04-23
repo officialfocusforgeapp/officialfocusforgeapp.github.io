@@ -34,9 +34,10 @@ const SITE = {
       tone: "apprentice",
       priceMonthly: "$4.99/mo",
       priceYearly: "$49.99/yr",
-      blurb: "Unlimited solo control with stricter blocking, deeper customization, and 3x Ember Shard earnings.",
+      blurb: "Unlimited solo control with Full Planner Access, stricter blocking, deeper customization, and 3x Ember Shard earnings.",
       bullets: [
         "Unlimited solo blocking",
+        "Full Planner Access",
         "Lock Ins and saved schedules",
         "Addict Mode",
         "Earn Ember Shards at 3x the normal rate",

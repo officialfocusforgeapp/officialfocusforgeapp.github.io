@@ -31,9 +31,10 @@ const SITE = {
       tag: "Best starting point",
       priceMonthly: "$4.99/mo",
       priceYearly: "$49.99/yr",
-      blurb: "Unlimited solo control with stricter blocking and customization.",
+      blurb: "Unlimited solo control with Full Planner Access, stricter blocking, and customization.",
       bullets: [
         "Unlimited solo blocking",
+        "Full Planner Access",
         "Lock Ins and saved schedules",
         "Addict Mode",
         "Custom block media",
