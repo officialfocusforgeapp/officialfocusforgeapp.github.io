@@ -47,7 +47,7 @@ const SITE = {
       name: "Journeyman Partner",
       tag: "Shared accountability",
       priceMonthly: "$8.99/mo",
-      priceYearly: "$79.99/yr",
+      priceYearly: "$67.67/yr",
       blurb: "Bring one partner into the loop for approvals, alerts, and shared sessions.",
       bullets: [
         "One shared partner seat",
@@ -62,8 +62,8 @@ const SITE = {
     {
       name: "Journeyman Family",
       tag: "Household controls",
-      priceMonthly: "$12.99/mo",
-      priceYearly: "$119.99/yr",
+      priceMonthly: "$9.99/mo",
+      priceYearly: "$79.99/yr",
       blurb: "Parent controls for linked child devices and household scheduling.",
       bullets: [
         "Parent controls",
@@ -78,8 +78,8 @@ const SITE = {
     {
       name: "Journeyman Total",
       tag: "Partner + Family",
-      priceMonthly: "$16.99/mo",
-      priceYearly: "$159.99/yr",
+      priceMonthly: "$12.99/mo",
+      priceYearly: "$89.99/yr",
       blurb: "Combine partner accountability with family management in one tier.",
       bullets: [
         "Includes Partner features",

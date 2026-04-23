@@ -59,7 +59,7 @@ const SITE = {
       badge: "Two Memberships Included!",
       tone: "partner",
       priceMonthly: "$8.99/mo",
-      priceYearly: "$79.99/yr",
+      priceYearly: "$67.67/yr",
       blurb: "Includes every Apprentice perk for both people on the plan, including 3x Ember Shard earnings, plus a shared partner seat for approvals, alerts, and shared sessions.",
       bullets: [
         "All Apprentice perks for you and your partner, including 3x Ember Shard earnings",
@@ -83,8 +83,8 @@ const SITE = {
       tag: "Household controls",
       badge: "For you and your kids!",
       tone: "family",
-      priceMonthly: "$12.99/mo",
-      priceYearly: "$119.99/yr",
+      priceMonthly: "$9.99/mo",
+      priceYearly: "$79.99/yr",
       blurb: "Includes every Apprentice perk across the plan, including linked child devices and 3x Ember Shard earnings, plus parent controls and household scheduling.",
       bullets: [
         "All Apprentice perks for the parent account and linked child devices, including 3x Ember Shard earnings",
@@ -108,8 +108,8 @@ const SITE = {
       tag: "Partner + Family",
       badge: "A Family Favorite!",
       tone: "total",
-      priceMonthly: "$16.99/mo",
-      priceYearly: "$159.99/yr",
+      priceMonthly: "$12.99/mo",
+      priceYearly: "$89.99/yr",
       blurb: "Includes every Apprentice perk for everyone on the plan, including your partner, linked child devices, and 3x Ember Shard earnings, plus the full Partner and Family feature set.",
       bullets: [
         "All Apprentice perks for you, your partner, and linked child devices, including 3x Ember Shard earnings",
