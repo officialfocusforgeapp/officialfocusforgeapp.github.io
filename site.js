@@ -172,12 +172,15 @@ function renderPlans() {
       const attrs = isTrial
         ? 'href="#trial" data-trial-modal="true"'
         : `href="${href}" target="_blank" rel="noopener noreferrer"`;
+      const hasYearlyPrice = plan.priceYearly && plan.priceYearly !== 'Always free';
+      const monthlyPrice = hasYearlyPrice ? `${plan.priceMonthly} or` : plan.priceMonthly;
+      const yearlyPriceClass = hasYearlyPrice ? 'plan-price plan-price--yearly' : 'tiny-note';
       return `
       <article class="plan-card" data-featured="${plan.featured}">
         <div class="plan-badge">${plan.tag}</div>
         <h3>${plan.name}</h3>
-        <div class="plan-price">${plan.priceMonthly}</div>
-        <div class="tiny-note">${plan.priceYearly}</div>
+        <div class="plan-price plan-price--monthly">${monthlyPrice}</div>
+        <div class="${yearlyPriceClass}">${plan.priceYearly}</div>
         <p class="plan-sub">${plan.blurb}</p>
         <ul class="feature-list">
           ${plan.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}

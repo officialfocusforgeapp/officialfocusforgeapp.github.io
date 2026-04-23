@@ -230,6 +230,9 @@ function renderPlans() {
       const promoBadgeClass = ["plan-badge", "plan-badge--promo"];
       if (plan.badgeStyle) promoBadgeClass.push(`plan-badge--${plan.badgeStyle}`);
       const promoBadge = plan.badge ? `<div class="${promoBadgeClass.join(" ")}">${plan.badge}</div>` : '';
+      const hasYearlyPrice = plan.priceYearly && plan.priceYearly !== 'Always free';
+      const monthlyPrice = hasYearlyPrice ? `${plan.priceMonthly} or` : plan.priceMonthly;
+      const yearlyPriceClass = hasYearlyPrice ? 'plan-price plan-price--yearly' : 'tiny-note';
       return `
       <article class="plan-card${isActive ? ' is-active' : ''}" data-plan-index="${index}" data-featured="${plan.featured}" data-plan-tone="${plan.tone}">
         <div class="plan-badge-row">
@@ -237,8 +240,8 @@ function renderPlans() {
           ${promoBadge}
         </div>
         <h3>${plan.name}</h3>
-        <div class="plan-price">${plan.priceMonthly}</div>
-        <div class="tiny-note">${plan.priceYearly}</div>
+        <div class="plan-price plan-price--monthly">${monthlyPrice}</div>
+        <div class="${yearlyPriceClass}">${plan.priceYearly}</div>
         <p class="plan-sub">${plan.blurb}</p>
         <ul class="feature-list plan-features">
           ${plan.bullets.map((bullet) => bullet === plan.highlightBullet

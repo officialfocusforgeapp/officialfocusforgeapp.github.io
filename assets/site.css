@@ -716,6 +716,13 @@ button, input, textarea, select { font: inherit; }
   letter-spacing: -0.05em;
   margin: 0.25rem 0 0.55rem;
 }
+.plan-price--monthly {
+  margin-bottom: 0.16rem;
+}
+.plan-price--yearly {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
 .kicker {
   color: var(--accent-2);
   text-transform: uppercase;
