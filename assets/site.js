@@ -564,6 +564,7 @@ function setupPlanRails() {
     let dragMoved = false;
     let suppressNextClick = false;
     let startX = 0;
+    let startY = 0;
     let startScrollLeft = 0;
     let activeIndex = cards.findIndex((card) => card.dataset.featured === 'true');
     let hasInteracted = false;
@@ -637,16 +638,32 @@ function setupPlanRails() {
     const isInteractiveTarget = (target) =>
       target instanceof Element && Boolean(target.closest(interactiveSelector));
 
+    const cardIndexFromTarget = (target) => {
+      const card = target instanceof Element ? target.closest('.plan-card') : null;
+      return card ? cards.indexOf(card) : -1;
+    };
+
     const activateCard = (nextIndex, behavior = 'smooth') => {
       hasInteracted = true;
       setActiveCard(nextIndex);
       centerCardInRail(nextIndex, behavior);
     };
 
+    const activateCardFromTarget = (target, behavior = 'smooth') => {
+      if (isInteractiveTarget(target)) return false;
+      const nextIndex = cardIndexFromTarget(target);
+      if (nextIndex < 0) return false;
+      activateCard(nextIndex, behavior);
+      return true;
+    };
+
     const endDrag = (event) => {
       if (!pointerActive) return;
       const endedWithClick = event?.type === 'pointerup';
-      suppressNextClick = endedWithClick && dragMoved;
+      const activatedCard = endedWithClick && !dragMoved
+        ? activateCardFromTarget(event?.target)
+        : false;
+      suppressNextClick = endedWithClick && (dragMoved || activatedCard);
       pointerActive = false;
       rail.classList.remove('is-dragging');
       if (event && typeof event.pointerId === 'number' && rail.hasPointerCapture?.(event.pointerId)) {
@@ -659,23 +676,30 @@ function setupPlanRails() {
     };
 
     rail.addEventListener('pointerdown', (event) => {
-      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      if (!['mouse', 'touch', 'pen'].includes(event.pointerType)) return;
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
       if (isInteractiveTarget(event.target)) return;
       pointerActive = true;
       hasInteracted = true;
       dragMoved = false;
       suppressNextClick = false;
       startX = event.clientX;
+      startY = event.clientY;
       startScrollLeft = rail.scrollLeft;
-      rail.classList.add('is-dragging');
-      rail.setPointerCapture?.(event.pointerId);
+      if (event.pointerType === 'mouse') {
+        rail.classList.add('is-dragging');
+        rail.setPointerCapture?.(event.pointerId);
+      }
     });
 
     rail.addEventListener('pointermove', (event) => {
       if (!pointerActive) return;
-      const delta = event.clientX - startX;
-      if (Math.abs(delta) > 6) dragMoved = true;
-      rail.scrollLeft = startScrollLeft - delta;
+      const deltaX = event.clientX - startX;
+      const deltaY = event.clientY - startY;
+      if (Math.abs(deltaX) > 6 || Math.abs(deltaY) > 6) dragMoved = true;
+      if (event.pointerType === 'mouse') {
+        rail.scrollLeft = startScrollLeft - deltaX;
+      }
     });
 
     rail.addEventListener('pointerup', endDrag);
@@ -690,18 +714,6 @@ function setupPlanRails() {
       event.stopPropagation();
       suppressNextClick = false;
     }, true);
-
-    cards.forEach((card, index) => {
-      card.addEventListener('click', (event) => {
-        if (suppressNextClick) {
-          event.preventDefault();
-          suppressNextClick = false;
-          return;
-        }
-        if (isInteractiveTarget(event.target)) return;
-        activateCard(index);
-      });
-    });
 
     updateEdgePadding();
     setActiveCard(activeIndex);
