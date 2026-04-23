@@ -14,9 +14,10 @@ const SITE = {
       tag: "Starter",
       priceMonthly: "$0",
       priceYearly: "Always free",
-      blurb: "Start with hard limits on the apps that cost you the most time.",
+      blurb: "Start with 3 Apps + 3 Websites, basic blocking, and limited Planner access.",
       bullets: [
-        "Protect up to 3 apps",
+        "3 Apps + 3 Websites",
+        "Limited Planner access",
         "Manual blocking controls",
         "Core block screen",
         "Upgrade path into stricter systems"
