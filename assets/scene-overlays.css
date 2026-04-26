@@ -1,0 +1,228 @@
+:root {
+  --scene-art: none;
+  --scene-art-opacity: 0.92;
+  --scene-art-size: min(1420px, 118vw) auto;
+  --scene-art-position: center top;
+  --scene-depth-shadow: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.72));
+}
+
+:root[data-theme="molten"] {
+  --scene-art: url("/assets/scenes/molten-forge.svg");
+  --scene-art-opacity: 0.98;
+  --scene-art-size: min(1350px, 120vw) auto;
+  --scene-art-position: center -40px;
+  --scene-depth-shadow: linear-gradient(180deg, rgba(4, 4, 4, 0.08), rgba(4, 3, 2, 0.55) 46%, rgba(0, 0, 0, 0.9));
+}
+
+:root[data-theme="frozen"] {
+  --scene-art: url("/assets/scenes/glacial-citadel.svg");
+  --scene-art-opacity: 0.96;
+  --scene-art-size: min(1500px, 124vw) auto;
+  --scene-art-position: center -90px;
+  --scene-depth-shadow: linear-gradient(180deg, rgba(5, 22, 40, 0.02), rgba(4, 18, 34, 0.42) 44%, rgba(1, 6, 12, 0.88));
+}
+
+:root[data-theme="verdant"] {
+  --scene-art: url("/assets/scenes/verdant-hollow.svg");
+  --scene-art-opacity: 0.98;
+  --scene-art-size: min(1460px, 122vw) auto;
+  --scene-art-position: center -45px;
+  --scene-depth-shadow: linear-gradient(180deg, rgba(6, 12, 4, 0), rgba(6, 14, 5, 0.48) 48%, rgba(1, 4, 1, 0.9));
+}
+
+:root[data-theme="dawn"] {
+  --scene-art: url("/assets/scenes/dawn-bloom.svg");
+  --scene-art-opacity: 0.97;
+  --scene-art-size: min(1450px, 122vw) auto;
+  --scene-art-position: center -70px;
+  --scene-depth-shadow: linear-gradient(180deg, rgba(35, 12, 30, 0), rgba(33, 12, 31, 0.42) 45%, rgba(8, 3, 10, 0.86));
+}
+
+:root[data-theme="crimson"] {
+  --scene-art: url("/assets/scenes/crimson-starforge.svg");
+  --scene-art-opacity: 0.98;
+  --scene-art-size: min(1380px, 118vw) auto;
+  --scene-art-position: center -70px;
+  --scene-depth-shadow: linear-gradient(180deg, rgba(4, 0, 2, 0.04), rgba(18, 2, 5, 0.44) 44%, rgba(0, 0, 0, 0.92));
+}
+
+body::before {
+  background-image: var(--scene-art), var(--scene-atmosphere), var(--scene-etching);
+  background-repeat: no-repeat, repeat, repeat;
+  background-size: var(--scene-art-size), auto, auto;
+  background-position: var(--scene-art-position), center top, center top;
+  opacity: var(--scene-art-opacity);
+  mix-blend-mode: normal;
+}
+
+body::after {
+  background:
+    var(--scene-depth-shadow),
+    radial-gradient(ellipse at 50% 4%, color-mix(in srgb, var(--accent-2) 13%, transparent), transparent 38%),
+    radial-gradient(ellipse at 50% 108%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 42%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.014) 0 1px, transparent 1px 4px);
+  opacity: 1;
+}
+
+.hero::before,
+.page-hero::before {
+  background:
+    radial-gradient(ellipse at 76% 22%, color-mix(in srgb, var(--accent-2) 20%, transparent), transparent 28%),
+    radial-gradient(ellipse at 18% 18%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 32%),
+    linear-gradient(180deg, rgba(255,255,255,0.04), transparent 58%);
+  border: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+:root[data-theme="molten"] .hero::before,
+:root[data-theme="molten"] .page-hero::before {
+  background:
+    radial-gradient(ellipse at 72% 74%, rgba(255, 90, 9, 0.34), transparent 32%),
+    radial-gradient(ellipse at 50% 8%, rgba(255, 208, 106, 0.2), transparent 30%),
+    linear-gradient(90deg, rgba(255, 96, 13, 0.14), transparent 18%, transparent 82%, rgba(255, 96, 13, 0.14));
+}
+
+:root[data-theme="frozen"] .hero::before,
+:root[data-theme="frozen"] .page-hero::before {
+  background:
+    linear-gradient(118deg, transparent 0 18%, rgba(132, 255, 241, 0.17) 26%, transparent 42%),
+    radial-gradient(ellipse at 84% 24%, rgba(226, 247, 255, 0.24), transparent 32%),
+    linear-gradient(180deg, rgba(103, 200, 255, 0.12), transparent 62%);
+}
+
+:root[data-theme="verdant"] .hero::before,
+:root[data-theme="verdant"] .page-hero::before {
+  background:
+    radial-gradient(ellipse at 50% 12%, rgba(239, 255, 154, 0.2), transparent 30%),
+    linear-gradient(104deg, transparent 0 28%, rgba(156, 204, 58, 0.18) 34%, transparent 46%),
+    radial-gradient(ellipse at 12% 52%, rgba(90, 124, 30, 0.28), transparent 32%);
+}
+
+:root[data-theme="dawn"] .hero::before,
+:root[data-theme="dawn"] .page-hero::before {
+  background:
+    radial-gradient(ellipse at 78% 20%, rgba(255, 216, 154, 0.25), transparent 30%),
+    radial-gradient(ellipse at 12% 28%, rgba(255, 131, 165, 0.26), transparent 34%),
+    linear-gradient(118deg, transparent 0 22%, rgba(255, 143, 178, 0.18) 28%, transparent 46%);
+}
+
+:root[data-theme="crimson"] .hero::before,
+:root[data-theme="crimson"] .page-hero::before {
+  background:
+    radial-gradient(ellipse at 70% 20%, rgba(240, 68, 56, 0.26), transparent 30%),
+    radial-gradient(ellipse at 50% 8%, rgba(255, 176, 103, 0.16), transparent 24%),
+    repeating-conic-gradient(from 22deg at 50% 12%, rgba(255, 176, 103, 0.12) 0deg 1deg, transparent 1deg 15deg);
+}
+
+.showcase::before {
+  background:
+    var(--scene-art),
+    radial-gradient(ellipse at 50% 8%, color-mix(in srgb, var(--accent-2) 24%, transparent), transparent 34%),
+    radial-gradient(ellipse at 50% 82%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 45%);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: 118% auto, auto, auto;
+  background-position: center 18%, center top, center bottom;
+  opacity: 0.58;
+  filter: saturate(1.15);
+}
+
+.phone-frame {
+  backdrop-filter: blur(14px) saturate(1.25);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.028)) padding-box,
+    linear-gradient(180deg, color-mix(in srgb, var(--accent-2) 42%, transparent), color-mix(in srgb, var(--accent) 26%, transparent)) border-box;
+}
+
+.feature-card,
+.info-card,
+.use-card,
+.plan-card,
+.faq-card,
+.article-card,
+.callout,
+.download-bar,
+.faq-item {
+  backdrop-filter: blur(12px) saturate(1.2);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface-2) 78%, transparent), color-mix(in srgb, var(--surface) 88%, transparent));
+}
+
+:root[data-theme="molten"] .feature-card::after,
+:root[data-theme="molten"] .info-card::after,
+:root[data-theme="molten"] .use-card::after,
+:root[data-theme="molten"] .plan-card::after,
+:root[data-theme="molten"] .faq-card::after,
+:root[data-theme="molten"] .article-card::after,
+:root[data-theme="molten"] .download-bar::after {
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 122, 21, 0.08), transparent),
+    repeating-linear-gradient(90deg, transparent 0 48px, rgba(255, 106, 18, 0.08) 49px 51px, transparent 52px 96px);
+}
+
+:root[data-theme="frozen"] .feature-card::after,
+:root[data-theme="frozen"] .info-card::after,
+:root[data-theme="frozen"] .use-card::after,
+:root[data-theme="frozen"] .plan-card::after,
+:root[data-theme="frozen"] .faq-card::after,
+:root[data-theme="frozen"] .article-card::after,
+:root[data-theme="frozen"] .download-bar::after {
+  background:
+    linear-gradient(120deg, transparent 0 34%, rgba(226, 247, 255, 0.11) 35% 36%, transparent 37%),
+    linear-gradient(70deg, transparent 0 60%, rgba(103, 200, 255, 0.11) 61% 62%, transparent 63%);
+}
+
+:root[data-theme="verdant"] .feature-card::after,
+:root[data-theme="verdant"] .info-card::after,
+:root[data-theme="verdant"] .use-card::after,
+:root[data-theme="verdant"] .plan-card::after,
+:root[data-theme="verdant"] .faq-card::after,
+:root[data-theme="verdant"] .article-card::after,
+:root[data-theme="verdant"] .download-bar::after {
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(239, 255, 154, 0.09), transparent 34%),
+    repeating-linear-gradient(110deg, transparent 0 58px, rgba(156, 204, 58, 0.08) 59px 61px, transparent 62px 118px);
+}
+
+:root[data-theme="dawn"] .feature-card::after,
+:root[data-theme="dawn"] .info-card::after,
+:root[data-theme="dawn"] .use-card::after,
+:root[data-theme="dawn"] .plan-card::after,
+:root[data-theme="dawn"] .faq-card::after,
+:root[data-theme="dawn"] .article-card::after,
+:root[data-theme="dawn"] .download-bar::after {
+  background:
+    radial-gradient(ellipse at 18% 0%, rgba(255, 216, 154, 0.1), transparent 32%),
+    repeating-linear-gradient(24deg, transparent 0 68px, rgba(255, 131, 165, 0.08) 69px 71px, transparent 72px 138px);
+}
+
+:root[data-theme="crimson"] .feature-card::after,
+:root[data-theme="crimson"] .info-card::after,
+:root[data-theme="crimson"] .use-card::after,
+:root[data-theme="crimson"] .plan-card::after,
+:root[data-theme="crimson"] .faq-card::after,
+:root[data-theme="crimson"] .article-card::after,
+:root[data-theme="crimson"] .download-bar::after {
+  background:
+    repeating-conic-gradient(from 22deg at 50% 0%, rgba(255, 176, 103, 0.08) 0deg 1deg, transparent 1deg 18deg),
+    radial-gradient(ellipse at 80% 0%, rgba(240, 68, 56, 0.11), transparent 34%);
+}
+
+@media (max-width: 860px) {
+  :root {
+    --scene-art-size: 1180px auto;
+    --scene-art-position: center top;
+  }
+  .showcase::before {
+    background-size: 150% auto, auto, auto;
+    opacity: 0.42;
+  }
+}
+
+@media (max-width: 620px) {
+  :root {
+    --scene-art-size: 940px auto;
+    --scene-art-position: center top;
+  }
+  body::before { opacity: 0.82; }
+  body::after { opacity: 0.96; }
+}
