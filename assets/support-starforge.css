@@ -1,5 +1,5 @@
 .support-route {
-  --support-bg-opacity: 0.24;
+  --support-bg-opacity: 0.28;
   background:
     radial-gradient(circle at 50% 18%, rgba(170, 24, 38, 0.16), transparent 36%),
     linear-gradient(180deg, #050407 0%, #090509 48%, #030204 100%) !important;
@@ -15,10 +15,10 @@
 
 .support-route::after {
   background:
-    linear-gradient(180deg, rgba(3, 2, 4, 0.46) 0%, rgba(3, 2, 4, 0.66) 46%, rgba(3, 2, 4, 0.94) 100%),
-    radial-gradient(ellipse at 50% 34%, rgba(3, 2, 4, 0.7) 0%, rgba(3, 2, 4, 0.48) 35%, transparent 66%),
-    radial-gradient(circle at 50% 18%, rgba(220, 32, 52, 0.14), transparent 32%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.22), transparent 22%, transparent 78%, rgba(0, 0, 0, 0.22)) !important;
+    linear-gradient(180deg, rgba(3, 2, 4, 0.34) 0%, rgba(3, 2, 4, 0.68) 48%, rgba(3, 2, 4, 0.96) 100%),
+    radial-gradient(ellipse at 50% 34%, rgba(3, 2, 4, 0.72) 0%, rgba(3, 2, 4, 0.54) 40%, transparent 68%),
+    radial-gradient(circle at 50% 18%, rgba(220, 32, 52, 0.12), transparent 32%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.14), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.14)) !important;
   opacity: 1 !important;
   pointer-events: none !important;
 }
@@ -46,12 +46,12 @@
 
 .support-page .article-card,
 .support-page .callout {
-  background: linear-gradient(180deg, rgba(11, 8, 12, 0.9), rgba(5, 4, 7, 0.96)) !important;
+  background: linear-gradient(180deg, rgba(11, 8, 12, 0.92), rgba(5, 4, 7, 0.97)) !important;
   border-color: rgba(255, 76, 96, 0.16) !important;
 }
 
 .support-page .article-nav a {
-  background: rgba(8, 6, 10, 0.84) !important;
+  background: rgba(8, 6, 10, 0.86) !important;
   border-color: rgba(214, 170, 95, 0.12) !important;
 }
 
@@ -65,7 +65,7 @@
   }
 
   .support-route::before {
-    background-size: cover !important;
+    background-size: min(100vw, 1440px) auto !important;
     background-position: center top !important;
     transform: none !important;
   }
