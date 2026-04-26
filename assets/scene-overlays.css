@@ -237,3 +237,116 @@ body::after {
   :root[data-theme="molten"] { --scene-art-opacity: 0; }
   :root[data-theme="crimson"] { --scene-art-opacity: 0.27; }
 }
+
+.support-route {
+  --support-bg-opacity: 0.22;
+}
+
+.support-route::before {
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: url("/assets/backgrounds/crimson-starforge-support.webp") !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  opacity: var(--support-bg-opacity) !important;
+  mix-blend-mode: normal !important;
+}
+
+.support-route::after {
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    linear-gradient(180deg, rgba(3,2,4,0.42) 0%, rgba(3,2,4,0.7) 48%, rgba(3,2,4,0.92) 100%),
+    radial-gradient(ellipse at 50% 38%, rgba(3,2,4,0.58) 0%, rgba(3,2,4,0.42) 34%, transparent 68%),
+    radial-gradient(circle at 50% 24%, rgba(255,42,64,0.13), transparent 32%),
+    linear-gradient(90deg, rgba(0,0,0,0.18), transparent 20%, transparent 80%, rgba(0,0,0,0.18)) !important;
+  opacity: 1 !important;
+}
+
+.support-page {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100vh - var(--nav-height));
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 16%, rgba(170,24,38,0.13), transparent 34%),
+    linear-gradient(180deg, rgba(5,4,7,0.18) 0%, rgba(9,5,9,0.34) 48%, rgba(3,2,4,0.52) 100%);
+}
+
+.support-page > .site-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.support-page .page-hero {
+  text-shadow: 0 18px 40px rgba(0,0,0,0.48);
+}
+
+.support-page .eyebrow {
+  background: rgba(8,6,10,0.72) !important;
+  border-color: rgba(255,76,96,0.14) !important;
+  color: rgba(246,242,234,0.82) !important;
+}
+
+.support-page .article-card,
+.support-page .callout {
+  background: linear-gradient(180deg, rgba(12,8,12,0.84), rgba(5,4,7,0.92)) !important;
+  border-color: rgba(255,76,96,0.14) !important;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.36), inset 0 1px 0 rgba(255,255,255,0.04) !important;
+}
+
+.support-page :is(.article-card, .callout):is(:hover, :focus-within, .is-active) {
+  border-color: rgba(255,76,96,0.26) !important;
+  box-shadow: 0 20px 70px rgba(0,0,0,0.44), 0 0 28px rgba(210,24,44,0.12), inset 0 1px 0 rgba(255,255,255,0.06) !important;
+}
+
+.support-page .article-nav a {
+  background: rgba(8,6,10,0.74) !important;
+  border-color: rgba(255,76,96,0.12) !important;
+}
+
+.support-page .article-nav a:hover,
+.support-page .article-nav a:focus-visible,
+.support-page .article-nav a.is-active {
+  background: linear-gradient(180deg, rgba(126,20,34,0.22), rgba(12,8,12,0.82)) !important;
+  border-color: rgba(255,76,96,0.28) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.32), 0 0 22px rgba(210,24,44,0.12) !important;
+}
+
+@media (max-width: 860px) {
+  .support-route {
+    --support-bg-opacity: 0.17;
+  }
+
+  .support-route::after {
+    background:
+      linear-gradient(180deg, rgba(3,2,4,0.58) 0%, rgba(3,2,4,0.76) 46%, rgba(3,2,4,0.96) 100%),
+      radial-gradient(ellipse at 50% 34%, rgba(3,2,4,0.68) 0%, rgba(3,2,4,0.5) 36%, transparent 68%),
+      radial-gradient(circle at 50% 20%, rgba(255,42,64,0.1), transparent 34%) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .support-route {
+    --support-bg-opacity: 0.14;
+  }
+
+  .support-page .article-card,
+  .support-page .callout {
+    background: linear-gradient(180deg, rgba(10,7,10,0.9), rgba(5,4,7,0.96)) !important;
+  }
+
+  .support-route .site-header__inner {
+    gap: 0.55rem;
+  }
+
+  .support-route .brand-sub {
+    display: none;
+  }
+
+  .support-route .header-actions .button--primary {
+    padding-inline: 0.78rem;
+    font-size: 0.88rem;
+  }
+}
