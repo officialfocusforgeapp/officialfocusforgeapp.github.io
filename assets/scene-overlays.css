@@ -166,6 +166,17 @@ body::after {
   box-shadow: inset 0 1px 0 rgba(255,220,150,0.06), 0 0 28px rgba(255,176,58,0.08) !important;
 }
 
+.plan-mini-card--dragon::before,
+.plan-badge--dragon-note::before {
+  width: 0.38rem !important;
+  height: 0.38rem !important;
+  min-width: 0.38rem !important;
+  min-height: 0.38rem !important;
+  border-radius: 50% !important;
+  background: #d81224 !important;
+  box-shadow: 0 0 0 3px rgba(216,18,36,0.14), 0 0 10px rgba(216,18,36,0.62), 0 0 18px rgba(255,69,58,0.26) !important;
+}
+
 :root[data-theme="crimson"] .article-card,
 :root[data-theme="crimson"] .callout,
 :root[data-theme="crimson"] .article-nav a {
