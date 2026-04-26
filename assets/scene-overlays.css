@@ -13,13 +13,17 @@
 }
 
 :root[data-theme="molten"] {
-  --scene-art: url("/assets/scenes/molten-forge.svg?v=20260426-3");
-  --scene-art-opacity: 0.46;
+  --accent: #ff5a12;
+  --accent-2: #ff8a3d;
+  --accent-3: #7a1908;
+  --glow: rgba(255, 90, 18, 0.24);
+  --scene-art: none;
+  --scene-art-opacity: 0;
   --scene-art-size: cover;
-  --quiet-body-bg: linear-gradient(180deg, #120603 0%, #090403 38%, #030202 100%);
-  --quiet-center-shade: linear-gradient(90deg, rgba(0,0,0,0.02) 0%, rgba(24,10,3,0.48) 16%, rgba(14,7,3,0.74) 50%, rgba(24,10,3,0.48) 84%, rgba(0,0,0,0.02) 100%);
-  --quiet-middle-glow: radial-gradient(ellipse at 50% 16%, rgba(255,208,106,0.09), transparent 42%), radial-gradient(ellipse at 50% 58%, rgba(255,106,18,0.075), transparent 56%), radial-gradient(ellipse at 50% 100%, rgba(255,176,58,0.08), transparent 48%);
-  --page-underlay: radial-gradient(ellipse at 52% 7%, rgba(255,208,106,0.11), transparent 34%), radial-gradient(ellipse at 50% 40%, rgba(255,106,18,0.07), transparent 48%), radial-gradient(ellipse at 50% 84%, rgba(255,168,40,0.075), transparent 46%);
+  --quiet-body-bg: linear-gradient(180deg, #100503 0%, #070302 45%, #020202 100%);
+  --quiet-center-shade: linear-gradient(90deg, rgba(0,0,0,0.04) 0%, rgba(14,5,2,0.54) 18%, rgba(7,3,2,0.78) 50%, rgba(14,5,2,0.54) 82%, rgba(0,0,0,0.04) 100%);
+  --quiet-middle-glow: radial-gradient(ellipse at 50% 56%, rgba(255,90,18,0.07), transparent 56%);
+  --page-underlay: radial-gradient(ellipse at 50% 58%, rgba(255,90,18,0.055), transparent 52%);
 }
 
 :root[data-theme="frozen"] {
@@ -153,19 +157,19 @@ body::after {
 :root[data-theme="molten"] .info-card,
 :root[data-theme="molten"] .download-bar,
 :root[data-theme="molten"] .phone-frame {
-  border-color: color-mix(in srgb, #ffd06a 18%, rgba(255,255,255,0.1)) !important;
-  box-shadow: inset 0 1px 0 rgba(255,220,150,0.06), 0 16px 38px rgba(39,16,4,0.34), 0 0 24px rgba(255,164,37,0.055) !important;
+  border-color: color-mix(in srgb, #ff5a12 18%, rgba(255,255,255,0.1)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,90,18,0.055), 0 16px 38px rgba(35,10,3,0.34), 0 0 20px rgba(255,90,18,0.045) !important;
 }
 
 :root[data-theme="molten"] .button--primary {
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.36), 0 16px 34px rgba(255,164,37,0.18), 0 0 22px rgba(255,208,106,0.075) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 16px 34px rgba(255,90,18,0.16), 0 0 18px rgba(255,90,18,0.055) !important;
 }
 
 :root[data-theme="molten"] .button--secondary,
 :root[data-theme="molten"] .button--ghost,
 :root[data-theme="molten"] .eyebrow {
-  border-color: color-mix(in srgb, #ffd06a 22%, rgba(255,255,255,0.1)) !important;
-  box-shadow: inset 0 1px 0 rgba(255,220,150,0.045), 0 0 18px rgba(255,176,58,0.045) !important;
+  border-color: color-mix(in srgb, #ff5a12 20%, rgba(255,255,255,0.1)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,90,18,0.04), 0 0 16px rgba(255,90,18,0.035) !important;
 }
 
 .plan-mini-card--dragon::before,
@@ -197,7 +201,7 @@ body::after {
 }
 
 :root[data-theme="molten"] .hero h1 {
-  text-shadow: 0 0 28px rgba(255,176,58,0.13), 0 0 52px rgba(255,106,18,0.07) !important;
+  text-shadow: 0 0 24px rgba(255,90,18,0.1), 0 0 44px rgba(255,90,18,0.055) !important;
 }
 
 :root[data-theme="crimson"] .page-hero h1 {
@@ -213,7 +217,7 @@ body::after {
     --scene-art-size: cover;
     --scene-art-opacity: 0.38;
   }
-  :root[data-theme="molten"] { --scene-art-opacity: 0.34; }
+  :root[data-theme="molten"] { --scene-art-opacity: 0; }
   :root[data-theme="crimson"] { --scene-art-opacity: 0.32; }
 }
 
@@ -223,6 +227,6 @@ body::after {
     --scene-art-opacity: 0.3;
     --quiet-center-shade: linear-gradient(90deg, rgba(0,0,0,0.14), rgba(0,0,0,0.68) 18%, rgba(0,0,0,0.76) 82%, rgba(0,0,0,0.14));
   }
-  :root[data-theme="molten"] { --scene-art-opacity: 0.28; }
+  :root[data-theme="molten"] { --scene-art-opacity: 0; }
   :root[data-theme="crimson"] { --scene-art-opacity: 0.27; }
 }
