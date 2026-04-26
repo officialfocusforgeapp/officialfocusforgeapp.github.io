@@ -13,7 +13,7 @@
 }
 
 :root[data-theme="molten"] {
-  --scene-art: url("/assets/scenes/molten-forge.svg?v=20260426-2");
+  --scene-art: url("/assets/scenes/molten-forge.svg?v=20260426-3");
   --scene-art-opacity: 0.46;
   --scene-art-size: cover;
   --quiet-body-bg: linear-gradient(180deg, #120603 0%, #090403 38%, #030202 100%);
