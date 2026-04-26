@@ -1,5 +1,5 @@
 .support-route {
-  --support-bg-opacity: 0.78;
+  --support-bg-opacity: 0.7;
   background:
     radial-gradient(circle at 50% 18%, rgba(170, 24, 38, 0.16), transparent 36%),
     linear-gradient(180deg, #050407 0%, #090509 48%, #030204 100%) !important;
@@ -8,6 +8,7 @@
 .support-route::before {
   background-image: url("/assets/backgrounds/crimson-starforge-support.webp") !important;
   background-repeat: no-repeat !important;
+  filter: brightness(1.65) contrast(1.08) saturate(1.12);
   opacity: var(--support-bg-opacity) !important;
   mix-blend-mode: normal !important;
   pointer-events: none !important;
@@ -15,7 +16,7 @@
 
 .support-route::after {
   background:
-    linear-gradient(180deg, rgba(3, 2, 4, 0.18) 0%, rgba(3, 2, 4, 0.76) 50%, rgba(3, 2, 4, 0.98) 100%),
+    linear-gradient(180deg, rgba(3, 2, 4, 0.22) 0%, rgba(3, 2, 4, 0.76) 50%, rgba(3, 2, 4, 0.98) 100%),
     radial-gradient(ellipse at 50% 34%, rgba(3, 2, 4, 0.94) 0%, rgba(3, 2, 4, 0.78) 42%, transparent 72%),
     radial-gradient(circle at 50% 18%, rgba(220, 32, 52, 0.06), transparent 32%) !important;
   opacity: 1 !important;
@@ -81,6 +82,7 @@
     min-height: 100vh !important;
     background-size: cover !important;
     background-position: center top !important;
+    filter: brightness(1.18) contrast(1.04) saturate(1.04);
   }
 
   .support-route::after {
