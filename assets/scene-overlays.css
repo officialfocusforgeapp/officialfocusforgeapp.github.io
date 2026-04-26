@@ -13,17 +13,17 @@
 }
 
 :root[data-theme="molten"] {
-  --accent: #ff5a12;
+  --accent: #ff6418;
   --accent-2: #ff8a3d;
   --accent-3: #7a1908;
-  --glow: rgba(255, 90, 18, 0.24);
+  --glow: rgba(255, 100, 24, 0.28);
   --scene-art: none;
   --scene-art-opacity: 0;
   --scene-art-size: cover;
-  --quiet-body-bg: linear-gradient(180deg, #100503 0%, #070302 45%, #020202 100%);
-  --quiet-center-shade: linear-gradient(90deg, rgba(0,0,0,0.04) 0%, rgba(14,5,2,0.54) 18%, rgba(7,3,2,0.78) 50%, rgba(14,5,2,0.54) 82%, rgba(0,0,0,0.04) 100%);
-  --quiet-middle-glow: radial-gradient(ellipse at 50% 56%, rgba(255,90,18,0.07), transparent 56%);
-  --page-underlay: radial-gradient(ellipse at 50% 58%, rgba(255,90,18,0.055), transparent 52%);
+  --quiet-body-bg: linear-gradient(180deg, #150704 0%, #0a0402 45%, #020202 100%);
+  --quiet-center-shade: linear-gradient(90deg, rgba(0,0,0,0.035) 0%, rgba(20,7,3,0.56) 18%, rgba(10,4,2,0.8) 50%, rgba(20,7,3,0.56) 82%, rgba(0,0,0,0.035) 100%);
+  --quiet-middle-glow: radial-gradient(ellipse at 50% 56%, rgba(255,100,24,0.091), transparent 56%);
+  --page-underlay: radial-gradient(ellipse at 50% 58%, rgba(255,100,24,0.072), transparent 52%);
 }
 
 :root[data-theme="frozen"] {
@@ -157,19 +157,19 @@ body::after {
 :root[data-theme="molten"] .info-card,
 :root[data-theme="molten"] .download-bar,
 :root[data-theme="molten"] .phone-frame {
-  border-color: color-mix(in srgb, #ff5a12 18%, rgba(255,255,255,0.1)) !important;
-  box-shadow: inset 0 1px 0 rgba(255,90,18,0.055), 0 16px 38px rgba(35,10,3,0.34), 0 0 20px rgba(255,90,18,0.045) !important;
+  border-color: color-mix(in srgb, #ff6418 18%, rgba(255,255,255,0.1)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,100,24,0.055), 0 16px 38px rgba(35,10,3,0.34), 0 0 20px rgba(255,100,24,0.045) !important;
 }
 
 :root[data-theme="molten"] .button--primary {
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 16px 34px rgba(255,90,18,0.16), 0 0 18px rgba(255,90,18,0.055) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 16px 34px rgba(255,100,24,0.16), 0 0 18px rgba(255,100,24,0.055) !important;
 }
 
 :root[data-theme="molten"] .button--secondary,
 :root[data-theme="molten"] .button--ghost,
 :root[data-theme="molten"] .eyebrow {
-  border-color: color-mix(in srgb, #ff5a12 20%, rgba(255,255,255,0.1)) !important;
-  box-shadow: inset 0 1px 0 rgba(255,90,18,0.04), 0 0 16px rgba(255,90,18,0.035) !important;
+  border-color: color-mix(in srgb, #ff6418 20%, rgba(255,255,255,0.1)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,100,24,0.04), 0 0 16px rgba(255,100,24,0.035) !important;
 }
 
 .plan-mini-card--dragon::before,
@@ -195,13 +195,20 @@ body::after {
   box-shadow: inset 0 1px 0 rgba(255,180,150,0.06), 0 18px 48px rgba(24,0,3,0.48), 0 0 34px rgba(240,68,56,0.1) !important;
 }
 
+:is(.mock-card, .feature-card, .info-card, .use-card, .plan-card, .faq-card, .article-card, .callout, .download-bar, .faq-item):is(:hover, :focus-within, .is-active, [open]) {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 16%, var(--surface-2)), color-mix(in srgb, var(--accent) 7%, var(--surface))) !important;
+  border-color: color-mix(in srgb, var(--accent) 42%, rgba(255,255,255,0.16)) !important;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--accent-2) 18%, rgba(255,255,255,0.12)), 0 18px 46px rgba(0,0,0,0.28), 0 0 30px color-mix(in srgb, var(--accent) 14%, transparent) !important;
+  transform: translateY(-2px) !important;
+}
+
 .hero h1,
 .page-hero h1 {
   text-shadow: 0 0 26px color-mix(in srgb, var(--accent) 12%, transparent) !important;
 }
 
 :root[data-theme="molten"] .hero h1 {
-  text-shadow: 0 0 24px rgba(255,90,18,0.1), 0 0 44px rgba(255,90,18,0.055) !important;
+  text-shadow: 0 0 24px rgba(255,100,24,0.11), 0 0 44px rgba(255,100,24,0.06) !important;
 }
 
 :root[data-theme="crimson"] .page-hero h1 {
