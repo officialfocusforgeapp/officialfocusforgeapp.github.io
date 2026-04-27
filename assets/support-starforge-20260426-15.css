@@ -1,0 +1,166 @@
+.support-route {
+  --support-bg-opacity: 0.34;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(190, 18, 36, 0.2), transparent 36%),
+    linear-gradient(180deg, #050407 0%, #090509 48%, #030204 100%) !important;
+}
+
+.support-route::before {
+  background-image: url("/assets/backgrounds/crimson-starforge-support.webp") !important;
+  background-repeat: no-repeat !important;
+  filter: saturate(1.58) contrast(1.2) brightness(1.08);
+  opacity: var(--support-bg-opacity) !important;
+  mix-blend-mode: normal !important;
+  pointer-events: none !important;
+}
+
+.support-route::after {
+  background:
+    linear-gradient(180deg, rgba(3, 2, 4, 0.36) 0%, rgba(3, 2, 4, 0.68) 50%, rgba(3, 2, 4, 0.96) 100%),
+    radial-gradient(ellipse at 50% 44%, rgba(3, 2, 4, 0.78) 0%, rgba(3, 2, 4, 0.66) 38%, rgba(3, 2, 4, 0.18) 72%, transparent 100%),
+    radial-gradient(circle at 50% 18%, rgba(235, 28, 48, 0.18), transparent 34%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.22), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.22)) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+
+.support-page {
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+.support-page .page-hero,
+.support-page .article-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.support-page .page-hero {
+  max-width: 880px;
+}
+
+.support-page .article-grid::before {
+  content: none !important;
+  display: none !important;
+}
+
+.support-page .article-card,
+.support-page .callout,
+.support-page .article-nav a {
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.support-page .article-card,
+.support-page .callout {
+  background: #070407 !important;
+  border-color: rgba(255, 76, 96, 0.22) !important;
+}
+
+.support-page .article-card::before,
+.support-page .callout::before,
+.support-page .article-card::after,
+.support-page .callout::after {
+  content: none !important;
+  display: none !important;
+  opacity: 0 !important;
+}
+
+.support-page .article-card:hover,
+.support-page .callout:hover {
+  transform: none !important;
+}
+
+.support-page .article-card:is(:hover, :focus-within),
+.support-page .callout:is(:hover, :focus-within) {
+  background: #070407 !important;
+  border-color: rgba(255, 76, 96, 0.4) !important;
+  box-shadow: none !important;
+  outline: 1px solid rgba(255, 76, 96, 0.22);
+  outline-offset: -1px;
+}
+
+.support-page .article-card:is(.is-active, :target) {
+  background: linear-gradient(90deg, rgba(255, 76, 96, 0.18) 0 4px, #080407 4px 100%) !important;
+  border-color: rgba(255, 76, 96, 0.58) !important;
+  box-shadow: none !important;
+  outline: 1px solid rgba(255, 76, 96, 0.3);
+  outline-offset: -1px;
+}
+
+.support-page .article-nav a {
+  background: #070407 !important;
+  border-color: rgba(214, 170, 95, 0.14) !important;
+  box-shadow: none !important;
+}
+
+.support-page .article-nav a:is(:hover, :focus-visible) {
+  color: var(--text) !important;
+  background: #070407 !important;
+  border-color: rgba(255, 76, 96, 0.4) !important;
+  box-shadow: none !important;
+  outline: 1px solid rgba(255, 76, 96, 0.22);
+  outline-offset: -1px;
+}
+
+.support-page .article-nav a:is(.is-active, [aria-current="location"]) {
+  color: var(--text) !important;
+  background: linear-gradient(90deg, rgba(255, 76, 96, 0.2) 0 4px, #10060a 4px 100%) !important;
+  border-color: rgba(255, 76, 96, 0.52) !important;
+  box-shadow: none !important;
+  outline: 1px solid rgba(255, 76, 96, 0.3);
+  outline-offset: -1px;
+}
+
+.support-page .article-card a:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid rgba(255, 176, 103, 0.62);
+  outline-offset: 3px;
+}
+
+@media (min-width: 861px) {
+  .support-route::before,
+  .support-route::after {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  .support-route::before {
+    background-size: cover !important;
+    background-position: center top !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .support-route {
+    --support-bg-opacity: 0.18;
+  }
+
+  .support-route::before {
+    position: absolute !important;
+    inset: 0 !important;
+    min-height: 100vh !important;
+    background-size: cover !important;
+    background-position: center top !important;
+  }
+
+  .support-route::after {
+    position: absolute !important;
+    inset: 0 !important;
+    min-height: 100vh !important;
+    background:
+      linear-gradient(180deg, rgba(3, 2, 4, 0.64) 0%, rgba(3, 2, 4, 0.8) 44%, rgba(3, 2, 4, 0.98) 100%),
+      radial-gradient(ellipse at 50% 34%, rgba(3, 2, 4, 0.78) 0%, rgba(3, 2, 4, 0.58) 42%, transparent 74%),
+      radial-gradient(circle at 50% 18%, rgba(235, 28, 48, 0.14), transparent 34%) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .support-route {
+    --support-bg-opacity: 0.13;
+  }
+}
