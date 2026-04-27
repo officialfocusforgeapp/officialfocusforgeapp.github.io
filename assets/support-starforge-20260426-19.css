@@ -39,140 +39,121 @@
   max-width: 880px;
 }
 
-.support-page .article-grid::before {
-  content: none !important;
-  display: none !important;
-}
-
-/* Support page override: remove every card artifact layer. */
-.mock-card::before,
-.mock-card::after,
-.feature-card::before,
-.feature-card::after,
-.info-card::before,
-.info-card::after,
-.use-card::before,
-.use-card::after,
-.plan-card::before,
-.plan-card::after,
-.faq-card::before,
-.faq-card::after,
-.article-card::before,
-.article-card::after,
-.callout::before,
-.callout::after,
-.download-bar::before,
-.download-bar::after,
-.faq-item::before,
-.faq-item::after {
+/* Disable every support-card pseudo layer and every inherited glow/compositing effect. */
+.support-page .article-grid::before,
+.support-page .article-grid::after,
+.support-page .article-aside::before,
+.support-page .article-aside::after,
+.support-page .article-nav::before,
+.support-page .article-nav::after,
+.support-page .article-nav a::before,
+.support-page .article-nav a::after,
+.support-page .article-card::before,
+.support-page .article-card::after,
+.support-page .callout::before,
+.support-page .callout::after,
+.support-route .mock-card::before,
+.support-route .mock-card::after,
+.support-route .feature-card::before,
+.support-route .feature-card::after,
+.support-route .info-card::before,
+.support-route .info-card::after,
+.support-route .use-card::before,
+.support-route .use-card::after,
+.support-route .plan-card::before,
+.support-route .plan-card::after,
+.support-route .faq-card::before,
+.support-route .faq-card::after,
+.support-route .download-bar::before,
+.support-route .download-bar::after,
+.support-route .faq-item::before,
+.support-route .faq-item::after {
   content: none !important;
   display: none !important;
   background: none !important;
   box-shadow: none !important;
   filter: none !important;
+  -webkit-filter: none !important;
 }
 
+.support-page .article-grid,
+.support-page .article-aside,
+.support-page .article-nav,
+.support-page .article-nav a,
+.support-page .article-card,
+.support-page .callout {
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  mix-blend-mode: normal !important;
+  transform: none !important;
+  isolation: auto !important;
+  contain: none !important;
+}
+
+/* Cards are intentionally almost transparent. The old black rectangles were card surfaces/composited glows, not content. */
 .support-page .article-card,
 .support-page .callout,
 .support-page .article-nav a {
   position: relative;
-  isolation: auto !important;
   overflow: hidden;
-  background: rgba(12, 7, 11, 0.82) !important;
+  background: rgba(255, 76, 96, 0.026) !important;
+  background-color: rgba(255, 76, 96, 0.026) !important;
   background-image: none !important;
   background-clip: padding-box !important;
-  border-color: rgba(255, 76, 96, 0.28) !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  filter: none !important;
+  border-color: rgba(255, 76, 96, 0.22) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 176, 103, 0.045) !important;
   text-shadow: none !important;
-  transform: none !important;
   transition:
     background-color 160ms ease,
     border-color 160ms ease,
+    box-shadow 160ms ease,
     color 160ms ease !important;
 }
 
 .support-page .article-nav a {
-  border-color: rgba(214, 170, 95, 0.22) !important;
+  background: rgba(255, 176, 103, 0.018) !important;
+  background-color: rgba(255, 176, 103, 0.018) !important;
+  border-color: rgba(214, 170, 95, 0.18) !important;
 }
 
 .support-page .article-card:hover,
 .support-page .callout:hover,
-.support-page .article-nav a:hover {
-  transform: none !important;
-}
-
-.support-page .article-card:is(:hover, :focus-within),
-.support-page .callout:is(:hover, :focus-within),
-.support-page .article-nav a:is(:hover, :focus-visible) {
-  background: rgba(30, 10, 16, 0.86) !important;
+.support-page .article-nav a:hover,
+.support-page .article-card:focus-within,
+.support-page .callout:focus-within,
+.support-page .article-nav a:focus-visible {
+  background: rgba(255, 76, 96, 0.04) !important;
+  background-color: rgba(255, 76, 96, 0.04) !important;
   background-image: none !important;
-  border-color: rgba(255, 76, 96, 0.48) !important;
-  box-shadow: none !important;
+  border-color: rgba(255, 76, 96, 0.34) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 176, 103, 0.07) !important;
+  transform: none !important;
 }
 
 .support-page .article-card:is(.is-active, :target),
 .support-page .article-nav a:is(.is-active, [aria-current="location"]) {
   color: var(--text) !important;
-  background: rgba(86, 17, 30, 0.9) !important;
+  background: rgba(255, 76, 96, 0.055) !important;
+  background-color: rgba(255, 76, 96, 0.055) !important;
   background-image: none !important;
-  border-color: rgba(255, 76, 96, 0.72) !important;
-  box-shadow: inset 4px 0 0 rgba(255, 76, 96, 0.78) !important;
+  border-color: rgba(255, 76, 96, 0.46) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(255, 76, 96, 0.64),
+    inset 0 1px 0 rgba(255, 176, 103, 0.08) !important;
+}
+
+.support-page .article-card h2,
+.support-page .article-card h3,
+.support-page .callout strong {
+  color: var(--text) !important;
 }
 
 .support-page .article-card a:focus-visible,
 .support-page .article-nav a:focus-visible {
   outline: 2px solid rgba(255, 176, 103, 0.72) !important;
   outline-offset: 3px;
-}
-
-/* Final support-page artifact purge. Keep this after all support card styling. */
-.support-route .article-grid,
-.support-route .article-aside,
-.support-route .article-nav,
-.support-route .article-nav a,
-.support-route .callout,
-.support-route .article-card {
-  filter: none !important;
-  -webkit-filter: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  mix-blend-mode: normal !important;
-}
-
-.support-route .article-nav a,
-.support-route .callout,
-.support-route .article-card {
-  box-shadow: none !important;
-  outline: none;
-  contain: paint;
-}
-
-.support-route .article-card:is(.is-active, :target),
-.support-route .article-nav a:is(.is-active, [aria-current="location"]) {
-  box-shadow: inset 4px 0 0 rgba(255, 76, 96, 0.78) !important;
-}
-
-.support-route .article-grid::before,
-.support-route .article-grid::after,
-.support-route .article-aside::before,
-.support-route .article-aside::after,
-.support-route .article-nav::before,
-.support-route .article-nav::after,
-.support-route .article-nav a::before,
-.support-route .article-nav a::after,
-.support-route .callout::before,
-.support-route .callout::after,
-.support-route .article-card::before,
-.support-route .article-card::after {
-  content: none !important;
-  display: none !important;
-  background: none !important;
-  box-shadow: none !important;
-  filter: none !important;
-  -webkit-filter: none !important;
 }
 
 @media (min-width: 861px) {
