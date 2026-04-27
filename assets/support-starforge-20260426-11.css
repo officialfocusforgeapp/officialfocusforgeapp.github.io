@@ -1,0 +1,158 @@
+.support-route {
+  --support-bg-opacity: 0.32;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(190, 18, 36, 0.18), transparent 36%),
+    linear-gradient(180deg, #050407 0%, #090509 48%, #030204 100%) !important;
+}
+
+.support-route::before {
+  background-image: url("/assets/backgrounds/crimson-starforge-support.webp") !important;
+  background-repeat: no-repeat !important;
+  filter: saturate(1.5) contrast(1.18) brightness(1.06);
+  opacity: var(--support-bg-opacity) !important;
+  mix-blend-mode: normal !important;
+  pointer-events: none !important;
+}
+
+.support-route::after {
+  background:
+    linear-gradient(180deg, rgba(3, 2, 4, 0.34) 0%, rgba(3, 2, 4, 0.7) 50%, rgba(3, 2, 4, 0.96) 100%),
+    radial-gradient(ellipse at 50% 34%, rgba(3, 2, 4, 0.8) 0%, rgba(3, 2, 4, 0.58) 42%, transparent 70%),
+    radial-gradient(circle at 50% 18%, rgba(235, 28, 48, 0.16), transparent 32%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.16), transparent 22%, transparent 78%, rgba(0, 0, 0, 0.16)) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+
+.support-page {
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+.support-page .page-hero,
+.support-page .article-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.support-page .page-hero {
+  max-width: 880px;
+}
+
+.support-page .article-card,
+.support-page .callout,
+.support-page .article-nav a {
+  backdrop-filter: none !important;
+}
+
+.support-page .article-card,
+.support-page .callout {
+  background: linear-gradient(180deg, rgba(11, 8, 12, 0.92), rgba(5, 4, 7, 0.98)) !important;
+  border-color: rgba(255, 76, 96, 0.16) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.045),
+    0 10px 26px rgba(0, 0, 0, 0.18) !important;
+}
+
+.support-page .article-card::before,
+.support-page .callout::before {
+  opacity: 0.18;
+}
+
+.support-page .article-card::after,
+.support-page .callout::after {
+  opacity: 0.22;
+}
+
+.support-page .article-card:is(:hover, :focus-within),
+.support-page .callout:is(:hover, :focus-within) {
+  border-color: rgba(255, 76, 96, 0.22) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 12px 30px rgba(0, 0, 0, 0.22),
+    0 0 18px rgba(210, 24, 44, 0.08) !important;
+}
+
+.support-page .article-card:is(.is-active, :target) {
+  background: linear-gradient(180deg, rgba(36, 8, 18, 0.96), rgba(7, 4, 8, 0.99)) !important;
+  border-color: rgba(255, 76, 96, 0.46) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 4px 0 0 rgba(255, 76, 96, 0.9),
+    0 10px 28px rgba(0, 0, 0, 0.24),
+    0 0 26px rgba(210, 24, 44, 0.14) !important;
+}
+
+.support-page .article-card:is(.is-active, :target)::before {
+  opacity: 0.48;
+}
+
+.support-page .article-nav a {
+  background: rgba(8, 6, 10, 0.88) !important;
+  border-color: rgba(214, 170, 95, 0.12) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12) !important;
+}
+
+.support-page .article-nav a:is(:hover, :focus-visible) {
+  background: rgba(20, 8, 13, 0.9) !important;
+  border-color: rgba(255, 76, 96, 0.22) !important;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.16),
+    0 0 16px rgba(210, 24, 44, 0.08) !important;
+}
+
+.support-page .article-nav a:is(.is-active, [aria-current="location"]) {
+  color: var(--text) !important;
+  background: linear-gradient(90deg, rgba(126, 17, 31, 0.36), rgba(8, 6, 10, 0.9)) !important;
+  border-color: rgba(255, 76, 96, 0.34) !important;
+  box-shadow:
+    inset 4px 0 0 rgba(255, 76, 96, 0.86),
+    0 8px 22px rgba(0, 0, 0, 0.18),
+    0 0 18px rgba(210, 24, 44, 0.1) !important;
+}
+
+@media (min-width: 861px) {
+  .support-route::before,
+  .support-route::after {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  .support-route::before {
+    background-size: cover !important;
+    background-position: center top !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .support-route {
+    --support-bg-opacity: 0.18;
+  }
+
+  .support-route::before {
+    position: absolute !important;
+    inset: 0 !important;
+    min-height: 100vh !important;
+    background-size: cover !important;
+    background-position: center top !important;
+  }
+
+  .support-route::after {
+    position: absolute !important;
+    inset: 0 !important;
+    min-height: 100vh !important;
+    background:
+      linear-gradient(180deg, rgba(3, 2, 4, 0.62) 0%, rgba(3, 2, 4, 0.79) 44%, rgba(3, 2, 4, 0.98) 100%),
+      radial-gradient(ellipse at 50% 28%, rgba(3, 2, 4, 0.74) 0%, rgba(3, 2, 4, 0.54) 38%, transparent 70%),
+      radial-gradient(circle at 50% 18%, rgba(235, 28, 48, 0.12), transparent 34%) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .support-route {
+    --support-bg-opacity: 0.13;
+  }
+}
