@@ -80,6 +80,7 @@
   overflow: hidden;
   background: rgba(12, 7, 11, 0.82) !important;
   background-image: none !important;
+  background-clip: padding-box !important;
   border-color: rgba(255, 76, 96, 0.28) !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
@@ -125,6 +126,53 @@
 .support-page .article-nav a:focus-visible {
   outline: 2px solid rgba(255, 176, 103, 0.72) !important;
   outline-offset: 3px;
+}
+
+/* Final support-page artifact purge. Keep this after all support card styling. */
+.support-route .article-grid,
+.support-route .article-aside,
+.support-route .article-nav,
+.support-route .article-nav a,
+.support-route .callout,
+.support-route .article-card {
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+.support-route .article-nav a,
+.support-route .callout,
+.support-route .article-card {
+  box-shadow: none !important;
+  outline: none;
+  contain: paint;
+}
+
+.support-route .article-card:is(.is-active, :target),
+.support-route .article-nav a:is(.is-active, [aria-current="location"]) {
+  box-shadow: inset 4px 0 0 rgba(255, 76, 96, 0.78) !important;
+}
+
+.support-route .article-grid::before,
+.support-route .article-grid::after,
+.support-route .article-aside::before,
+.support-route .article-aside::after,
+.support-route .article-nav::before,
+.support-route .article-nav::after,
+.support-route .article-nav a::before,
+.support-route .article-nav a::after,
+.support-route .callout::before,
+.support-route .callout::after,
+.support-route .article-card::before,
+.support-route .article-card::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 @media (min-width: 861px) {
