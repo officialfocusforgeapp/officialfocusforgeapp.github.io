@@ -1,0 +1,201 @@
+.support-route {
+  --support-bg-opacity: 0.32;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(190, 18, 36, 0.2), transparent 36%),
+    linear-gradient(180deg, #050407 0%, #090509 48%, #030204 100%) !important;
+}
+
+.support-route::before {
+  background-image: url("/assets/backgrounds/crimson-starforge-support.webp") !important;
+  background-repeat: no-repeat !important;
+  filter: saturate(1.55) contrast(1.18) brightness(1.07);
+  opacity: var(--support-bg-opacity) !important;
+  mix-blend-mode: normal !important;
+  pointer-events: none !important;
+}
+
+.support-route::after {
+  background:
+    linear-gradient(180deg, rgba(3, 2, 4, 0.36) 0%, rgba(3, 2, 4, 0.66) 50%, rgba(3, 2, 4, 0.96) 100%),
+    radial-gradient(ellipse at 50% 44%, rgba(3, 2, 4, 0.82) 0%, rgba(3, 2, 4, 0.7) 38%, rgba(3, 2, 4, 0.22) 72%, transparent 100%),
+    radial-gradient(circle at 50% 18%, rgba(235, 28, 48, 0.18), transparent 34%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.22), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.22)) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+
+.support-page {
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+.support-page .page-hero,
+.support-page .article-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.support-page .page-hero {
+  max-width: 880px;
+}
+
+.support-page .article-grid::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* FINAL SAFETY OVERRIDE - remove card shadow-box artifacts */
+.mock-card::before,
+.mock-card::after,
+.feature-card::before,
+.feature-card::after,
+.info-card::before,
+.info-card::after,
+.use-card::before,
+.use-card::after,
+.plan-card::before,
+.plan-card::after,
+.faq-card::before,
+.faq-card::after,
+.article-card::before,
+.article-card::after,
+.callout::before,
+.callout::after,
+.download-bar::before,
+.download-bar::after,
+.faq-item::before,
+.faq-item::after {
+  content: none !important;
+  display: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+.mock-card,
+.feature-card,
+.info-card,
+.use-card,
+.plan-card,
+.faq-card,
+.article-card,
+.callout,
+.download-bar,
+.faq-item {
+  position: relative;
+  isolation: auto !important;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface-2) 94%, #050505 6%),
+    color-mix(in srgb, var(--surface) 96%, #030303 4%)
+  ) !important;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, rgba(255,255,255,0.1)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.045),
+    inset 0 0 22px color-mix(in srgb, var(--accent) 5%, transparent) !important;
+  backdrop-filter: blur(7px) saturate(1.06) !important;
+}
+
+.support-page .article-nav a {
+  position: relative;
+  isolation: auto !important;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface-2) 94%, #050505 6%),
+    color-mix(in srgb, var(--surface) 96%, #030303 4%)
+  ) !important;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, rgba(255,255,255,0.1)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.045),
+    inset 0 0 22px color-mix(in srgb, var(--accent) 5%, transparent) !important;
+  backdrop-filter: blur(7px) saturate(1.06) !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+.support-page .article-card:hover,
+.support-page .callout:hover,
+.support-page .article-nav a:hover {
+  transform: none !important;
+}
+
+.support-page .article-card:is(:hover, :focus-within),
+.support-page .callout:is(:hover, :focus-within),
+.support-page .article-nav a:is(:hover, :focus-visible) {
+  border-color: color-mix(in srgb, var(--accent) 36%, rgba(255,255,255,0.14)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.055),
+    inset 0 0 24px color-mix(in srgb, var(--accent) 8%, transparent),
+    0 0 18px color-mix(in srgb, var(--accent) 12%, transparent) !important;
+}
+
+.support-page .article-card:is(.is-active, :target),
+.support-page .article-nav a:is(.is-active, [aria-current="location"]) {
+  color: var(--text) !important;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 34%, transparent) 0 4px, transparent 4px),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--surface-2) 94%, #050505 6%),
+      color-mix(in srgb, var(--surface) 96%, #030303 4%)
+    ) !important;
+  border-color: color-mix(in srgb, var(--accent) 48%, rgba(255,255,255,0.16)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    inset 0 0 26px color-mix(in srgb, var(--accent) 9%, transparent),
+    0 0 20px color-mix(in srgb, var(--accent) 14%, transparent) !important;
+}
+
+.support-page .article-card a:focus-visible,
+.support-page .article-nav a:focus-visible {
+  outline: 2px solid rgba(255, 176, 103, 0.72) !important;
+  outline-offset: 3px;
+}
+
+@media (min-width: 861px) {
+  .support-route::before,
+  .support-route::after {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  .support-route::before {
+    background-size: cover !important;
+    background-position: center top !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .support-route {
+    --support-bg-opacity: 0.18;
+  }
+
+  .support-route::before {
+    position: absolute !important;
+    inset: 0 !important;
+    min-height: 100vh !important;
+    background-size: cover !important;
+    background-position: center top !important;
+  }
+
+  .support-route::after {
+    position: absolute !important;
+    inset: 0 !important;
+    min-height: 100vh !important;
+    background:
+      linear-gradient(180deg, rgba(3, 2, 4, 0.66) 0%, rgba(3, 2, 4, 0.82) 44%, rgba(3, 2, 4, 0.98) 100%),
+      radial-gradient(ellipse at 50% 34%, rgba(3, 2, 4, 0.82) 0%, rgba(3, 2, 4, 0.62) 42%, transparent 74%),
+      radial-gradient(circle at 50% 18%, rgba(235, 28, 48, 0.14), transparent 34%) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .support-route {
+    --support-bg-opacity: 0.13;
+  }
+}
