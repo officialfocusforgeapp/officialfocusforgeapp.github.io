@@ -72,13 +72,20 @@ html {
   border-color: rgba(239, 255, 154, 0.34) !important;
 }
 
-.memberships-page .hero-actions {
+.memberships-page .memberships-hero-actions-row {
+  position: relative;
+  width: min(calc(100vw - 2rem), var(--container));
+  min-height: 48px;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: clamp(0.65rem, 1.8vw, 1rem);
+  margin-top: 1.35rem;
 }
 
-.memberships-page .hero-actions .button {
+.memberships-page .memberships-hero-actions-row .hero-actions {
+  margin-top: 0;
+}
+
+.memberships-page .memberships-hero-actions-row .button {
   flex: 0 0 auto;
 }
 
@@ -90,47 +97,55 @@ html {
   padding-top: clamp(1rem, 2.2vw, 1.55rem);
 }
 
-.memberships-page .plan-ads-card--inline {
-  width: auto;
-  min-height: 40px;
-  max-width: none;
+.memberships-page .plan-ads-card--hero {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(250px, 26vw, 420px);
+  min-height: 48px;
   display: inline-flex;
-  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 0.52rem 0.9rem;
-  border-radius: 999px;
+  padding: 0.78rem 1.35rem;
+  border-radius: var(--radius-md);
+  transform: translate(-50%, -50%);
 }
 
-.memberships-page .plan-ads-card--inline strong {
+.memberships-page .plan-ads-card--hero strong {
   margin: 0;
-  color: rgba(239, 255, 154, 0.94);
-  font-size: 0.84rem;
+  color: rgba(239, 255, 154, 0.96);
+  font-size: 1.05rem;
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0;
   white-space: nowrap;
-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.54);
+}
+
+@media (max-width: 860px) {
+  .memberships-page .memberships-hero-actions-row {
+    width: 100%;
+    min-height: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .memberships-page .plan-ads-card--hero {
+    position: static;
+    justify-self: center;
+    transform: none;
+  }
 }
 
 @media (max-width: 620px) {
-  .memberships-page .hero-actions {
+  .memberships-page .memberships-hero-actions-row .hero-actions {
     max-width: 360px;
     margin-inline: auto;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
   }
 
-  .memberships-page .hero-actions .button {
-    width: auto;
-    flex: 1 1 142px;
-  }
-
-  .memberships-page .plan-ads-card--inline {
-    order: -1;
-    flex-basis: auto;
+  .memberships-page .plan-ads-card--hero {
+    width: min(100%, 320px);
   }
 }
 @media (max-width: 860px) {
