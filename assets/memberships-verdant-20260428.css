@@ -73,15 +73,17 @@ html {
 }
 
 .memberships-page .memberships-hero-actions-row {
-  position: relative;
   width: min(calc(100vw - 2rem), var(--container));
   min-height: 48px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   margin-top: 1.35rem;
 }
 
 .memberships-page .memberships-hero-actions-row .hero-actions {
+  grid-column: 1;
+  justify-self: start;
   margin-top: 0;
 }
 
@@ -98,10 +100,9 @@ html {
 }
 
 .memberships-page .plan-ads-card--hero {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: clamp(250px, 26vw, 420px);
+  grid-column: 2;
+  justify-self: center;
+  width: clamp(260px, 24vw, 380px);
   min-height: 48px;
   display: inline-flex;
   align-items: center;
@@ -109,7 +110,6 @@ html {
   margin: 0;
   padding: 0.78rem 1.35rem;
   border-radius: var(--radius-md);
-  transform: translate(-50%, -50%);
 }
 
 .memberships-page .plan-ads-card--hero strong {
