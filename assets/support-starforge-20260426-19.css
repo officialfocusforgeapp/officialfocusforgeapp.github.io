@@ -1,8 +1,5 @@
 .support-route {
   --support-bg-opacity: 0.58;
-  --support-card-bg: rgba(16, 7, 9, 0.62);
-  --support-card-bg-strong: rgba(33, 9, 13, 0.66);
-  --support-card-border: rgba(255, 76, 96, 0.28);
   background:
     radial-gradient(ellipse at 50% 15%, rgba(255, 58, 50, 0.22), transparent 38%),
     linear-gradient(180deg, #080203 0%, #070203 48%, #020101 100%) !important;
@@ -17,9 +14,9 @@ html {
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center top !important;
-  opacity: var(--support-bg-opacity) !important;
   filter: saturate(1.22) contrast(1.1) brightness(0.92);
   -webkit-filter: saturate(1.22) contrast(1.1) brightness(0.92);
+  opacity: var(--support-bg-opacity) !important;
   mix-blend-mode: normal !important;
   pointer-events: none !important;
 }
@@ -31,7 +28,6 @@ html {
     linear-gradient(90deg, rgba(2, 1, 1, 0.18) 0%, rgba(12, 2, 3, 0.36) 22%, rgba(5, 1, 2, 0.18) 50%, rgba(12, 2, 3, 0.44) 78%, rgba(2, 1, 1, 0.28) 100%),
     linear-gradient(180deg, rgba(2, 1, 2, 0.08) 0%, rgba(2, 1, 2, 0.26) 38%, rgba(2, 1, 2, 0.72) 86%, #020101 100%) !important;
   opacity: 1 !important;
-  mix-blend-mode: normal !important;
   pointer-events: none !important;
 }
 
@@ -41,55 +37,17 @@ html {
   background: transparent !important;
 }
 
-.support-page > .site-shell,
 .support-page .page-hero,
-.support-page .article-grid {
+support-page .article-grid {
   position: relative;
   z-index: 1;
 }
 
 .support-page .page-hero {
-  max-width: 900px;
+  max-width: 880px;
 }
 
-.support-page .page-hero h1 {
-  max-width: 13ch;
-  text-shadow:
-    0 2px 28px rgba(0, 0, 0, 0.86),
-    0 0 54px rgba(240, 68, 56, 0.24) !important;
-}
-
-.support-page .page-hero .lead {
-  max-width: 56ch;
-  color: rgba(255, 231, 222, 0.86);
-  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.78);
-}
-
-.support-page .eyebrow {
-  background: rgba(8, 3, 4, 0.6) !important;
-  border-color: rgba(255, 76, 96, 0.34) !important;
-  color: rgba(255, 218, 208, 0.84) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 176, 103, 0.08),
-    0 0 30px rgba(255, 48, 42, 0.14) !important;
-}
-
-.support-page .article-grid,
-.support-page .article-aside,
-.support-page .article-nav,
-.support-page .article-nav a,
-.support-page .article-card,
-.support-page .callout {
-  filter: none !important;
-  -webkit-filter: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  mix-blend-mode: normal !important;
-  transform: none !important;
-  isolation: auto !important;
-  contain: none !important;
-}
-
+/* Disable every support-card pseudo layer and every inherited glow/compositing effect. */
 .support-page .article-grid::before,
 .support-page .article-grid::after,
 .support-page .article-aside::before,
@@ -108,8 +66,8 @@ html {
 .support-route .feature-card::after,
 .support-route .info-card::before,
 .support-route .info-card::after,
-.support-route .use-card::before,
-.support-route .use-card::after,
+support-route .use-card::before,
+support-route .use-card::after,
 .support-route .plan-card::before,
 .support-route .plan-card::after,
 .support-route .faq-card::before,
@@ -126,18 +84,34 @@ html {
   -webkit-filter: none !important;
 }
 
+.support-page .article-grid,
+.support-page .article-aside,
+.support-page .article-nav,
+.support-page .article-nav a,
+.support-page .article-card,
+.support-page .callout {
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  mix-blend-mode: normal !important;
+  transform: none !important;
+  isolation: auto !important;
+  contain: none !important;
+}
+
+/* Cards are intentionally almost transparent. The old black rectangles were card surfaces/composited glows, not content. */
 .support-page .article-card,
 .support-page .callout,
 .support-page .article-nav a {
   position: relative;
   overflow: hidden;
-  background: var(--support-card-bg) !important;
+  background: rgba(255, 76, 96, 0.026) !important;
+  background-color: rgba(255, 76, 96, 0.026) !important;
   background-image: none !important;
   background-clip: padding-box !important;
-  border-color: var(--support-card-border) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 176, 103, 0.06),
-    0 14px 36px rgba(0, 0, 0, 0.16) !important;
+  border-color: rgba(255, 76, 96, 0.22) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 176, 103, 0.045) !important;
   text-shadow: none !important;
   transition:
     background-color 160ms ease,
@@ -146,15 +120,10 @@ html {
     color 160ms ease !important;
 }
 
-.support-page .article-card,
-.support-page .callout {
-  background: linear-gradient(180deg, var(--support-card-bg), rgba(8, 4, 6, 0.76)) !important;
-}
-
 .support-page .article-nav a {
-  background: rgba(12, 5, 7, 0.54) !important;
-  border-color: rgba(255, 176, 103, 0.2) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 176, 103, 0.04) !important;
+  background: rgba(255, 176, 103, 0.018) !important;
+  background-color: rgba(255, 176, 103, 0.018) !important;
+  border-color: rgba(214, 170, 95, 0.18) !important;
 }
 
 .support-page .article-card:hover,
@@ -163,24 +132,24 @@ html {
 .support-page .article-card:focus-within,
 .support-page .callout:focus-within,
 .support-page .article-nav a:focus-visible {
-  background: var(--support-card-bg-strong) !important;
+  background: rgba(255, 76, 96, 0.04) !important;
+  background-color: rgba(255, 76, 96, 0.04) !important;
   background-image: none !important;
-  border-color: rgba(255, 76, 96, 0.38) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 176, 103, 0.08),
-    0 16px 40px rgba(0, 0, 0, 0.2) !important;
+  border-color: rgba(255, 76, 96, 0.34) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 176, 103, 0.07) !important;
   transform: none !important;
 }
 
 .support-page .article-card:is(.is-active, :target),
 .support-page .article-nav a:is(.is-active, [aria-current="location"]) {
   color: var(--text) !important;
-  background: linear-gradient(180deg, rgba(48, 10, 16, 0.72), rgba(10, 4, 6, 0.82)) !important;
-  border-color: rgba(255, 76, 96, 0.5) !important;
+  background: rgba(255, 76, 96, 0.055) !important;
+  background-color: rgba(255, 76, 96, 0.055) !important;
+  background-image: none !important;
+  border-color: rgba(255, 76, 96, 0.46) !important;
   box-shadow:
-    inset 3px 0 0 rgba(255, 76, 96, 0.74),
-    inset 0 1px 0 rgba(255, 176, 103, 0.1),
-    0 16px 42px rgba(0, 0, 0, 0.22) !important;
+    inset 3px 0 0 rgba(255, 76, 96, 0.64),
+    inset 0 1px 0 rgba(255, 176, 103, 0.08) !important;
 }
 
 .support-page .article-card h2,
@@ -202,6 +171,12 @@ html {
     inset: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
+  }
+
+  .support-route::before {
+    background-size: cover !important;
+    background-position: center top !important;
+    transform: none !important;
   }
 }
 
@@ -226,23 +201,10 @@ html {
       radial-gradient(ellipse at 50% 18%, rgba(255, 48, 42, 0.14), transparent 38%),
       linear-gradient(180deg, rgba(3, 1, 2, 0.38) 0%, rgba(3, 1, 2, 0.66) 46%, rgba(3, 1, 2, 0.92) 100%) !important;
   }
-
-  .support-page .page-hero h1 {
-    max-width: 14ch;
-  }
 }
 
 @media (max-width: 620px) {
   .support-route {
     --support-bg-opacity: 0.3;
-  }
-
-  .support-page .article-card,
-  .support-page .callout {
-    background: linear-gradient(180deg, rgba(16, 7, 9, 0.68), rgba(8, 4, 6, 0.82)) !important;
-  }
-
-  .support-route .header-actions {
-    display: none;
   }
 }
