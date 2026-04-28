@@ -38,7 +38,7 @@ html {
 }
 
 .support-page .page-hero,
-support-page .article-grid {
+.support-page .article-grid {
   position: relative;
   z-index: 1;
 }
@@ -66,8 +66,8 @@ support-page .article-grid {
 .support-route .feature-card::after,
 .support-route .info-card::before,
 .support-route .info-card::after,
-support-route .use-card::before,
-support-route .use-card::after,
+.support-route .use-card::before,
+.support-route .use-card::after,
 .support-route .plan-card::before,
 .support-route .plan-card::after,
 .support-route .faq-card::before,
