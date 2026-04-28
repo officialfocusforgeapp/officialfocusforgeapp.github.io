@@ -72,27 +72,44 @@ html {
   border-color: rgba(239, 255, 154, 0.34) !important;
 }
 
-.memberships-page .memberships-hero-actions-row {
-  width: min(calc(100vw - 2rem), var(--container));
-  min-height: 48px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: center;
-  margin-top: 1.35rem;
+.memberships-page .page-hero {
+  max-width: none;
+  padding-bottom: clamp(0.85rem, 1.8vw, 1.15rem);
 }
 
-.memberships-page .memberships-hero-actions-row .hero-actions {
-  grid-column: 1;
-  justify-self: start;
+.memberships-page .page-hero h1 {
+  max-width: 900px;
+}
+
+.memberships-page .memberships-hero-copy-row {
+  width: min(100%, 900px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.3rem);
+  margin-top: 1.15rem;
+}
+
+.memberships-page .memberships-hero-copy-row .lead {
+  margin: 0;
+}
+
+.memberships-page .memberships-hero-copy-row .hero-actions {
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-start;
   margin-top: 0;
 }
 
-.memberships-page .memberships-hero-actions-row .button {
+.memberships-page .memberships-hero-copy-row .button {
   flex: 0 0 auto;
 }
 
-.memberships-page .page-hero {
-  padding-bottom: clamp(0.85rem, 1.8vw, 1.15rem);
+.memberships-page .memberships-no-ads-row {
+  width: min(calc(100vw - 2rem), var(--container));
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1rem, 2vw, 1.35rem);
 }
 
 .memberships-page #plans {
@@ -100,22 +117,20 @@ html {
 }
 
 .memberships-page .plan-ads-card--hero {
-  grid-column: 2;
-  justify-self: center;
-  width: clamp(260px, 24vw, 380px);
-  min-height: 48px;
+  width: clamp(290px, 32vw, 430px);
+  min-height: 54px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 0.78rem 1.35rem;
+  padding: 0.92rem 1.45rem;
   border-radius: var(--radius-md);
 }
 
 .memberships-page .plan-ads-card--hero strong {
   margin: 0;
   color: rgba(239, 255, 154, 0.96);
-  font-size: 1.05rem;
+  font-size: 1.12rem;
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0;
@@ -124,31 +139,29 @@ html {
 }
 
 @media (max-width: 860px) {
-  .memberships-page .memberships-hero-actions-row {
-    width: 100%;
-    min-height: 0;
-    display: grid;
+  .memberships-page .memberships-hero-copy-row {
+    width: min(100%, 640px);
     grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 0.75rem;
+    align-items: start;
+    gap: 0.85rem;
   }
 
-  .memberships-page .memberships-hero-actions-row .hero-actions {
-    grid-column: 1;
-    justify-self: center;
+  .memberships-page .memberships-hero-copy-row .hero-actions {
+    justify-content: flex-start;
+  }
+
+  .memberships-page .memberships-no-ads-row {
+    width: 100%;
   }
 
   .memberships-page .plan-ads-card--hero {
-    grid-column: 1;
-    justify-self: center;
-    width: min(100%, 320px);
+    width: min(100%, 360px);
   }
 }
 
 @media (max-width: 620px) {
-  .memberships-page .memberships-hero-actions-row .hero-actions {
+  .memberships-page .memberships-hero-copy-row .hero-actions {
     width: min(100%, 360px);
-    margin-inline: auto;
   }
 }
 @media (max-width: 860px) {

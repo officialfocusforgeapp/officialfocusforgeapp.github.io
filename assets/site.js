@@ -578,6 +578,7 @@ function setupPlanRails() {
       cards.forEach((card, index) => {
         const isActive = index === boundedIndex;
         card.classList.toggle('is-active', isActive);
+        card.dataset.selected = String(isActive);
       });
     };
 
@@ -709,10 +710,16 @@ function setupPlanRails() {
     });
 
     rail.addEventListener('click', (event) => {
-      if (!suppressNextClick) return;
-      event.preventDefault();
-      event.stopPropagation();
-      suppressNextClick = false;
+      if (suppressNextClick) {
+        event.preventDefault();
+        event.stopPropagation();
+        suppressNextClick = false;
+        return;
+      }
+
+      if (activateCardFromTarget(event.target)) {
+        event.preventDefault();
+      }
     }, true);
 
     updateEdgePadding();
