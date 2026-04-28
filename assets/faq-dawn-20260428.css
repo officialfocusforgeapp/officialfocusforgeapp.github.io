@@ -47,6 +47,11 @@ html {
 
 .faq-page .page-hero {
   max-width: 880px;
+  padding-bottom: 0.45rem;
+}
+
+.faq-page .page-hero + .section {
+  padding-top: clamp(0.7rem, 2vw, 1.2rem);
 }
 
 .faq-page .page-hero h1,
