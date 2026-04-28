@@ -185,3 +185,50 @@
     flex-basis: 2rem !important;
   }
 }
+
+/* SwordIcon website brand marks start */
+:root {
+  --brand-icon-url: url("/assets/brand/sword-icon-molten.webp?v=20260428-1");
+}
+
+:root[data-theme="molten"] {
+  --brand-icon-url: url("/assets/brand/sword-icon-molten.webp?v=20260428-1");
+}
+
+:root[data-theme="frozen"] {
+  --brand-icon-url: url("/assets/brand/sword-icon-glacial.webp?v=20260428-1");
+}
+
+:root[data-theme="verdant"] {
+  --brand-icon-url: url("/assets/brand/sword-icon-verdant.webp?v=20260428-1");
+}
+
+:root[data-theme="dawn"] {
+  --brand-icon-url: url("/assets/brand/sword-icon-bloom.webp?v=20260428-1");
+}
+
+:root[data-theme="crimson"] {
+  --brand-icon-url: url("/assets/brand/sword-icon-crimson.webp?v=20260428-1");
+}
+
+.brand-mark {
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--brand-icon-url) center / contain no-repeat !important;
+  box-shadow: none !important;
+  filter:
+    drop-shadow(0 0 0.42rem var(--brand-glow-strong))
+    drop-shadow(0 0.08rem 0.08rem rgba(0, 0, 0, 0.7)) !important;
+  -webkit-filter:
+    drop-shadow(0 0 0.42rem var(--brand-glow-strong))
+    drop-shadow(0 0.08rem 0.08rem rgba(0, 0, 0, 0.7)) !important;
+}
+
+.brand-mark::before,
+.brand-mark::after {
+  content: none !important;
+  display: none !important;
+}
+/* SwordIcon website brand marks end */
+

@@ -1,0 +1,90 @@
+.use-cases-route {
+  --use-bg-opacity: 0.56;
+  --use-card-bg: rgba(8, 28, 46, 0.62);
+  --use-card-bg-strong: rgba(23, 63, 96, 0.66);
+  --use-card-border: rgba(128, 211, 255, 0.26);
+  background:
+    radial-gradient(ellipse at 54% 15%, rgba(108, 207, 255, 0.22), transparent 38%),
+    linear-gradient(180deg, #06111d 0%, #06101b 48%, #02050a 100%) !important;
+}
+
+html {
+  background: #02050a;
+}
+
+.use-cases-route::before {
+  background-image: url("/assets/backgrounds/glacial-citadel-use-cases.webp") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  opacity: var(--use-bg-opacity) !important;
+  filter: saturate(1.12) contrast(1.08) brightness(0.92);
+  -webkit-filter: saturate(1.12) contrast(1.08) brightness(0.92);
+  mix-blend-mode: normal !important;
+}
+
+.use-cases-route::after {
+  background:
+    radial-gradient(ellipse at 24% 34%, rgba(0, 10, 18, 0.62) 0%, rgba(0, 10, 18, 0.38) 32%, transparent 58%),
+    radial-gradient(ellipse at 78% 36%, rgba(112, 216, 255, 0.18), transparent 38%),
+    linear-gradient(90deg, rgba(2, 5, 10, 0.2) 0%, rgba(6, 22, 38, 0.42) 24%, rgba(4, 14, 24, 0.22) 50%, rgba(8, 28, 46, 0.48) 78%, rgba(2, 5, 10, 0.34) 100%),
+    linear-gradient(180deg, rgba(2, 5, 10, 0.1) 0%, rgba(2, 5, 10, 0.32) 38%, rgba(2, 5, 10, 0.78) 86%, #02050a 100%) !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+.use-cases-page {
+  isolation: isolate;
+  overflow-x: clip;
+  background: transparent !important;
+}
+
+.use-cases-page .page-hero,
+.use-cases-page .section {
+  position: relative;
+  z-index: 1;
+}
+
+.use-cases-page .page-hero {
+  max-width: 900px;
+}
+
+.use-cases-page .page-hero h1,
+.use-cases-page .page-hero .lead,
+.use-cases-page .eyebrow {
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.72);
+}
+
+.use-cases-page .use-card,
+.use-cases-page .info-card,
+.use-cases-page .download-bar {
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: var(--use-card-bg) !important;
+  border-color: var(--use-card-border) !important;
+  box-shadow: inset 0 1px 0 rgba(226, 247, 255, 0.065), 0 14px 36px rgba(0, 0, 0, 0.18) !important;
+}
+
+.use-cases-page :is(.use-card, .info-card, .download-bar):is(:hover, :focus-within, .is-active) {
+  background: var(--use-card-bg-strong) !important;
+  border-color: rgba(226, 247, 255, 0.36) !important;
+}
+
+@media (max-width: 860px) {
+  .use-cases-route {
+    --use-bg-opacity: 0.36;
+  }
+
+  .use-cases-route::after {
+    background:
+      radial-gradient(ellipse at 50% 18%, rgba(103, 200, 255, 0.14), transparent 38%),
+      linear-gradient(180deg, rgba(2, 5, 10, 0.46) 0%, rgba(2, 5, 10, 0.72) 46%, rgba(2, 5, 10, 0.94) 100%) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .use-cases-route {
+    --use-bg-opacity: 0.28;
+  }
+}
