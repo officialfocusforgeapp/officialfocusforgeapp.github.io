@@ -128,24 +128,27 @@ html {
     width: 100%;
     min-height: 0;
     display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
     gap: 0.75rem;
   }
 
-  .memberships-page .plan-ads-card--hero {
-    position: static;
+  .memberships-page .memberships-hero-actions-row .hero-actions {
+    grid-column: 1;
     justify-self: center;
-    transform: none;
+  }
+
+  .memberships-page .plan-ads-card--hero {
+    grid-column: 1;
+    justify-self: center;
+    width: min(100%, 320px);
   }
 }
 
 @media (max-width: 620px) {
   .memberships-page .memberships-hero-actions-row .hero-actions {
-    max-width: 360px;
+    width: min(100%, 360px);
     margin-inline: auto;
-  }
-
-  .memberships-page .plan-ads-card--hero {
-    width: min(100%, 320px);
   }
 }
 @media (max-width: 860px) {
