@@ -164,6 +164,46 @@ html {
   outline-offset: 3px;
 }
 
+.support-route {
+  --support-readable-text: rgba(255, 238, 232, 0.89);
+  --support-readable-muted: rgba(255, 220, 210, 0.81);
+  --support-readable-faint: rgba(255, 203, 188, 0.75);
+  --support-readable-link: rgba(255, 207, 158, 0.94);
+}
+
+.support-page .page-hero .lead,
+.support-page .article-card p,
+.support-page .callout p,
+.support-page .muted {
+  color: var(--support-readable-text) !important;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.66);
+}
+
+.support-page .article-card h3,
+.support-page .article-nav a,
+.support-page .callout strong,
+.support-route .site-footer .muted,
+.support-route .brand-sub,
+.support-route .footer-bottom {
+  color: var(--support-readable-muted) !important;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.6);
+}
+
+.support-page .article-nav a:is(:hover, :focus-visible, .is-active, [aria-current="location"]),
+.support-page .article-card:is(.is-active, :target) h2,
+.support-page .article-card:is(.is-active, :target) h3 {
+  color: rgba(255, 246, 240, 0.93) !important;
+}
+
+.support-page .article-card a,
+.support-page .callout a {
+  color: var(--support-readable-link) !important;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.62);
+}
+
+.support-page .eyebrow {
+  color: rgba(255, 196, 166, 0.86) !important;
+}
 @media (min-width: 861px) {
   .support-route::before,
   .support-route::after {

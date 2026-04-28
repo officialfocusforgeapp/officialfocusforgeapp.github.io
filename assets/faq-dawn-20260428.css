@@ -76,6 +76,31 @@ html {
   border-color: rgba(255, 216, 154, 0.34) !important;
 }
 
+.faq-route {
+  --faq-readable-text: rgba(255, 244, 236, 0.9);
+  --faq-readable-muted: rgba(255, 231, 221, 0.82);
+  --faq-readable-faint: rgba(255, 217, 199, 0.76);
+}
+
+.faq-page .page-hero .lead,
+.faq-page .faq-answer,
+.faq-page .faq-card p,
+.faq-page .muted {
+  color: var(--faq-readable-text) !important;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.62);
+}
+
+.faq-page .faq-card p,
+.faq-route .site-footer .muted,
+.faq-route .brand-sub,
+.faq-route .footer-bottom {
+  color: var(--faq-readable-muted) !important;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.58);
+}
+
+.faq-page .eyebrow {
+  color: rgba(255, 224, 190, 0.86) !important;
+}
 @media (max-width: 860px) {
   .faq-route {
     --faq-bg-opacity: 0.36;
