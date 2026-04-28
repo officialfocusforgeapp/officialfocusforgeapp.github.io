@@ -1,0 +1,218 @@
+.home-route {
+  --home-bg-opacity: 0.55;
+  --home-card-bg: rgba(13, 8, 5, 0.62);
+  --home-card-bg-strong: rgba(34, 16, 7, 0.64);
+  --home-card-border: rgba(255, 130, 38, 0.25);
+  background:
+    radial-gradient(ellipse at 50% 16%, rgba(255, 105, 24, 0.2), transparent 38%),
+    linear-gradient(180deg, #080302 0%, #080403 48%, #020201 100%) !important;
+}
+
+html {
+  background: #020201;
+}
+
+.home-route::before {
+  background-image: url("/assets/backgrounds/molten-forge-home.webp") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  opacity: var(--home-bg-opacity) !important;
+  filter: saturate(1.18) contrast(1.12) brightness(0.9);
+  -webkit-filter: saturate(1.18) contrast(1.12) brightness(0.9);
+  mix-blend-mode: normal !important;
+}
+
+.home-route::after {
+  background:
+    radial-gradient(ellipse at 22% 34%, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.48) 32%, transparent 58%),
+    radial-gradient(ellipse at 76% 44%, rgba(255, 92, 16, 0.16), transparent 34%),
+    linear-gradient(90deg, rgba(2, 2, 2, 0.2) 0%, rgba(10, 4, 1, 0.42) 24%, rgba(6, 3, 1, 0.24) 48%, rgba(8, 3, 1, 0.5) 75%, rgba(2, 2, 2, 0.34) 100%),
+    linear-gradient(180deg, rgba(3, 2, 1, 0.14) 0%, rgba(3, 2, 1, 0.34) 36%, rgba(3, 2, 1, 0.82) 84%, #020201 100%) !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+.home-page {
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+.home-page .hero {
+  min-height: min(760px, calc(100svh - var(--nav-height)));
+  display: flex;
+  align-items: center;
+  padding: clamp(4.6rem, 8vw, 7.2rem) 0 clamp(2.4rem, 5vw, 3.6rem);
+}
+
+.home-page .hero-grid {
+  grid-template-columns: minmax(0, 0.98fr) minmax(320px, 0.78fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.home-page .hero-grid > *,
+.home-page .hero-copy,
+.home-page .showcase,
+.home-page .phone-frame,
+.home-page .mock-card {
+  min-width: 0;
+}
+
+.home-page .hero-copy {
+  max-width: 720px;
+}
+
+.home-page .hero h1 {
+  max-width: 12ch;
+  text-shadow:
+    0 2px 28px rgba(0, 0, 0, 0.82),
+    0 0 54px rgba(255, 106, 18, 0.24);
+}
+
+.home-page .hero p.lead {
+  max-width: 55ch;
+  color: rgba(255, 235, 207, 0.86);
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.74);
+}
+
+.home-page .eyebrow {
+  background: rgba(8, 4, 2, 0.58);
+  border-color: rgba(255, 145, 45, 0.32);
+  color: rgba(255, 226, 185, 0.82);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 214, 126, 0.08),
+    0 0 30px rgba(255, 93, 16, 0.13);
+}
+
+.home-page .hero-meta {
+  color: rgba(255, 220, 168, 0.72);
+}
+
+.home-page .showcase {
+  width: min(100%, 430px);
+  justify-self: end;
+}
+
+.home-page .phone-frame,
+.home-page .mock-card,
+.home-page .feature-card,
+.home-page .info-card,
+.home-page .download-bar {
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.home-page .phone-frame {
+  background: linear-gradient(180deg, rgba(11, 7, 5, 0.66), rgba(6, 4, 3, 0.78)) !important;
+  border-color: rgba(255, 160, 72, 0.26) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 214, 126, 0.06),
+    0 24px 70px rgba(0, 0, 0, 0.28) !important;
+}
+
+.home-page .mock-card {
+  background: var(--home-card-bg) !important;
+  border-color: var(--home-card-border) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 214, 126, 0.05) !important;
+}
+
+.home-page .mock-card--hours {
+  background: var(--home-card-bg-strong) !important;
+}
+
+.home-page .feature-card,
+.home-page .info-card,
+.home-page .download-bar {
+  background: color-mix(in srgb, var(--home-card-bg) 86%, #050302 14%) !important;
+  border-color: rgba(255, 145, 45, 0.22) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 214, 126, 0.045) !important;
+}
+
+.home-page :is(.feature-card, .info-card, .download-bar):is(:hover, :focus-within) {
+  background: color-mix(in srgb, var(--home-card-bg-strong) 76%, #050302 24%) !important;
+  border-color: rgba(255, 177, 75, 0.34) !important;
+}
+
+.home-page .download-bar {
+  align-items: center;
+}
+
+@media (max-width: 1120px) {
+  .home-page .showcase {
+    justify-self: stretch;
+    width: 100%;
+  }
+}
+
+@media (max-width: 860px) {
+  .home-route {
+    --home-bg-opacity: 0.36;
+  }
+
+  .home-route::after {
+    background:
+      radial-gradient(ellipse at 50% 18%, rgba(255, 92, 16, 0.13), transparent 38%),
+      linear-gradient(180deg, rgba(3, 2, 1, 0.5) 0%, rgba(3, 2, 1, 0.74) 46%, rgba(3, 2, 1, 0.94) 100%) !important;
+  }
+
+  .home-page .hero {
+    min-height: auto;
+    padding-top: 4rem;
+  }
+
+  .home-page .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .home-page .showcase {
+    justify-self: stretch;
+    width: min(100%, 520px);
+  }
+}
+
+@media (max-width: 620px) {
+  .home-route {
+    --home-bg-opacity: 0.26;
+  }
+
+  .home-route::before {
+    background-position: center top !important;
+  }
+
+  .home-page .hero {
+    padding-top: 3rem;
+  }
+
+  .home-page .hero h1 {
+    max-width: 12ch;
+  }
+
+  .home-route .header-actions {
+    display: none;
+  }
+
+  .home-page .phone-frame {
+    padding: 0.85rem;
+  }
+
+  .home-page .hours-counter-label {
+    overflow-wrap: anywhere;
+  }
+
+  .home-page .hours-counter-display {
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .home-page .hours-counter-value {
+    min-width: 0;
+    font-size: clamp(1.72rem, 8.6vw, 2.1rem);
+  }
+
+  .home-page .metric-row {
+    grid-template-columns: 1fr;
+  }
+}
